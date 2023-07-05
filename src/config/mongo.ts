@@ -1,9 +1,15 @@
 import "dotenv/config";
 import { connect } from "mongoose";
+const { DB_URI } = process.env;
 
-async function dbConnect(): Promise<void> {
-  const DB_URI = <string>process.env.DB_URI;
-  await connect(DB_URI);
-}
+const dbConnect = async (): Promise<void> => {
+  try {
+    if (!DB_URI) throw new Error("DB_URI no está definida en el archivo .env");
+
+    await connect(<string>DB_URI);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export default dbConnect;

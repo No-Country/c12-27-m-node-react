@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import { router } from "./routes";
 
-const { PORT } = process.env;
+
 
 const app = express();
 app.use(cors());
@@ -25,5 +25,5 @@ app.use((req, res, next) => {
   next();
 });
 
+export default app;
 
-app.listen(PORT, () => console.log(`Listening in Port ${PORT} 💥💥`));
