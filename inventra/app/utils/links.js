@@ -1,35 +1,51 @@
-/* logical component of routes / names and path */
+import { RiDashboardFill } from 'react-icons/ri'
+import { PiCubeFill, PiClockCounterClockwise, PiUsersFill } from 'react-icons/pi'
+import { MdOutlineInventory, MdSettings, MdHelpOutline, MdLogout } from 'react-icons/md'
+
+
+
+
+
+
 export const links = [
   {
-    label: 'home',
-    route: '/home'
+    label: 'Dashboard',
+    route: '/dashboard',
+    icon: RiDashboardFill
   },
   {
-    label: 'dashboard',
-    route: '/dashboard'
+    label: 'Inventario',
+    route: '/inventario',
+    icon: PiCubeFill
   },
   {
-    label: 'inventario',
-    route: '/inventario'
+    label: 'Proveedores',
+    route: '/proveedores',
+    icon: MdOutlineInventory
   },
   {
-    label: 'documentos',
-    route: '/documentos'
+    label: 'Historial',
+    route: '/historial',
+    icon: PiClockCounterClockwise
   },
   {
-    label: 'historial',
-    route: '/historial'
+    label: 'Usuarios',
+    route: '/usuarios',
+    icon: PiUsersFill
   },
   {
-    label: 'configuracion',
-    route: '/configuracion'
+    label: 'Configuracion',
+    route: '/configuracion',
+    icon: MdSettings
   },
   {
-    label: 'ayuda',
-    route: '/ayuda'
+    label: 'Ayuda',
+    route: '/ayuda',
+    icon: MdHelpOutline
   },
   {
-    label: 'salir',
-    route: '/login'
+    label: 'Salir',
+    route: '/login',
+    icon: MdLogout
   }
 ]
