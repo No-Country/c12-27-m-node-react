@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 //import userRegisterHandler from '../handlers/userRegister.handler';
 const router = Router();
 
-router.post("/", );
+router.post('/');
 
 export { router };
