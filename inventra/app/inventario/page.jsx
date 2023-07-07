@@ -12,7 +12,7 @@ export default function Inventario() {
         
                 <div className="flex     items-center gap-5 p-10">
                     <IoMdNotifications className="mr-3" size={28} />
-                    <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
+                    <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[51px] h-[50px]" />
                     <div>
                     <p className="text-gray-500">
                         Nombre de usuario
