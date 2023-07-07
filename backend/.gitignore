@@ -104,8 +104,4 @@ dist
 .tern-port
 
 # package-lock.json
-package-lock.json
-
-data
-# Operative System
-.DS_Store
+#package-lock.json
