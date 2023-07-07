@@ -18,7 +18,7 @@ export default function Inventario() {
                         Nombre de usuario
                     </p>
                     <p className="text-gray-400">
-                        Role
+                        Rol
                     </p>
                     </div>
                 </div>
