@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={'h-full min-h-screen font-sans'}>
         <div className="flex h-full min-h-screen">
           <Sidebar /> 
-          <div className="w-full ml-64">{children}</div> 
+          <div className="w-full">{children}</div> 
         </div>
       </body>
     </html>
