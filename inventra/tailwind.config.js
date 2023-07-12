@@ -15,16 +15,19 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      width: {
-        '120': '30rem',
-      },
-    },
-    screens: {
-      'movile': '320px',
-      'tablet': '768px',
-      'laptop': '1024px',
-      'desktop': '1280px',
+      colors: {
+        'primary': '#2969E3',
+        'background': '#2A155C',
+        'Secondary': '#FEA50A',
+        'tipografia':'#2A2A2A',
+        'salida':'#EDF8EA',
+        'editar':'#EAF0FC',
+        'eliminar':'#FCECEC',
+        'hover-linea': '#F4F7FF',
+        'contorno':'#E3E3E3'
+      }
+         
     },
   },
-  plugins: [],
-};
+  plugins: [require("daisyui")],
+}

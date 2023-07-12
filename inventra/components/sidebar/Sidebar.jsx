@@ -30,12 +30,13 @@ const SidebarPrueba = () => {
   }, []);
 
   return (
+
     <div className="flex items-start justify-start">
       {/* Sidebar */}
       <div
         className={`bg-[#2969E3] fixed ${
           showMenu || !isMdScreen ? "left-0" : "-left-full"
-        } lg:left-0 top-0 h-screen w-2/12 p-8 flex flex-col justify-between transition-all`}>
+        } lg:left-0 top-0 h-screen w-2/12 p-8 flex flex-col justify-between transition-all z-50`}>
         {/* Menu */}
         <div>
           {/* Logo */}
