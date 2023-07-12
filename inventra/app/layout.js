@@ -28,13 +28,16 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+  //status si el ususario esta log
   const [userStatus, setUserStatus] = useState('no')
+  //useparams para la navegacion entre path dinamicos
   const params = useParams()
   return (
     <UserContext.Provider value={{ userStatus, setUserStatus }}>
       <html lang="en" className="h-full">
         <body className={'h-full min-h-screen font-sans'}>
           <div className="flex h-full min-h-screen">
+
             {params.routes === 'routes' || 'home' ? (<div className="w-full">{children}</div>)
               : (<div>
                 <Image

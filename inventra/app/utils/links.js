@@ -23,11 +23,11 @@ export const links = [
     route: '/src/routes/proveedores',
     icon: MdOutlineInventory
   },
-  {
-    label: 'Historial',
-    route: '/src/routes/historial',
-    icon: PiClockCounterClockwise
-  },
+  // {
+  //   label: 'Historial',
+  //   route: '/src/routes/historial',
+  //   icon: PiClockCounterClockwise
+  // },
   {
     label: 'Usuarios',
     route: '/src/routes/usuarios',
@@ -43,11 +43,11 @@ export const links = [
     route: '/src/routes/ayuda',
     icon: MdHelpOutline
   },
-  {
-    label: 'home',
-    route: '/',
-    icon: MdHelpOutline
-  },
+  // {
+  //   label: 'home',
+  //   route: '/',
+  //   icon: MdHelpOutline
+  // },
   {
     label: 'Salir',
     route: '/home/login',
