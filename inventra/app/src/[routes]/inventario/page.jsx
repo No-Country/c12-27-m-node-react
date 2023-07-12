@@ -72,7 +72,7 @@ export default function Inventario() {
 
 
                 <div>
-                    <Link href={'/src/routes/inventario/additem'} className='flex  bg-primary text-white p-2 rounded-full'  > <MdAdd className=' text-2xl ' color='white' /> AGREGAR Item   </Link>
+                    <Link href={'/src/routes/inventario/additem'} className='flex  bg-primary text-white p-2 rounded-full'  > <MdAdd className=' text-2xl ' color='white' /> AGREGAR ITEM   </Link>
                 </div>
 
             </div>
