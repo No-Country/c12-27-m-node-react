@@ -1,7 +1,9 @@
 //import Header from '@/components/header/Header'
+import SideNav from '@/components/sidenab/SideNav'
 import './globals.css'
 //import { Inter } from 'next/font/google'
 import Sidebar from '@/components/sidebar/Sidebar'
+import SidebarPrueba from '@/components/sidebar2/SidebarPrueba'
 
 //const inter = Inter({ subsets: ['latin'] })
 
@@ -14,9 +16,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <body className={'h-full min-h-screen font-sans'}>
-        <div className="flex h-full min-h-screen">
-          <Sidebar /> 
-          <div className="w-full ml-64">{children}</div> 
+        <div className="flex">
+          <div className="w-2/12">
+            {/* <Sidebar />  */}
+            {/* <SideNav /> */}
+            <SidebarPrueba />
+          </div>
+          <div className="w-10/12">
+            {children}
+          </div> 
         </div>
       </body>
     </html>
