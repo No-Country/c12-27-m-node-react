@@ -30,9 +30,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const [userStatus, setUserStatus] = useState('no')
   const params = useParams()
-
-  console.log(params)
-
   return (
     <UserContext.Provider value={{ userStatus, setUserStatus }}>
       <html lang="en" className="h-full">
