@@ -1,0 +1,172 @@
+[
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/wRYJdcn/compu3.jpg",
+        "proveedor": "sasauiosuioasdojk"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/PxH2mHT/compu2.jpg",
+        "proveedor": "sasauiosuioasdojk"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/PZzrKQJ/compu1.jpg",
+        "proveedor": "sasauiosuioasdojk"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/nRx28rM/celular2.jpg",
+        "proveedor": "sasauiosuioasdojk"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/sVq8N7B/celular1.jpg",
+        "proveedor": "sasauiosuioasdojk"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/xq9Rkdj/tostadora.jpg",
+        "proveedor": "923oiioasa"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/ggfG1Pw/silla2.jpg",
+        "proveedor": "jojaslka"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/WNrXLW5/silla1.jpg",
+        "proveedor": "jojaslka"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/sJmxCwM/pava.jpg",
+        "proveedor": "jojaslka"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/KwjpfnJ/mate.jpg",
+        "proveedor": "jojaslka"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/b2Nr6N7/mesa.jpg",
+        "proveedor": "jojaslka"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/2yDNqYZ/zapatilla2.jpg",
+        "proveedor": "loiytr"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/pQCPH1d/zapatilla1.jpg",
+        "proveedor": "ajkasu"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/r5S2yn3/ri-onera.jpg",
+        "proveedor": "ajkasu"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/DfzSjtX/remera2.jpg",
+        "proveedor": "ajkasu"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/tZLrqQJ/campera1.jpg",
+        "proveedor": "ajkasu"
+    },
+    {
+        "id": "1",
+        "category": "limpieza",
+        "name": "jabon",
+        "serialCode": "34789403873920",
+        "price": 1200,
+        "stock": 5,
+        "image": "https://i.ibb.co/rvjfpyz/remera1.jpg",
+        "proveedor": "1ajksdasdasu"
+    }
+]

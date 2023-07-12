@@ -10,42 +10,47 @@ import { MdOutlineInventory, MdSettings, MdHelpOutline, MdLogout } from 'react-i
 export const links = [
   {
     label: 'Dashboard',
-    route: '/dashboard',
+    route: '/src/routes/dashboard',
     icon: RiDashboardFill
   },
   {
     label: 'Inventario',
-    route: '/inventario',
+    route: '/src/routes/inventario',
     icon: PiCubeFill
   },
   {
     label: 'Proveedores',
-    route: '/proveedores',
+    route: '/src/routes/proveedores',
     icon: MdOutlineInventory
   },
   {
     label: 'Historial',
-    route: '/historial',
+    route: '/src/routes/historial',
     icon: PiClockCounterClockwise
   },
   {
     label: 'Usuarios',
-    route: '/usuarios',
+    route: '/src/routes/usuarios',
     icon: PiUsersFill
   },
   {
     label: 'Configuracion',
-    route: '/configuracion',
+    route: '/src/routes/configuracion',
     icon: MdSettings
   },
   {
     label: 'Ayuda',
-    route: '/ayuda',
+    route: '/src/routes/ayuda',
+    icon: MdHelpOutline
+  },
+  {
+    label: 'home',
+    route: '/',
     icon: MdHelpOutline
   },
   {
     label: 'Salir',
-    route: '/login',
+    route: '/home/login',
     icon: MdLogout
   }
 ]
