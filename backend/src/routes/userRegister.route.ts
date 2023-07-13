@@ -2,6 +2,8 @@ import { Router } from 'express';
 //import userRegisterHandler from '../handlers/userRegister.handler';
 const router = Router();
 
-router.post('/');
+router.get('/', (req, res) => {
+  res.json('Testing app');
+});
 
 export { router };
