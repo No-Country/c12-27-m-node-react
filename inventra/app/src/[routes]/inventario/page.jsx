@@ -8,6 +8,8 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
+import Products from '../../../../db/prouctsDB.js'
+
 
 export default function Inventario() {
     return (
@@ -80,7 +82,10 @@ export default function Inventario() {
                                 <th className='text-center'>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+
+                        {Products.map(Producto =>(
+                            
+                            <tbody key={Producto.id}>
                             {/* row 1 */}
                             <tr className='hover:bg-hover-linea cursor-pointer'>
                                 <th>
@@ -91,28 +96,29 @@ export default function Inventario() {
                                 <th className='text-center'>
                                     <div className="avatar ">
                                         <div className="w-12 rounded-lg ring ring-contorno ">
-                                            <img src="/6c40e6ebea6870c673bc72d8f215724d-ilustracion-de-vaca-de-leche-de-caja-de-leche.png" alt="Avatar Tailwind CSS Component" />
+                                        <img src={Producto.image} />
                                         </div>
                                     </div>
                                 </th>
                                 <td className='text-center'>
                                     <div className='flex items-center gap-2'>
                                         <div>
-                                            1
+                                        {Producto.serialCode}
+
                                         </div>
                                     </div>
                                 </td>
                                 <td className='text-center'>
-                                    LECHE
+                                    {Producto.name}
                                 </td>
                                 <td className='text-center'>
-                                    Alimentos
+                                    {Producto.category}
                                 </td>
                                 <td className='text-center'>
-                                    5
+                                    {Producto.stock}
                                 </td>
                                 <td className='text-center'>
-                                    1.50
+                                    {Producto.price}
                                 </td>
                                 <td className='text-center'>
                                     <div  >
@@ -122,8 +128,9 @@ export default function Inventario() {
                                     </div>
                                 </td>
                             </tr>
-                            {/* row 2 */}
+                           
                         </tbody>
+                        ))}
                     </table>
                 </div>
             </div>
