@@ -26,7 +26,6 @@ module.exports = {
         'hover-linea': '#F4F7FF',
         'contorno':'#E3E3E3'
       }
-         
     },
   },
   plugins: [require("daisyui")],

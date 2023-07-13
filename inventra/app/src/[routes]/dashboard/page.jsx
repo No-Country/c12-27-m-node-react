@@ -6,8 +6,8 @@ import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 export default function Dashboard() {
   return (
     <div className='flex justify-end items-end flex-col w-full'>
-      <header className="flex justify-end item-end w-full h-20 border-b shadow-sm border-gray-200">
-        <div className="flex items-center gap-5 p-10">
+      <header className="flex jurder-b h-20 px-10 shadow-sm border-gray-200">
+        <div className="flex items-center gap-5">
           <IoMdNotifications className="mr-3" size={28} />
           <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
           <div>
