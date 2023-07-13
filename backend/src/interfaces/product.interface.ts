@@ -1,5 +1,4 @@
-export interface Article {
-  id: string;
+export interface Product {
   name: string;
   category: string;
   serialCode: string;

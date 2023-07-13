@@ -4,29 +4,40 @@ import { User } from '../interfaces/user.interface';
 const UserSchema = new Schema<User>({
   name: {
     type: String,
-    required: true,
+    required: [true, 'Name is required'],
   },
   email: {
     type: String,
-    required: true,
+    required: [true, 'Email is required'],
+    unique: true,
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Password is required'],
   },
   role: {
     type: String,
     required: true,
+    default: 'SELLER_ROLE',
+    enum: ['ADMIN_ROLE', 'SELLER_ROLE'],
   },
   avatar: {
     type: String,
-    required: true,
   },
   token: {
     type: String,
-    required: true,
+  },
+  status: {
+    type: Boolean,
+    default: true,
   },
 });
+
+UserSchema.methods.toJSON = function () {
+  const { __v, password, _id, ...user } = this.toObject();
+  user.uid = _id;
+  return user;
+};
 
 const UserModel = model('users', UserSchema);
 export default UserModel;
