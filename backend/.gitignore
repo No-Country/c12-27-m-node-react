@@ -108,3 +108,8 @@ package-lock.json
 
 # Operative System
 .DS_Store
+
+# Ignore file Docker
+docker-compose.yml
+data/
+mongo_data/
