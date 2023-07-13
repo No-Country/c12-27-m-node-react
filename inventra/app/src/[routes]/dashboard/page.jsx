@@ -2,7 +2,7 @@ import { IoMdNotifications } from 'react-icons/io'
 import { PiUsersFill } from 'react-icons/pi'
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
-import { Products } from '@/db/prouctsDB'
+import  Products  from '@/db/prouctsDB'
 import Users from '@/db/userDb'
 import { BarChart } from '@/components/barchart/BarChart'
 import { AreaChart } from '@/components/areachart/AreaChart'
@@ -25,7 +25,7 @@ export default function Dashboard() {
           <div className="flex justify-center items-center gap-10">
             <div className="flex flex-col justify-center items-center gap-2 w-44 h-40 bg-white border border-gray-200 rounded-md">
               <PiUsersFill size={40} color='#2969E3' />
-              <span>{Products.length}</span>
+              <span>{Products.length} </span>
               <p>Proveedores</p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2  w-44 h-40 bg-white border border-gray-200 rounded-md">
