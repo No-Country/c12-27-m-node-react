@@ -2,13 +2,15 @@ import { Request, Response } from "express";
 import { handleHttp } from "../handlers/error.handler"
 import { InsertSuperUser, GetSuperUsers, GetSuperUser, UpdateSuperUser, DeleteSuperUser, LoginSuperUser } from "../services/superUser.services";
 import {encrypt, decrypt} from "../handlers/encrypt.handler";
+import statusNotFound from "../handlers/not_found.handler";
 
 
 const getSuperUser = async ({params}: Request, res: Response) => {
   try {
     const { id } = params;
     const resp = await GetSuperUser(id);
-    res.send(resp);
+    const status = statusNotFound(resp!, 'USER_NOT_FOUND')
+    res.send(status);
   } catch (error) {
     handleHttp(res, 'ERROR_GET_SUPERUSER');
   }
