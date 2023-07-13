@@ -2,6 +2,10 @@ import { IoMdNotifications } from 'react-icons/io'
 import { PiUsersFill } from 'react-icons/pi'
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
+import { Products } from '@/db/prouctsDB'
+import Users from '@/db/userDb'
+import { BarChart } from '@/components/barchart/BarChart'
+import { AreaChart } from '@/components/areachart/AreaChart'
 
 export default function Dashboard() {
   return (
@@ -21,12 +25,12 @@ export default function Dashboard() {
           <div className="flex justify-center items-center gap-10">
             <div className="flex flex-col justify-center items-center gap-2 w-44 h-40 bg-white border border-gray-200 rounded-md">
               <PiUsersFill size={40} color='#2969E3' />
-              <span>98</span>
+              <span>{Products.length}</span>
               <p>Proveedores</p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2  w-44 h-40 bg-white border border-gray-200 rounded-md">
               <FaClipboardCheck size={40} color='#2969E3' />
-              <span>571</span>
+              <span>{Products.length}</span>
               <p>Items</p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2  w-44 h-40 bg-white border border-gray-200 rounded-md">
@@ -35,12 +39,12 @@ export default function Dashboard() {
               <p>Notificaciones</p>
             </div>
           </div>
-          <div className="w-8/12 h-40 border border-gray-200 rounded-md flex justify-center items-center bg-slate-300">
-            <h2 className="font-bold text-2xl">Gráfica</h2>
+          <div className="w-8/12 h-40 border border-gray-200 rounded-md flex justify-center items-center bg-white">
+            <BarChart />
           </div>
         </div>
-        <div className="w-full h-80 bg-slate-300 border border-gray-200 rounded-md flex justify-center items-center">
-          <h2 className="font-bold text-2xl">Grafico 2</h2>
+        <div className="w-full h-80 bg-white border border-gray-200 rounded-md flex justify-center items-center">
+          <AreaChart />
         </div>
         <div className="flex justify-between items-center gap-10 w-full h-40 my-10">
           <div className="flex flex-col justify-center items-center gap-2 w-60 h-40 bg-white border border-gray-200 rounded-md">

@@ -1,10 +1,10 @@
-[
+const Users = [
     {
         "id": "23213wqe",
         "token": "sdadsadasd12321",
         "role": "admin",
         "name": "juancarlos",
-        "mail": "jshjha@email.com",
+        "email": "jshjha@eemail.com",
         "password": "password",
         "avatar": "https://i.ibb.co/n1BptVL/Whats-App-Image-2020-05-18-at-2-42-44-PM-1.webp"
     },
@@ -13,7 +13,7 @@
         "token": "sdadsadasd12321",
         "role": "visualizador",
         "name": "didier",
-        "mail": "jshjha@email.com",
+        "email": "jshjha@eemail.com",
         "password": "password",
         "avatar": "https://i.ibb.co/CK9n7v6/images.jpg"
     },
@@ -22,11 +22,12 @@
         "token": "sdadsadasd12321",
         "role": "visualizador",
         "name": "noe",
-        "mail": "jshjha@email.com",
+        "email": "jshjha@eemail.com",
         "password": "password",
         "avatar": "https://i.ibb.co/bXRpzyg/avatar-en-wa.jpg"
     }
 ]
 
+export default Users
 
 

@@ -32,16 +32,10 @@ export default function Inventario() {
                     </div>
                 </div>
             </header>
-
-
-
             <div className='flex justify-around mt-4 items-center flex-wrap'>
-
                 <div>
                     <h2> Total : 572 items</h2>
                 </div>
-
-
                 <div className='flex items-baseline gap-1 '>
                     <h2>Mostrar</h2>
                     <select className="select select-bordered   ">
@@ -51,32 +45,21 @@ export default function Inventario() {
                         <option>9</option>
                         <option>11</option>
                         <option>15</option>
-
-
                     </select>
-
                 </div>
-
-
                 <div>
                     <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
                 </div>
-
                 <div>
                     <button className='flex '> <BiSolidLabel size={20} /> <span className='pl-2'> CATEGORIAS</span> </button>
                 </div>
-
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
                 </div>
-
-
                 <div>
                     <Link href={'/src/routes/inventario/additem'} className='flex  bg-primary text-white p-2 rounded-full'  > <MdAdd className=' text-2xl ' color='white' /> AGREGAR ITEM   </Link>
                 </div>
-
             </div>
-
             <div className='flex justify-around mt-4 items-center flex-wrap '>
                 <div className="px-10   overflow-x-auto w-full">
                     <table className="table w-full border rounded-lg">
@@ -114,58 +97,36 @@ export default function Inventario() {
                                 </th>
                                 <td className='text-center'>
                                     <div className='flex items-center gap-2'>
-
-
                                         <div>
                                             1
                                         </div>
                                     </div>
                                 </td>
-
                                 <td className='text-center'>
                                     LECHE
                                 </td>
-
                                 <td className='text-center'>
                                     Alimentos
                                 </td>
-
-
                                 <td className='text-center'>
                                     5
                                 </td>
-
                                 <td className='text-center'>
                                     1.50
                                 </td>
-
                                 <td className='text-center'>
                                     <div  >
                                         <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} />      </button>
                                         <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} />            </button>
                                         <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} />          </button>
-
                                     </div>
-
                                 </td>
-
-
-
                             </tr>
                             {/* row 2 */}
                         </tbody>
-
                     </table>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
-
     )
 }
