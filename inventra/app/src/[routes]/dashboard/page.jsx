@@ -4,12 +4,14 @@ import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 import { Products } from '@/db/prouctsDB'
 import Users from '@/db/userDb'
+import { BarChart } from '@/components/barchart/BarChart'
+import { AreaChart } from '@/components/areachart/AreaChart'
 
 export default function Dashboard() {
   return (
     <div className='flex justify-end items-end flex-col w-full'>
-      <header className="flex justify-end item-end w-full h-20 border-b shadow-sm border-gray-200">
-        <div className="flex items-center gap-5 p-10">
+      <header className="flex jurder-b h-20 px-10 shadow-sm border-gray-200">
+        <div className="flex items-center gap-5">
           <IoMdNotifications className="mr-3" size={28} />
           <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
           <div>
@@ -37,12 +39,12 @@ export default function Dashboard() {
               <p>Notificaciones</p>
             </div>
           </div>
-          <div className="w-8/12 h-40 border border-gray-200 rounded-md flex justify-center items-center bg-slate-300">
-            <h2 className="font-bold text-2xl">Gráfica</h2>
+          <div className="w-8/12 h-40 border border-gray-200 rounded-md flex justify-center items-center bg-white">
+            <BarChart />
           </div>
         </div>
-        <div className="w-full h-80 bg-slate-300 border border-gray-200 rounded-md flex justify-center items-center">
-          <h2 className="font-bold text-2xl">Grafico 2</h2>
+        <div className="w-full h-80 bg-white border border-gray-200 rounded-md flex justify-center items-center">
+          <AreaChart />
         </div>
         <div className="flex justify-between items-center gap-10 w-full h-40 my-10">
           <div className="flex flex-col justify-center items-center gap-2 w-60 h-40 bg-white border border-gray-200 rounded-md">
