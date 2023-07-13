@@ -22,18 +22,42 @@ export default function Inventario() {
 
 
                 <div className="flex     items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
-                    <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
-                    <div>
-                        <p className="text-gray-500">
-                            Nombre de usuario
-                        </p>
-                        <p className="text-gray-400">
-                            Role
-                        </p>
-                    </div>
-                </div>
+
+<div>
+    <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content ">
+        {/* Page content here */}
+        <label htmlFor="my-drawer-4" className="drawer-button  "> <IoMdNotifications className="online  mr-3 cursor-pointer" size={28} />  </label>
+        </div> 
+            <div className="drawer-side z-10">
+                <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                {/* Sidebar content here */}
+                <li><a>Sidebar Item 1</a></li>
+                <li><a>Sidebar Item 2</a></li>
+                </ul>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+<img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
+<div>
+<p className="text-gray-500">
+Nombre de usuario
+</p>
+<p className="text-gray-400">
+Role
+</p>
+</div>
+</div>
             </header>
+            
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
                     <h2> Total : 572 items</h2>
@@ -101,14 +125,14 @@ export default function Inventario() {
                                     </div>
                                 </th>
                                 <td className='text-center'>
-                                    <div className='flex items-center gap-2'>
-                                        <div>
+                                    <div className='flex items-center gap-2 text-center'>
+                                        <div className='text-center'>
                                         {Producto.serialCode}
 
                                         </div>
                                     </div>
                                 </td>
-                                <td className='text-center'>
+                                <td className='text-center'>Ñ
                                     {Producto.name}
                                 </td>
                                 <td className='text-center'>

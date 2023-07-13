@@ -20,6 +20,7 @@ module.exports = {
         'background': '#2A155C',
         'Secondary': '#FEA50A',
         'tipografia':'#2A2A2A',
+        'tipografiaalter':'white',
         'salida':'#EDF8EA',
         'editar':'#EAF0FC',
         'eliminar':'#FCECEC',
