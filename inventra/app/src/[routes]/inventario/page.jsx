@@ -83,57 +83,56 @@ export default function Inventario() {
                             </tr>
                         </thead>
 
-                        {Products.map(Producto =>(
-                            
+                        {Products.map(Producto => (
+
                             <tbody key={Producto.id}>
-                            {/* row 1 */}
-                            <tr className='hover:bg-hover-linea cursor-pointer'>
-                                <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox checkbox-primary	" />
-                                    </label>
-                                </th>
-                                <th className='text-center'>
-                                    <div className="avatar ">
-                                        <div className="w-12 rounded-lg ring ring-contorno ">
-                                        <img src={Producto.image} />
+                                {/* row 1 */}
+                                <tr className='hover:bg-hover-linea cursor-pointer'>
+                                    <th>
+                                        <label>
+                                            <input type="checkbox" className="checkbox checkbox-primary	" />
+                                        </label>
+                                    </th>
+                                    <th className='text-center'>
+                                        <div className="avatar ">
+                                            <div className="w-12 rounded-lg ring ring-contorno ">
+                                                <img src={Producto.image} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </th>
-                                <td className='text-center'>
-                                    <div className='flex items-center gap-2'>
-                                        <div>
+                                    </th>
+                                    <td className='text-center'>
+
                                         {Producto.serialCode}
 
+
+
+                                    </td>
+                                    <td className='text-center'>
+                                        {Producto.name}
+                                    </td>
+                                    <td className='text-center'>
+                                        {Producto.category}
+                                    </td>
+                                    <td className='text-center'>
+                                        {Producto.stock}
+                                    </td>
+                                    <td className='text-center'>
+                                        {Producto.price}
+                                    </td>
+                                    <td className='text-center'>
+                                        <div  >
+                                            <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} />      </button>
+                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} />            </button>
+                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} />          </button>
                                         </div>
-                                    </div>
-                                </td>
-                                <td className='text-center'>
-                                    {Producto.name}
-                                </td>
-                                <td className='text-center'>
-                                    {Producto.category}
-                                </td>
-                                <td className='text-center'>
-                                    {Producto.stock}
-                                </td>
-                                <td className='text-center'>
-                                    {Producto.price}
-                                </td>
-                                <td className='text-center'>
-                                    <div  >
-                                        <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} />      </button>
-                                        <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} />            </button>
-                                        <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} />          </button>
-                                    </div>
-                                </td>
-                            </tr>
-                           
-                        </tbody>
+                                    </td>
+                                </tr>
+
+                            </tbody>
                         ))}
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

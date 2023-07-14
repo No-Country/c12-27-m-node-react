@@ -19,12 +19,12 @@ module.exports = {
         'primary': '#2969E3',
         'background': '#2A155C',
         'Secondary': '#FEA50A',
-        'tipografia':'#2A2A2A',
-        'salida':'#EDF8EA',
-        'editar':'#EAF0FC',
-        'eliminar':'#FCECEC',
+        'tipografia': '#fffff',
+        'salida': '#EDF8EA',
+        'editar': '#EAF0FC',
+        'eliminar': '#FCECEC',
         'hover-linea': '#F4F7FF',
-        'contorno':'#E3E3E3'
+        'contorno': '#E3E3E3'
       }
     },
   },

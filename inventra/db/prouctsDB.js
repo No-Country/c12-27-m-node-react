@@ -1,4 +1,4 @@
- const Products = [
+const Products = [
     {
         "id": "1",
         "category": "limpieza",

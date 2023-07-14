@@ -86,11 +86,7 @@ export default function usuarios() {
                                         </div>
                                     </th>
                                     <td className='text-center'>
-                                        <div className='flex items-center gap-2'>
-                                            <div>
-                                                {user.name}
-                                            </div>
-                                        </div>
+                                        {user.name}
                                     </td>
                                     <td className='text-center'>
                                         {user.email}
