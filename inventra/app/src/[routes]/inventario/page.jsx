@@ -22,7 +22,23 @@ export default function Inventario() {
 
 
                 <div className="flex     items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
+                    <div>
+                        <div className="drawer drawer-end">
+                            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                            <div className="drawer-content ">
+                                {/* Page content here */}
+                                <label htmlFor="my-drawer-4" className="drawer-button  "> <IoMdNotifications className="online  mr-3 cursor-pointer" size={28} />  </label>
+                            </div>
+                            <div className="drawer-side z-10">
+                                <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+                                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                    {/* Sidebar content here */}
+                                    <li><a>Sidebar Item 1</a></li>
+                                    <li><a>Sidebar Item 2</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
@@ -40,8 +56,8 @@ export default function Inventario() {
                 </div>
                 <div className='flex items-baseline gap-1 '>
                     <h2>Mostrar</h2>
-                    <select className="select select-bordered   ">
-                        <option disabled selected>¿cuantos desea ver?</option>
+                    <select className="select select-bordered" defaultValue={'¿cuantos desea ver?'}>
+                        <option>¿cuantos desea ver?</option>
                         <option>5</option>
                         <option>7</option>
                         <option>9</option>
@@ -100,13 +116,10 @@ export default function Inventario() {
                                             </div>
                                         </div>
                                     </th>
-                                    <td className='text-center'>
-
+                                    <th className='text-center'>
                                         {Producto.serialCode}
+                                    </th>
 
-
-
-                                    </td>
                                     <td className='text-center'>
                                         {Producto.name}
                                     </td>
@@ -120,19 +133,16 @@ export default function Inventario() {
                                         {Producto.price}
                                     </td>
                                     <td className='text-center'>
-                                        <div  >
-                                            <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} />      </button>
-                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} />            </button>
-                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} />          </button>
-                                        </div>
+                                        <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} /></button>
+                                        <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
+                                        <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
                                     </td>
                                 </tr>
-
                             </tbody>
                         ))}
                     </table>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
