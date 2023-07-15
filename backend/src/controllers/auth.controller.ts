@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import UserModel from '../models/user.model';
+import UserModel from '../models/User.model';
 import createJWT from '../helpers/createJWT';
 
 const login = async ({ body }: Request, res: Response) => {
