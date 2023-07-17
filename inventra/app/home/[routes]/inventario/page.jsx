@@ -1,3 +1,4 @@
+'use client'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io'
 import { FaFilter } from 'react-icons/fa'
@@ -9,9 +10,19 @@ import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
 import Products from '../../../../db/prouctsDB.js'
+import { useEffect, useState } from 'react'
 
 
 export default function Inventario() {
+    const [categoria, setCategoria] = useState()
+    console.log(categoria)
+    const Product = Products.filter(Producto => Producto.category === categoria)
+
+
+    Products.stock.sort(function (a, b) {
+        return a - b;
+    });
+    console.log(Products);
     return (
         <div className="">
             <header className="flex justify-around h-20 border-b border-gray-200">
@@ -69,7 +80,14 @@ export default function Inventario() {
                     <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
                 </div>
                 <div>
-                    <button className='flex '> <BiSolidLabel size={20} /> <span className='pl-2'> CATEGORIAS</span> </button>
+
+                    <button onClick={() => { setCategoria('limpieza') }}>Limpieza</button>
+                    <button onClick={() => { setCategoria('comida') }}>Comida</button>
+                    <button onClick={() => { setCategoria('electro') }}>Tecnologia</button>
+                    <button onClick={() => { setCategoria('ropa') }}>Ropa</button>
+                    <button onClick={() => { setCategoria('calzado') }}>Calzado</button>
+
+
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
@@ -99,7 +117,7 @@ export default function Inventario() {
                             </tr>
                         </thead>
 
-                        {Products.map(Producto => (
+                        {Product.map(Producto => (
 
                             <tbody key={Producto.id}>
                                 {/* row 1 */}
@@ -110,11 +128,11 @@ export default function Inventario() {
                                         </label>
                                     </th>
                                     <th className='text-center'>
-                                        <div className="avatar ">
-                                            <div className="w-12 rounded-lg ring ring-contorno ">
+                                        <span className="avatar ">
+                                            <span className="w-12 rounded-lg ring ring-contorno ">
                                                 <img src={Producto.image} />
-                                            </div>
-                                        </div>
+                                            </span>
+                                        </span>
                                     </th>
                                     <th className='text-center'>
                                         {Producto.serialCode}
@@ -143,6 +161,6 @@ export default function Inventario() {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

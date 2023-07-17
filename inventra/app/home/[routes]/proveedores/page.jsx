@@ -44,7 +44,7 @@ export default function proveedores() {
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
                 </div>
                 <div>
-                    <Link href={'/src/routes/proveedores/addProveedores'} className='flex  bg-primary text-white p-2 rounded-full' >
+                    <Link href={'/home/routes/proveedores/addProveedores'} className='flex  bg-primary text-white p-2 rounded-full' >
                         <MdAdd className=' text-2xl ' color='white' /> AGREGAR PROVEEDORES
                     </Link>
                 </div>
@@ -75,9 +75,9 @@ export default function proveedores() {
                                         </label>
                                     </th>
                                     <th className='text-center'>
-                                        <div className="avatar ">
+                                        <span className="avatar ">
                                             {item.proveedor.id}
-                                        </div>
+                                        </span>
                                     </th>
                                     <td className='text-center'>
                                         {item.proveedor.name}
@@ -105,6 +105,6 @@ export default function proveedores() {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

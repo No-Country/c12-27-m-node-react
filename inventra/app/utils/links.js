@@ -10,37 +10,37 @@ import { MdOutlineInventory, MdSettings, MdHelpOutline, MdLogout } from 'react-i
 export const links = [
   {
     label: 'Dashboard',
-    route: '/src/routes/dashboard',
+    route: '/home/routes/dashboard',
     icon: RiDashboardFill
   },
   {
     label: 'Inventario',
-    route: '/src/routes/inventario',
+    route: '/home/routes/inventario',
     icon: PiCubeFill
   },
   {
     label: 'Proveedores',
-    route: '/src/routes/proveedores',
+    route: '/home/routes/proveedores',
     icon: MdOutlineInventory
   },
   // {
   //   label: 'Historial',
-  //   route: '/src/routes/historial',
+  //   route: '/home/routes/historial',
   //   icon: PiClockCounterClockwise
   // },
   {
     label: 'Usuarios',
-    route: '/src/routes/usuarios',
+    route: '/home/routes/usuarios',
     icon: PiUsersFill
   },
   {
     label: 'Configuracion',
-    route: '/src/routes/configuracion',
+    route: '/home/routes/configuracion',
     icon: MdSettings
   },
   {
     label: 'Ayuda',
-    route: '/src/routes/ayuda',
+    route: '/home/routes/ayuda',
     icon: MdHelpOutline
   },
   // {
@@ -50,7 +50,7 @@ export const links = [
   // },
   {
     label: 'Salir',
-    route: '/home/login',
+    route: '/auth/routes/login',
     icon: MdLogout
   }
 ]

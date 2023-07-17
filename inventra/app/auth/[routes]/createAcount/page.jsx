@@ -10,7 +10,9 @@ export default function createAcount() {
                 width={757}
                 height={0}
                 alt="Picture of the author"
+                className={style.img}
             />
+            <div className={style.filter}></div>
             <div className={style.infoBox}>
                 <Image
                     width={300}
@@ -30,13 +32,13 @@ export default function createAcount() {
                         <span className={style.smallsBox}>
                             <small className={style.smallInputRadio}><input className={style.inputRadio} type="radio" />Recordar informacion</small>
                         </span>
-                        <Link href='/src/routes/dashboard'> Registrarme </Link>
+                        <Link href='/home/routes/dashboard'> Registrarme </Link>
 
                     </form>
                 </div>
-                <div>
+                <div className={style.btnRow}>
                     <small>¿Ya tienes cuenta?</small>
-                    <Link href='/home/login'> Accede ahora </Link>
+                    <Link href='/auth/routes/login'> Ingresa ahora </Link>
                 </div>
             </div>
 

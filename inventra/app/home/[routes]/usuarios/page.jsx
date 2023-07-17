@@ -48,7 +48,7 @@ export default function usuarios() {
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span></button>
                 </div>
                 <div>
-                    <Link href={'/src/routes/usuarios/addUsers'} className='flex  bg-primary text-white p-2 rounded-full'>
+                    <Link href={'/home/routes/usuarios/addUsers'} className='flex  bg-primary text-white p-2 rounded-full'>
                         <MdAdd className=' text-2xl ' color='white' />AGREGAR USUARIOS
                     </Link>
                 </div>

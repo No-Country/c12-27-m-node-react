@@ -8,7 +8,7 @@ export default function addUsers() {
       <header className="flex justify-between h-20 px-10 shadow-sm border-gray-200">
 
         <div className="flex items-center gap-5">
-          <Link href={'/src/routes/usuarios'} >
+          <Link href={'/home/routes/usuarios'} >
             <MdArrowBackIosNew className="mr-3" size={28} />
           </Link>
           <h5>
@@ -47,15 +47,15 @@ export default function addUsers() {
           <h4 className="mb-6 text-mb font-bold text-gray-900 dark:text-white">
             Role
           </h4>
-          
+
           <div class="flex justify-between items-center gap-10 mb-4 p-2">
-              <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adminitrador</label>
-              <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adminitrador</label>
+            <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
           </div>
 
           <div class="flex justify-between items-center gap-10 mb-4 p-2">
-              <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Visualizador</label>
-              <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+            <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Visualizador</label>
+            <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
           </div>
         </div>
         <button type="submit" className="text-white bg-[#2969E3] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300            font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center p-2 rounded-full">

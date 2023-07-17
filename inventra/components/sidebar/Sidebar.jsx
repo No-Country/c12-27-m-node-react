@@ -34,9 +34,8 @@ const SidebarPrueba = () => {
     <div className="flex items-start justify-start">
       {/* Sidebar */}
       <div
-        className={`bg-[#2969E3] fixed ${
-          showMenu || !isMdScreen ? "left-0" : "-left-full"
-        } lg:left-0 top-0 h-screen w-2/12 p-8 flex flex-col justify-between transition-all z-50`}>
+        className={`bg-[#2969E3] fixed ${showMenu || !isMdScreen ? "left-0" : "-left-full"
+          } lg:left-0 top-0 h-screen w-2/12 p-8 flex flex-col justify-between transition-all z-50`}>
         {/* Menu */}
         <div>
           {/* Logo */}
@@ -52,14 +51,23 @@ const SidebarPrueba = () => {
             <div className="mt-4 -mx-4 relative overflow-y-auto overflow-x-hidden h-[85vh]">
               <ul className="space-y-2">
                 {links.map(({ label, route, icon: Icon }) => (
-                  <li key={route}>
-                    <Link legacyBehavior href={route}>
-                      <a className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium">
-                        <Icon className="inline-block mr-3" size={28} />
-                        {label}
-                      </a>
-                    </Link>
-                  </li>
+                  label === 'Salir' ?
+                    <li key={route}>
+                      <Link href={route} onClick={() => { alert('desea salir?') }}>
+                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium">
+                          <Icon className="inline-block mr-3" size={28} />
+                          {label}
+                        </span>
+                      </Link>
+                    </li> :
+                    <li key={route}>
+                      <Link legacyBehavior href={route}>
+                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium">
+                          <Icon className="inline-block mr-3" size={28} />
+                          {label}
+                        </span>
+                      </Link>
+                    </li>
                 ))}
               </ul>
             </div>
