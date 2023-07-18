@@ -1,20 +1,9 @@
 'use client'
-//import Header from '@/components/header/Header'
 import './globals.css'
-//import { Inter } from 'next/font/google'
-import Sidebar from '@/components/sidebar/Sidebar'
-import Landing from './[home]/layout'
 import { useState } from 'react'
 import { UserContext } from './utils/context/userContext'
-
-import Login from './[home]/login/page'
-import LandingPage from './[home]/page'
-import Home from './page'
-import Display from './[home]/layout'
-import Routes from './src/layout'
 import { useParams } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
+import Landing from '@/components/landing/Landing'
 
 
 
@@ -29,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   //status si el ususario esta log
-  const [userStatus, setUserStatus] = useState('no')
+  const [userStatus, setUserStatus] = useState()
   //useparams para la navegacion entre path dinamicos
   const params = useParams()
   return (
@@ -37,20 +26,10 @@ export default function RootLayout({ children }) {
       <html lang="en" className="h-full">
         <body className={'h-full min-h-screen font-sans'}>
           <div className="flex h-full min-h-screen">
-
-            {params.routes === 'routes' || 'home' ? (<div className="w-full">{children}</div>)
-              : (<div>
-                <Image
-                  src="/../public/imgLanding.png"
-                  width={500}
-                  height={500}
-                  alt="Picture of the author"
-                />
-                <>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores quas quibusdam doloribus? A doloremque excepturi, recusandae ipsum beatae eos adipisci delectus. Sed et asperiores fuga, rem harum autem doloribus assumenda.</p>
-                  <Link href='/home/createAcount'> createAcount </Link>
-                </>
-              </div>)
+            {params.routes ? (<div className="w-full">{children}</div>)
+              : (
+                <Landing />
+              )
             }
           </div>
         </body>

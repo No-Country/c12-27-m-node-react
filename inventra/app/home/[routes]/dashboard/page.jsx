@@ -3,11 +3,10 @@ import { PiUsersFill } from 'react-icons/pi'
 
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
-
+import Products from '@/db/prouctsDB'
 import Users from '@/db/userDb'
 import { BarChart } from '@/components/barchart/BarChart'
 import { AreaChart } from '@/components/areachart/AreaChart'
-import Products from '@/db/prouctsDB'
 
 export default function Dashboard() {
   return (
@@ -30,7 +29,7 @@ export default function Dashboard() {
           <div className="flex justify-center items-center md:w-full lg:w-1/2 h-full gap-10">
             <div className="flex flex-col justify-center items-center gap-2 w-full h-full bg-white border border-gray-200 rounded-md p-1">
               <PiUsersFill size={40} color='#2969E3' />
-              <span>{Products.length}</span>
+              <span>{Products.length} </span>
               <p>Proveedores</p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2  w-full h-full bg-white border border-gray-200 rounded-md p-1">

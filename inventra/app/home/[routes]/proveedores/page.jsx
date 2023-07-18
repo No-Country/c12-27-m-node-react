@@ -12,13 +12,19 @@ import Products from '@/db/prouctsDB'
 
 export default function proveedores() {
     return (
-        <>
+        <div>
             <header className="flex justify-around h-20 border-b border-gray-200">
                 <div className="join w-3/4 p-4 justify-start">
                     <input className="input  w-full input-bordered join-item" placeholder="Buscar" />
                     <button className="btn join-item bg-[#2969E3] "> <AiOutlineSearch className="mr-3" size={25} color='white' />   </button>
                 </div>
+<<<<<<< HEAD:inventra/app/src/[routes]/proveedores/page.jsx
                 <div className="flex     items-center gap-5">
+=======
+
+
+                <div className="flex items-center gap-5">
+>>>>>>> b2d4559d60656f8c177d6106ff3229a6eaefad41:inventra/app/home/[routes]/proveedores/page.jsx
                     <IoMdNotifications className="mr-3" size={28} />
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
@@ -42,7 +48,7 @@ export default function proveedores() {
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
                 </div>
                 <div>
-                    <Link href={'/src/routes/proveedores/addProveedores'} className='flex  bg-primary text-white p-2 rounded-full' >
+                    <Link href={'/home/routes/proveedores/addProveedores'} className='flex  bg-primary text-white p-2 rounded-full' >
                         <MdAdd className=' text-2xl ' color='white' /> AGREGAR PROVEEDORES
                     </Link>
                 </div>
@@ -73,9 +79,9 @@ export default function proveedores() {
                                         </label>
                                     </th>
                                     <th className='text-center'>
-                                        <div className="avatar ">
+                                        <span className="avatar ">
                                             {item.proveedor.id}
-                                        </div>
+                                        </span>
                                     </th>
                                     <td className='text-center'>
                                         {item.proveedor.name}
@@ -103,6 +109,6 @@ export default function proveedores() {
                     </table>
                 </div>
             </div>
-        </>
+        </div >
     )
 }

@@ -10,7 +10,9 @@ export default function Login() {
                 width={757}
                 height={0}
                 alt="Picture of the author"
+                className={style.img}
             />
+            <div className={style.filter}></div>
             <div className={style.infoBox}>
                 <Image
                     width={300}
@@ -30,13 +32,13 @@ export default function Login() {
                             <small className={style.smallInputRadio}><input className={style.inputRadio} type="radio" />Recordar informacion</small>
                             <small>Recuperar contraseña</small>
                         </span>
-                        <Link href='/src/routes/dashboard'> Acceder </Link>
+                        <Link href='/home/routes/dashboard'> Acceder </Link>
 
                     </form>
                 </div>
                 <div>
                     <small>¿No tienes una cuenta?   </small>
-                    <Link href='/home/createAcount'> Registrate ahora </Link>
+                    <Link href='/auth/routes/createAcount'> Registrate ahora </Link>
                 </div>
             </div>
 
