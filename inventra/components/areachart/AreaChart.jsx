@@ -26,6 +26,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'top',
@@ -46,14 +47,14 @@ export const data = {
     {
       label: "Analisis por mes",
       fill: true, // Agregamos esta propiedad para colorear el área
-      borderColor: "rgba(75, 192, 192, 0.2)",
-      backgroundColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color de fondo para que sea semi-transparente
-      pointBorderColor: "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color del borde para que sea semi-transparente
+      backgroundColor: "#2969E3", // Cambiamos el color de fondo para que sea semi-transparente
+      pointBorderColor: "red",  // Cambiamos el color de los puntos
       pointBorderWidth: 1,
       pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75, 192, 192, 0.2)",
-      pointHoverBorderColor: "rgba(75, 192, 192, 0.2)",
-      pointRadio: 1,
+      pointHoverBackgroundColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color de los puntos cuando se les hace hover
+      pointHoverBorderColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color del borde de los puntos cuando se les hace hover
+      pointRadio: 1,  
       pointHitRadius: 10,
       data: [65, 59, 80, 81, 56, 55],
     }
@@ -61,5 +62,9 @@ export const data = {
 };
 
 export function AreaChart() {
-  return <Line options={options} data={data} />;
+  return (
+    <div className='w-full h-full'>
+      <Line data={data} options={options} />
+    </div>
+  )
 }
