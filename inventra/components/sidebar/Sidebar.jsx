@@ -35,7 +35,7 @@ const SidebarPrueba = () => {
       {/* Sidebar */}
       <div
         className={`bg-[#2969E3] fixed ${showMenu || !isMdScreen ? "left-0" : "-left-full"
-          } lg:left-0 top-0 h-screen w-2/12 p-8 flex flex-col justify-between transition-all z-50`}>
+          } lg:left-0 top-0 h-screen md:w-3/12 lg:w-2/12 p-8 flex flex-col justify-between transition-all z-50`}>
         {/* Menu */}
         <div>
           {/* Logo */}
@@ -54,7 +54,7 @@ const SidebarPrueba = () => {
                   label === 'Salir' ?
                     <li key={route}>
                       <Link href={route} onClick={() => { alert('desea salir?') }}>
-                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium">
+                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium cursor-pointer">
                           <Icon className="inline-block mr-3" size={28} />
                           {label}
                         </span>
@@ -62,7 +62,7 @@ const SidebarPrueba = () => {
                     </li> :
                     <li key={route}>
                       <Link legacyBehavior href={route}>
-                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium">
+                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium cursor-pointer">
                           <Icon className="inline-block mr-3" size={28} />
                           {label}
                         </span>
