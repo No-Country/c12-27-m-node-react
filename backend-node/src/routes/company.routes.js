@@ -6,13 +6,17 @@ const {
   updateCompany,
   deleteCompany,
 } = require('../controllers/company.controller');
+const {
+  validatorCreateCompany,
+  validatorGetCompany,
+} = require('../validators/company.validator');
 
 const router = Router();
 
-router.get('/:id', getCompany);
+router.get('/:id', validatorGetCompany, getCompany);
 router.get('/', getCompanies);
-router.post('/', createCompany);
-router.put('/:id', updateCompany);
-router.delete('/:id', deleteCompany);
+router.post('/', validatorCreateCompany, createCompany);
+router.put('/:id', validatorGetCompany, updateCompany);
+router.delete('/:id', validatorGetCompany, deleteCompany);
 
 module.exports = router;
