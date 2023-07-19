@@ -12,7 +12,7 @@ const getSupplier = async (req, res) => {
   try {
     const { id } = req.params;
     const resp = await GetSupplier(id);
-    const status = statusNotFound(resp, 'USER_NOT_FOUND');
+    const status = statusNotFound(resp, 'SUPPLIER_NOT_FOUND');
     res.send(status);
   } catch (error) {
     handleHttp(res, 'ERROR_GET_SUPPLIER');

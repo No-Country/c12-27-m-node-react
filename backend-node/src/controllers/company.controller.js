@@ -51,7 +51,7 @@ const deleteCompany = async ({ params } = req, res) => {
   try {
     const { id } = params;
     const resp = await DeleteCompany(id);
-    res.send(`El usuario ${resp} ha sido borrado con exito`);
+    res.send(`La empresa ${resp} ha sido borrado con exito`);
   } catch (error) {
     handleHttp(res, 'ERROR_DELETE_COMPANY');
   }
