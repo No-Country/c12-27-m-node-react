@@ -19,10 +19,10 @@ export default function Inventario() {
     const Product = Products.filter(Producto => Producto.category === categoria)
 
 
-    Products.stock.sort(function (a, b) {
-        return a - b;
-    });
-    console.log(Products);
+    // Products.stock.sort(function (a, b) {
+    //     return a - b;
+    // });
+    // console.log(Products);
     return (
         <div className="">
             <header className="flex justify-around h-20 border-b border-gray-200">
@@ -30,8 +30,6 @@ export default function Inventario() {
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" />
                     <button className="btn join-item   bg-primary "> <AiOutlineSearch className="mr-3" size={25} color='white' />   </button>
                 </div>
-
-
                 <div className="flex     items-center gap-5">
                     <div>
                         <div className="drawer drawer-end">
@@ -80,20 +78,19 @@ export default function Inventario() {
                     <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
                 </div>
                 <div>
-
                     <button onClick={() => { setCategoria('limpieza') }}>Limpieza</button>
                     <button onClick={() => { setCategoria('comida') }}>Comida</button>
                     <button onClick={() => { setCategoria('electro') }}>Tecnologia</button>
                     <button onClick={() => { setCategoria('ropa') }}>Ropa</button>
                     <button onClick={() => { setCategoria('calzado') }}>Calzado</button>
-
-
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
                 </div>
                 <div>
-                    <Link href={'/src/routes/inventario/additem'} className='flex  bg-primary text-white p-2 rounded-full'  > <MdAdd className=' text-2xl ' color='white' /> AGREGAR ITEM   </Link>
+                    <Link href={'/home/routes/inventario/additem'} className='flex  bg-primary text-white p-2 rounded-full'>
+                        <MdAdd className=' text-2xl ' color='white' /> AGREGAR ITEM
+                    </Link>
                 </div>
             </div>
             <div className='flex justify-around mt-4 items-center flex-wrap '>

@@ -1,7 +1,7 @@
 
 /*vista mobile*/
 
-@media screen and (min-width: 250px) and (max-width: 699px) {
+@media screen and (min-width: 250px) and (max-width: 800px) {
     .container{
         padding: 25px;
         min-width: 260px;
@@ -45,8 +45,9 @@
 
 /*vista desktop*/
 
-@media screen and (min-width: 700px) and (max-width: 100vw) {
+@media screen and (min-width: 800px) and (max-width: 100vw) {
     .container{
+        gap: 30px;
         padding: 25px;
         height: 100%;
         width: 100%;
@@ -76,15 +77,10 @@
     .text{
         font-size: 18px;
     }
-    .img{
-        width: 60%;
-    }
 .btnContainer{
     width: 100%;
     display: flex;
-    }
-    .spaceBox{
-        width: 60%;
+    justify-content: center;
     }
     .btnBox{
         max-width: 500px;

@@ -22,14 +22,13 @@ export default function Landing() {
         </div>
         <Image
           src="/../public/imgLanding.png"
-          width={600}
+          width={800}
           height={600}
           alt="Picture of the author"
           className={styles.img}
         />
       </div>
       <div className={styles.btnContainer}>
-        <div className={styles.spaceBox}></div>
         <div className={styles.btnBox}>{
           isLog ? <Link className={styles.btn} href='/home/routes/dashboard'>COMENZAR AHORA</Link>
             : <Link className={styles.btn} href='/auth/routes/login'>COMENZAR AHORA</Link>
