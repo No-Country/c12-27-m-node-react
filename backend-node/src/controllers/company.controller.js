@@ -3,7 +3,6 @@ const {
   GetCompany,
   GetCompanies,
   UpdateCompany,
-  LoginCompany,
   CreateCompany,
   DeleteCompany,
 } = require('../services/company.services');
@@ -39,15 +38,6 @@ const updateCompany = async ({ params, body }, res) => {
   }
 };
 
-const loginCompany = async ({ body }, res) => {
-  try {
-    const resp = await LoginCompany(body);
-    res.send(resp);
-  } catch (error) {
-    handleHttp(res, 'ERROR_LOGIN_COMPANY', error);
-  }
-};
-
 const createCompany = async (req, res) => {
   try {
     const resSuperUser = await CreateCompany(req);
@@ -73,5 +63,4 @@ module.exports = {
   createCompany,
   updateCompany,
   deleteCompany,
-  loginCompany,
 };

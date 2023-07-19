@@ -5,12 +5,10 @@ const {
   createCompany,
   updateCompany,
   deleteCompany,
-  loginCompany,
 } = require('../controllers/company.controller');
 
 const router = Router();
 
-router.post('/login', loginCompany);
 router.get('/:id', getCompany);
 router.get('/', getCompanies);
 router.post('/', createCompany);
