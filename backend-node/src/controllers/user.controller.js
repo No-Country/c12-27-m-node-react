@@ -6,7 +6,7 @@ const getAllUsers = async (req, res) => {
     const users = await service.findAll();
     res.json(users);
   } catch (error) {
-    console.error(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
@@ -16,7 +16,7 @@ const getOneUser = async (req, res) => {
     const user = await service.findOne(id);
     res.json(user);
   } catch (error) {
-    console.log(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
@@ -26,7 +26,7 @@ const createUser = async (req, res) => {
     const newUser = await service.create(data);
     res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
@@ -40,7 +40,7 @@ const deleteUser = async (req, res) => {
     await service.delete(id);
     res.status(200).json(id);
   } catch (error) {
-    console.log(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
