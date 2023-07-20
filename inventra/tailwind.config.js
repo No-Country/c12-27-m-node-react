@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        // Define el breakpoint sm como 375px
+        'sm': '375px',
+      },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },
