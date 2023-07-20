@@ -18,7 +18,7 @@ const SidebarPrueba = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMdScreen(window.innerWidth < 800); // 1024px es el ancho para pantallas de formato lg
+      setIsMdScreen(window.innerWidth < 768); // 1024px es el ancho para pantallas de formato lg
     };
 
     window.addEventListener("resize", handleResize);
@@ -54,16 +54,18 @@ const SidebarPrueba = () => {
                   label === 'Salir' ?
                     <li key={route}>
                       <Link href={route} onClick={() => { alert('desea salir?') }}>
-                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium cursor-pointer">
-                          <Icon className="inline-block mr-3" size={28} />
+                        <span className="flex justify-start items-center gap-3 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg 
+                          md:text-base lg:text-xl cursor-pointer">
+                          <Icon className="lg:mr-3 md:text-xl lg:text-3xl" />
                           {label}
                         </span>
                       </Link>
                     </li> :
                     <li key={route}>
                       <Link legacyBehavior href={route}>
-                        <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium cursor-pointer">
-                          <Icon className="inline-block mr-3" size={28} />
+                        <span className="flex justify-start items-center gap-3 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg 
+                          md:text-base lg:text-xl cursor-pointer">
+                          <Icon className="lg:mr-3 md:text-xl lg:text-3xl" />
                           {label}
                         </span>
                       </Link>
@@ -77,7 +79,7 @@ const SidebarPrueba = () => {
       {/* Btn menu móvil a partir de formato md */}
       {isMdScreen && (
         <button
-          className="lg:hidden fixed right-5 bottom-5 bg-[#2969E3] ring-4 ring-[#141517] text-white text-xl p-3 rounded-full z-50"
+          className=" lg:hidden fixed right-5 bottom-5 bg-[#2969E3] ring-4 ring-[#141517] text-white text-xl p-3 rounded-full z-50"
           onClick={toggleMenu}
         >
           {showMenu ? <RiCloseLine /> : <RiMenu3Fill />}

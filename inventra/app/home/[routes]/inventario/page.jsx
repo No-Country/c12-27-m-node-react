@@ -19,9 +19,9 @@ export default function Inventario() {
     const Product = Products.filter(Producto => Producto.category === categoria)
 
 
-    Products.stock.sort(function (a, b) {
+  /*   Products.stock.sort(function (a, b) {
         return a - b;
-    });
+    }); */
     console.log(Products);
     return (
         <div className="">

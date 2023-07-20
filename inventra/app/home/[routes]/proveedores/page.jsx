@@ -15,16 +15,12 @@ export default function proveedores() {
         <div>
             <header className="flex justify-around h-20 border-b border-gray-200">
                 <div className="join w-3/4 p-4 justify-start">
-                    <input className="input  w-full input-bordered join-item" placeholder="Buscar" />
+                    <input className="input w-full input-bordered join-item" placeholder="Buscar" />
                     <button className="btn join-item bg-[#2969E3] "> <AiOutlineSearch className="mr-3" size={25} color='white' />   </button>
                 </div>
-<<<<<<< HEAD:inventra/app/src/[routes]/proveedores/page.jsx
-                <div className="flex     items-center gap-5">
-=======
 
 
                 <div className="flex items-center gap-5">
->>>>>>> b2d4559d60656f8c177d6106ff3229a6eaefad41:inventra/app/home/[routes]/proveedores/page.jsx
                     <IoMdNotifications className="mr-3" size={28} />
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>

@@ -12,10 +12,10 @@ export default function addItem() {
     const [image, setImage] = useState(null);
     
     {/* para la foto del avatat */}
-     const handleFileChange = (event) => {
+      const handleFileChange = (event) => {
         if (event.target.files[0].type.includes("image/")) {
           const file = event.target.files[0];
-          setImage(URL.createObjectURL(file));
+            setImage(URL.createObjectURL(file));
         } else {
           alert("El archivo seleccionado no es una imagen");
         }
@@ -29,7 +29,7 @@ export default function addItem() {
     
     return (
         <div>
-               <header className="flex justify-end h-20 border-b border-gray-200 px-5">
+                <header className="flex justify-end h-20 border-b border-gray-200 px-5">
                 <div className="flex     items-center gap-5">
 
                         <div>
@@ -116,7 +116,6 @@ export default function addItem() {
                             </div>
                         </div>
 
-                           
                     </div>
 
                 </div>
