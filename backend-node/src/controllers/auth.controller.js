@@ -7,6 +7,7 @@ const login = async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ email });
+    console.log('user', user);
 
     if (!user)
       return res

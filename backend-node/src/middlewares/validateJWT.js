@@ -19,7 +19,7 @@ const validateJWT = async (req, res, next) => {
     req.user = userMatch;
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Error in catch' });
+    res.status(401).json({ message: error.message });
   }
 };
 
