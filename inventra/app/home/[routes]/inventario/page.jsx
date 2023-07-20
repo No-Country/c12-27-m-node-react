@@ -14,15 +14,8 @@ import { useEffect, useState } from 'react'
 
 
 export default function Inventario() {
-    const [categoria, setCategoria] = useState()
-    console.log(categoria)
-    const Product = Products.filter(Producto => Producto.category === categoria)
-
-
-    // Products.stock.sort(function (a, b) {
-    //     return a - b;
-    // });
-    // console.log(Products);
+    const [categoria, setCategoria] = useState('')
+    const Product = Products.filter(Producto => Producto.category === categoria);
     return (
         <div className="">
             <header className="flex justify-around h-20 border-b border-gray-200">
@@ -61,7 +54,7 @@ export default function Inventario() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : 572 items</h2>
+                    <h2> Total : {categoria === '' ? Products.length : Product.length}</h2>
                 </div>
                 <div className='flex items-baseline gap-1 '>
                     <h2>Mostrar</h2>
@@ -78,6 +71,7 @@ export default function Inventario() {
                     <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
                 </div>
                 <div>
+                    <button onClick={() => { setCategoria('') }}>Ver todo</button>
                     <button onClick={() => { setCategoria('limpieza') }}>Limpieza</button>
                     <button onClick={() => { setCategoria('comida') }}>Comida</button>
                     <button onClick={() => { setCategoria('electro') }}>Tecnologia</button>
@@ -113,8 +107,7 @@ export default function Inventario() {
                                 <th className='text-center'>Acciones</th>
                             </tr>
                         </thead>
-
-                        {Product.map(Producto => (
+                        {categoria === '' ? <>{Products.map(Producto => (
 
                             <tbody key={Producto.id}>
                                 {/* row 1 */}
@@ -154,7 +147,48 @@ export default function Inventario() {
                                     </td>
                                 </tr>
                             </tbody>
-                        ))}
+                        ))}</> : <>
+                            {Product.map(Producto => (
+
+                                <tbody key={Producto.id}>
+                                    {/* row 1 */}
+                                    <tr className='hover:bg-hover-linea cursor-pointer'>
+                                        <th>
+                                            <label>
+                                                <input type="checkbox" className="checkbox checkbox-primary	" />
+                                            </label>
+                                        </th>
+                                        <th className='text-center'>
+                                            <span className="avatar ">
+                                                <span className="w-12 rounded-lg ring ring-contorno ">
+                                                    <img src={Producto.image} />
+                                                </span>
+                                            </span>
+                                        </th>
+                                        <th className='text-center'>
+                                            {Producto.serialCode}
+                                        </th>
+
+                                        <td className='text-center'>
+                                            {Producto.name}
+                                        </td>
+                                        <td className='text-center'>
+                                            {Producto.category}
+                                        </td>
+                                        <td className='text-center'>
+                                            {Producto.stock}
+                                        </td>
+                                        <td className='text-center'>
+                                            {Producto.price}
+                                        </td>
+                                        <td className='text-center'>
+                                            <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} /></button>
+                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
+                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            ))}</>}
                     </table>
                 </div>
             </div>

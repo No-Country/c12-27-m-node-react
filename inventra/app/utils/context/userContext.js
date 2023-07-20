@@ -1,4 +1,7 @@
 'use client'
-const { useState, createContext } = require("react")
 
-export const UserContext = createContext(null)
+const { useState, createContext } = require("react");
+
+export const UserContext = createContext(null);
+
+
