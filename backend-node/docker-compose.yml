@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      MONGO_DATABASE: inventra
+      MONGO_ROOT_USERNAME: inventra_admin
+      MONGO_ROOT_PASSWORD: DPG%l9jYbP
