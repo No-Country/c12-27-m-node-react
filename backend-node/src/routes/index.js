@@ -1,20 +1,29 @@
-const express = require('express');
+const { Router } = require('express');
+const fs = require('fs');
 
 // Define routes
 const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
 const productRoutes = require('./product.routes');
 const categoryRoutes = require('./category.routes');
+const PATH_ROUTER = __dirname;
 
-const handlerRoutes = (app) => {
-  const router = express.Router();
-  app.use('/api/v1', router);
+const router = Router();
+/**
+ *
+ * @returns
+ */
 
-  // Exect routes
-  router.use('/auth', authRoutes);
-  router.use('/users', userRoutes);
-  router.use('/products', productRoutes);
-  router.use('/categories', categoryRoutes);
+const removeExtension = (fileName) => {
+  return fileName.split('.').shift();
 };
 
-module.exports = handlerRoutes;
+fs.readdirSync(PATH_ROUTER).filter((file) => {
+  const name = removeExtension(file);
+  if (name !== 'index') {
+    console.log(`Router... /${name}`);
+    router.use(`/${name}`, require(`./${file}`));
+  }
+});
+
+module.exports = router;

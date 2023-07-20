@@ -1,21 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const handleRoutes = require('./src/routes');
+const app = require('./src/app');
+const dbConnect = require('./src/config/mongo');
 
-const app = express();
-const PORT = process.env.PORT || 4000;
+const { PORT } = process.env;
 
-const dbConnect = require('./src/config/database');
-
-dbConnect();
-
-// Middlewares
-app.use(express.json());
-app.use(cors());
-
-// Routes Handler
-handleRoutes(app);
-
-app.listen(PORT, () => {
-  console.log(`Server running in port ${PORT}`);
+dbConnect().then(() => {
+  console.log('Successful connection to the database ✅✅');
+  app.listen(PORT, () => console.log(`Listening in Port ${PORT} 💥💥`));
 });

@@ -2,7 +2,11 @@
     "extends": ["plugin:node/recommended", "prettier"],
     "plugins": ["prettier"],
     "rules": {
-      "prettier/prettier": "error",
+      "prettier/prettier": [ "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
       "node/no-unsupported-features/es-syntax": ["error", { "version": ">=8.3.0" }]
     }
 }
