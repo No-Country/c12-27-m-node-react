@@ -45,7 +45,7 @@ export const data = {
       fill: false,
       backgroundColor: "#2969E3",
       borderColor: "#2969E3",
-      pointBorderColor:"#2969E3",
+      pointBorderColor: "#2969E3",
       pointBorderWidth: 1,
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "#2969E3",
@@ -53,15 +53,15 @@ export const data = {
       pointRadio: 1,
       pointHitRadius: 10,
       data: [65, 59, 80, 81, 56, 55],
-  }
+    }
   ],
 };
 
-export function BarChart() {
-  
-  return(
+export default function BarChart() {
+
+  return (
     <div className="w-full h-full">
       <Bar options={options} data={data} />
     </div>
-    ) 
+  )
 }

@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   //estado si el ususario esta logged
-  const [userStatus, setUserStatus] = useState(null);
+  const [userStatus, setUserStatus] = useState(false);
   //useefect para guardar en el localstorage y para no perder el valor
   useEffect(() => {
     //funcion para recuperar el valor del estado del usuario logged

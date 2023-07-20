@@ -53,7 +53,8 @@ const SidebarPrueba = () => {
               <ul className="space-y-2">
                 {links.map(({ label, route, icon: Icon }) => (
                   <li key={route}>
-                    <Link href={route} onClick={label === 'Salir' ? () => { setUserStatus(false), alert('desea salir?') } : () => { }}>
+                    <Link href={route}
+                      onClick={label === 'Salir' ? () => { setUserStatus(false), alert('desea salir?') } : () => { }}>
                       <span className="flex items-center gap-4 text-white hover:bg-[#003EBB] hover:text-white py-3 px-4 rounded-lg font-medium cursor-pointer">
                         <Icon className="inline-block mr-3" size={28} />
                         {label}

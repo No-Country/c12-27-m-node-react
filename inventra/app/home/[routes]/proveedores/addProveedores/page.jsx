@@ -7,27 +7,27 @@ export default function addProveedores() {
     <div className='flex justify-center items-center flex-col w-full'>
       <header className="flex sm:justify-end md:justify-between w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit shadow-md border-gray-200">
 
-      <div className="sm:hidden md:flex items-center gap-5">
-        <Link href={'/home/routes/usuarios'} >
-          <MdArrowBackIosNew className="md:mr-3 text-white sm:text-xl md:text-3xl"/>
-        </Link>
-        <h5>
-          Registro de usuarios
-        </h5>
-      </div>
-
-      <div className="flex justify-center items-center gap-5">
-        <IoMdNotifications className="md:mr-3 text-white sm:text-xl md:text-3xl"/>
-        <img src='/epyon2.jpg' alt="avatar" className="rounded-full ] sm:h-[20px] sm:w-[20px] md:w-[32px] md:h-[32px] lg:w-[50px] lg:h-[50px] sm:hidden md:block" />
-        <div className='sm:hidden md:block'>
-          <p className="text-gray-500 md:text-base lg:text-lg">
-            Nombre de usuario
-          </p>
-          <p className="text-gray-400 md:text-sm lg:text-base">
-            Role
-          </p>
+        <div className="sm:hidden md:flex items-center gap-5">
+          <Link href={'/home/routes/usuarios'} >
+            <MdArrowBackIosNew className="md:mr-3 text-white sm:text-xl md:text-3xl" />
+          </Link>
+          <h5>
+            Registro de usuarios
+          </h5>
         </div>
-      </div>
+
+        <div className="flex justify-center items-center gap-5">
+          <IoMdNotifications className="md:mr-3 text-white sm:text-xl md:text-3xl" />
+          <img src='/epyon2.jpg' alt="avatar" className="rounded-full ] sm:h-[20px] sm:w-[20px] md:w-[32px] md:h-[32px] lg:w-[50px] lg:h-[50px] sm:hidden md:block" />
+          <div className='sm:hidden md:block'>
+            <p className="text-gray-500 md:text-base lg:text-lg">
+              Nombre de usuario
+            </p>
+            <p className="text-gray-400 md:text-sm lg:text-base">
+              Role
+            </p>
+          </div>
+        </div>
       </header>
 
       <div className="flex flex-col justify-center items-center w-full sm:py-6 md:py-8 lg:py-10 sm:px-8 md:px-14 lg:px-24">

@@ -54,14 +54,14 @@ export const data = {
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color de los puntos cuando se les hace hover
       pointHoverBorderColor: "rgba(75, 192, 192, 0.2)", // Cambiamos el color del borde de los puntos cuando se les hace hover
-      pointRadio: 1,  
+      pointRadio: 1,
       pointHitRadius: 10,
       data: [65, 59, 80, 81, 56, 55],
     }
   ],
 };
 
-export function AreaChart() {
+export default function AreaChart() {
   return (
     <div className='w-full h-full'>
       <Line data={data} options={options} />
