@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import style from "./createAcount.module.css"
+import { BsFillPersonFill } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export default function createAcount() {
     return (
@@ -26,9 +29,19 @@ export default function createAcount() {
                 <div className={style.formBox}>
                     <h5>Crear cuenta</h5>
                     <form className={style.form}>
-                        <input className={style.inputs} type="text" placeholder="Nombre" required />
-                        <input className={style.inputs} type="email" placeholder="Correo Electronico" required />
-                        <input className={style.inputs} type="password" placeholder="Contraseña" required />
+                        <label className={style.label}>
+                            <BsFillPersonFill size={20} className={style.icon} />
+                            <input className={style.inputs} type="email" placeholder="Correo electronico" required />
+                        </label>
+                        <label className={style.label}>
+                            <BsFillPersonFill size={20} className={style.icon} />
+                            <input className={style.inputs} type="email" placeholder="Correo electronico" required />
+                        </label>
+                        <label className={style.label}>
+                            <RiLockPasswordFill size={20} className={style.icon} />
+                            <input className={style.inputs} type="password" placeholder="Contraseña" required />
+                            <AiFillEyeInvisible className={style.iconVisible} size={20} />
+                        </label>
                         <span className={style.smallsBox}>
                             <small className={style.smallInputRadio}><input className={style.inputRadio} type="radio" />Recordar informacion</small>
                         </span>

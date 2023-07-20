@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     <UserContext.Provider value={{ userStatus, setUserStatus }}>
       <html lang="en" className="h-full">
         <body className={'h-full min-h-screen font-sans'}>
-          <div className="flex h-full min-h-screen">
+          <div className="flex h-full min-h-screen justify-center">
             {params.routes ? (<div className="w-full">{children}</div>)
               : (
                 <Landing />

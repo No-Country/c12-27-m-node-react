@@ -4,10 +4,9 @@ import { links } from "@/app/utils/links";
 import Link from "next/link";
 import {
   RiMenu3Fill,
-  RiCloseLine,
 } from "react-icons/ri";
 
-const Sidebar2 = () => {
+const Sidebar = () => {
   return (
       <div className="drawer md:drawer-open lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -56,4 +55,4 @@ const Sidebar2 = () => {
   );
 }
 
-export default Sidebar2;
+export default Sidebar;
