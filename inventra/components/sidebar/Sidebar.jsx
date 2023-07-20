@@ -78,5 +78,3 @@ const SidebarPrueba = () => {
     </div>
   );
 };
-
-export default SidebarPrueba;

@@ -118,7 +118,6 @@ export default function addItem() {
                             </div>
                         </div>
 
-
                     </div>
 
                 </div>
