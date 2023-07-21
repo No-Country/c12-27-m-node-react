@@ -8,6 +8,8 @@ const validatorCreateCompany = [
     .notEmpty()
     .withMessage('companyname is require'),
   check('address').exists().notEmpty().withMessage('address is require'),
+  check('email').exists().notEmpty().isEmail().withMessage('email is require'),
+  check('password').exists().notEmpty().withMessage('password is require'),
   (req, res, next) => {
     return validateResults(req, res, next);
   },
