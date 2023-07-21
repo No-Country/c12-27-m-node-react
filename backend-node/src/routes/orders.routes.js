@@ -6,7 +6,8 @@ const {
   postOrder,
   updateOrder,
 } = require('../controllers/orders.controller');
-
+const checkRol = require('../middlewares/check_rol');
+const authMidleware = require('../middlewares/session');
 const {
   validatorCreateOrder,
   validatorGetOrder,
@@ -18,10 +19,39 @@ const router = Router();
  * http://localhost:3000/Order
  */
 
-router.get('/:id', validatorGetOrder, getOrder);
-router.get('/', getOrders);
-router.post('/', validatorCreateOrder, postOrder);
-router.put('/:id', validatorGetOrder, updateOrder);
-router.delete('/:id', validatorGetOrder, deleteOrder);
+router.get(
+  '/:id',
+  authMidleware,
+  checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
+  validatorGetOrder,
+  getOrder
+);
+router.get(
+  '/',
+  authMidleware,
+  checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
+  getOrders
+);
+router.post(
+  '/',
+  authMidleware,
+  checkRol(['ADMIN_ROLE']),
+  validatorCreateOrder,
+  postOrder
+);
+router.put(
+  '/:id',
+  authMidleware,
+  checkRol(['ADMIN_ROLE']),
+  validatorGetOrder,
+  updateOrder
+);
+router.delete(
+  '/:id',
+  authMidleware,
+  checkRol(['ADMIN_ROLE']),
+  validatorGetOrder,
+  deleteOrder
+);
 
 module.exports = router;

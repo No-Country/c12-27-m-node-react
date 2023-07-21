@@ -1,9 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator');
 const { validateFields, validateJWT } = require('../middlewares');
-
-const router = express.Router();
-
 const {
   getAllProducts,
   getOneProduct,
@@ -11,11 +8,22 @@ const {
   updateProduct,
   deleteProduct,
 } = require('../controllers/product.controller');
+const checkRol = require('../middlewares/check_rol');
+const authMidleware = require('../middlewares/session');
+const router = express.Router();
 
-router.get('/', validateJWT, getAllProducts);
+router.get(
+  '/',
+  authMidleware,
+  checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
+  validateJWT,
+  getAllProducts
+);
 router.get(
   '/:id',
   [
+    authMidleware,
+    checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
     validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
@@ -25,6 +33,8 @@ router.get(
 router.post(
   '/',
   [
+    authMidleware,
+    checkRol(['ADMIN_ROLE']),
     validateJWT,
     check('name', 'You cannot create a product without a name').not().isEmpty(),
     check('category', 'You cannot create a product without a category')
@@ -46,6 +56,8 @@ router.post(
 router.put(
   '/:id',
   [
+    authMidleware,
+    checkRol(['ADMIN_ROLE']),
     validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
@@ -55,6 +67,8 @@ router.put(
 router.delete(
   '/:id',
   [
+    authMidleware,
+    checkRol(['ADMIN_ROLE']),
     validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
