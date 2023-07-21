@@ -1,24 +1,26 @@
 const jwt = require('jsonwebtoken');
+const { SECRETORPRIVATEKEY } = process.env;
 
-const createToken = (uid = '') => {
-  return new Promise((resolve, reject) => {
-    const payload = { uid };
-    jwt.sign(
-      payload,
-      process.env.SECRETORPRIVATEKEY,
-      {
-        expiresIn: '4h',
-      },
-      (err, token) => {
-        if (err) {
-          console.log(err);
-          reject('No se pudo generar el token');
-        } else {
-          resolve(token);
-        }
-      }
-    );
-  });
+const createToken = async (user) => {
+  const sign = await jwt.sign(
+    {
+      id: user._id,
+      role: user.role,
+    },
+    SECRETORPRIVATEKEY,
+    {
+      expiresIn: '4h',
+    }
+  );
+  return sign;
 };
 
-module.exports = createToken;
+const verifyToken = async (tokenJwt) => {
+  try {
+    return await jwt.verify(tokenJwt, SECRETORPRIVATEKEY);
+  } catch (error) {
+    return null;
+  }
+};
+
+module.exports = { createToken, verifyToken };
