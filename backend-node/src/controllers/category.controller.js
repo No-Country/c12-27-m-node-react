@@ -7,7 +7,7 @@ const getCategories = async (req, res) => {
     const categories = await service.findAll();
     res.json(categories);
   } catch (error) {
-    console.error(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
@@ -17,7 +17,7 @@ const getCategory = async (req, res) => {
     const category = await service.findOne(id);
     res.json(category);
   } catch (error) {
-    console.log(error);
+    res.status(401).json({ message: error.message });
   }
 };
 
@@ -40,22 +40,23 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   const { id } = req.params;
-  const { data } = req.body;
+  const { ...data } = req.body;
 
-  const category = await service.findOne(id);
-  if (!category) return res.status(404).json({ message: 'Category not found' });
-
-  const categoryUpdate = await service.update(id, data);
-  res.json(categoryUpdate);
+  try {
+    const categoryUpdate = await service.update(id, data);
+    res.json(categoryUpdate);
+  } catch (error) {
+    res.status(401).json({ message: error.message });
+  }
 };
 
 const deleteCategory = async (req, res) => {
   try {
     const { id } = req.params;
     await service.delete(id);
-    res.status(200).json(id);
+    res.status(200).json({ message: `Category with id ${id} removed` });
   } catch (error) {
-    console.log(error);
+    res.status(401).json({ message: error.message });
   }
 };
 

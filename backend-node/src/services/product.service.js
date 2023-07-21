@@ -2,12 +2,13 @@ const ProductModel = require('../models/product.model');
 
 class ProductService {
   async findAll() {
-    const products = await ProductModel.find();
+    const query = { status: true };
+    const products = await ProductModel.find(query).select('-__v -status');
     return products;
   }
 
   async findOne(id) {
-    const product = await ProductModel.findById(id);
+    const product = await ProductModel.findById(id).select('-__v');
     if (!product) throw new Error(`Product not found`);
     return product;
   }
@@ -18,11 +19,10 @@ class ProductService {
   }
 
   async update(id, data) {
-    const product = await ProductModel.findById(id);
-    // const productUpdated = await product.updateOne(data);
     const productUpdated = await ProductModel.findByIdAndUpdate(id, data, {
       new: true,
     }).select('-__v');
+    if (!productUpdated) throw new Error(`Product not found`);
     return productUpdated;
   }
 
