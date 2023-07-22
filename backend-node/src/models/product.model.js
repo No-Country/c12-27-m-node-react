@@ -3,9 +3,11 @@ const { Schema, model } = require('mongoose');
 const ProductSchema = Schema({
   name: {
     type: String,
+    required: true,
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true,
   },
   serialCode: {
@@ -23,15 +25,16 @@ const ProductSchema = Schema({
   },
   image: {
     type: String,
-    required: true,
   },
-  provider: {
-    type: String,
+  supplier: {
+    type: Schema.Types.ObjectId,
+    ref: 'Supplier',
     required: true,
   },
   status: {
     type: Boolean,
     required: true,
+    default: true,
   },
 });
 

@@ -48,7 +48,7 @@ router.post(
       .isNumeric()
       .withMessage('The price should be in numerical format'),
     check('stock', 'Enter quantity of stock of the product').not().isEmpty(),
-    check('provider', 'enter provider name').not().isEmpty(),
+    check('supplier', 'enter supplier name').not().isEmpty(),
     validateFields,
   ],
   createProduct

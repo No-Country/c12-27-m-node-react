@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { isAdminRole, validateJWT, validateFields } = require('../middlewares');
 const {
   getCategories,
   getCategory,

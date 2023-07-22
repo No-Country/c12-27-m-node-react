@@ -2,12 +2,13 @@ const CategoryModel = require('../models/category.model');
 
 class CategoryService {
   async findAll() {
-    const categories = await CategoryModel.find();
+    const query = { status: true };
+    const categories = await CategoryModel.find(query).select('-__v -status');
     return categories;
   }
 
   async findOne(id) {
-    const category = await CategoryModel.findById(id);
+    const category = await CategoryModel.findById(id).select('-__v');
     if (!category) throw new Error(`Category not found`);
     return category;
   }
@@ -24,8 +25,10 @@ class CategoryService {
   }
 
   async update(id, data) {
-    const category = await CategoryModel.findById(id);
-    const categoryUpdated = await category.updateOne(data);
+    const categoryUpdated = await CategoryModel.findByIdAndUpdate(id, data, {
+      new: true,
+    }).select('-__v');
+    if (!categoryUpdated) throw new Error(`Category not found`);
     return categoryUpdated;
   }
 
