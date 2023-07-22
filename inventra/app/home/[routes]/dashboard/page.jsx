@@ -1,11 +1,12 @@
+'use client'
 import { IoMdNotifications } from 'react-icons/io'
 import { PiUsersFill } from 'react-icons/pi'
-
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 import Products from '@/db/prouctsDB'
 import AreaChart from '@/components/areachart/AreaChart'
 import BarChart from '@/components/barchart/BarChart'
+
 
 export default function Dashboard() {
   return (

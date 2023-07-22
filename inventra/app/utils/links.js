@@ -50,7 +50,6 @@ export const links = [
   // },
   {
     label: 'Salir',
-    route: '/auth/routes/login',
     icon: MdLogout
   }
 ]

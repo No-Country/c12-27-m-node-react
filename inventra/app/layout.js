@@ -2,8 +2,11 @@
 import './globals.css'
 import Landing from '@/components/landing/Landing'
 import { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
+import { redirect, useParams, usePathname, useRouter } from 'next/navigation'
 import { UserContext } from './utils/context/userContext'
+import { links } from './utils/links'
+import router from './home/[routes]/page'
+
 
 
 
@@ -17,19 +20,30 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+  const router = useRouter()
+  //useparams para la navegacion entre path dinamicos
+  const params = useParams();
+  const path = usePathname();
+  const ruta = links.map(({ route }) => (route)).filter(rute => rute === path)
   //estado si el ususario esta logged
-  const [userStatus, setUserStatus] = useState(false);
+  const [userStatus, setUserStatus] = useState(path === ruta[0] ? 'true' : 'false');
   //useefect para guardar en el localstorage y para no perder el valor
   useEffect(() => {
     //funcion para recuperar el valor del estado del usuario logged
-    const isLog = JSON.parse(localStorage.getItem('userLog')) ?? true;
-    setUserStatus(isLog)
+    setUserStatus((localStorage.getItem('userLog')) ?? 'false')
+
   }, [])
   useEffect(() => {
     localStorage.setItem('userLog', userStatus)
   }, [userStatus])
-  //useparams para la navegacion entre path dinamicos
-  const params = useParams();
+
+  useEffect(() => {
+
+  }, [])
+  //redirect si esta log
+  useEffect(() => {
+    path === ruta ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') } : router.push('/auth/routes/login')
+  }, [userStatus])
   return (
     <UserContext.Provider value={{ userStatus, setUserStatus }}>
       <html lang="en" className="h-full">

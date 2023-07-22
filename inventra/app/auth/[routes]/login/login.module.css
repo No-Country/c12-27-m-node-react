@@ -136,6 +136,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 10px;
+        margin-top: 25px;
     }
     }
 
@@ -188,6 +189,7 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    padding: 0px 7px;
 }
 .form{
     min-width: 298px;
@@ -229,7 +231,7 @@
 }
 .iconVisible{
     position: absolute;
-    margin-left: 307px;
+    margin-left: 300px;
 }
 .titleThin{
     font-size: 30px;
@@ -279,6 +281,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 10px;
+        margin-top: 25px;
     }
 }
 

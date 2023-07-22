@@ -11,17 +11,24 @@ import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
 import Products from '../../../../db/prouctsDB.js'
 import { useEffect, useState } from 'react'
+import CardItem from '@/components/cardItem/CardItem.jsx'
+
 
 
 export default function Inventario() {
+    const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
     const Product = Products.filter(Producto => Producto.category === categoria);
+    const ProductProp = Products.filter(Producto => Producto.name === search ? Producto.name === search
+        : Producto.category === search || Producto.serialCode === search);
     return (
         <div className="">
             <header className="flex justify-around h-20 border-b border-gray-200">
                 <div className="join w-3/4 p-4 justify-start">
-                    <input className="input  w-full    input-bordered join-item" placeholder="Buscar" />
-                    <button className="btn join-item   bg-primary "> <AiOutlineSearch className="mr-3" size={25} color='white' />   </button>
+                    <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
+                    <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
+                        <AiOutlineSearch className="mr-3" size={25} color='white' />
+                    </button>
                 </div>
                 <div className="flex     items-center gap-5">
                     <div>
@@ -29,15 +36,40 @@ export default function Inventario() {
                             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                             <div className="drawer-content ">
                                 {/* Page content here */}
-                                <label htmlFor="my-drawer-4" className="drawer-button  "> <IoMdNotifications className="online  mr-3 cursor-pointer" size={28} />  </label>
+                                <span className="online  mr-3 cursor-pointer pl-2 flex"><FaFilter size={20} />FILTRAR</span>
                             </div>
-                            <div className="drawer-side z-10">
-                                <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                                    {/* Sidebar content here */}
-                                    <li><a>Sidebar Item 1</a></li>
-                                    <li><a>Sidebar Item 2</a></li>
-                                </ul>
+                            <div className="drawer drawer-end">
+                                <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+                                <div className="drawer-content ">
+                                    {/* Page content here */}
+                                    <label htmlFor="my-drawer-3" className="drawer-button  flex">
+                                        <span className='pl-2'><FaFilter className="online  mr-3 cursor-pointer" size={20} />FILTRAR</span>
+                                    </label>
+                                </div>
+                                <div className="drawer-side z-10">
+                                    <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+                                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                        {/* Sidebar content here */}
+                                        <h2>Filtros</h2>
+                                        <li></li>
+                                        <li></li>
+                                        <h3>Categorias</h3>
+                                        <li></li>
+                                        <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
+                                        <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
+                                        <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
+                                        <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
+                                        <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
+                                        <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
+                                        <li></li>
+                                        <li></li>
+                                        {/* Sidebar content here */}
+                                        <h3>Por Precio</h3>
+                                        <li></li>
+                                        <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
+                                        <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,7 +86,7 @@ export default function Inventario() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : {categoria === '' ? Products.length : Product.length}</h2>
+                    <h2> Total : {search !== '' ? ProductProp.length : categoria === '' ? Products.length : Product.length}</h2>
                 </div>
                 <div className='flex items-baseline gap-1 '>
                     <h2>Mostrar</h2>
@@ -68,15 +100,38 @@ export default function Inventario() {
                     </select>
                 </div>
                 <div>
-                    <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
+                    <div className="drawer drawer-end">
+                        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content ">
+                            {/* Page content here */}
+                            <label htmlFor="my-drawer-3" className="drawer-button  flex">
+                                <FaFilter className="online  mr-3 cursor-pointer" size={20} /> <span className='pl-2'> FILTRAR</span>
+                            </label>
+                        </div>
+                        <div className="drawer-side z-10">
+                            <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                {/* Sidebar content here */}
+                                <h2>Filtros</h2>
+                                <h3>Categorias</h3>
+                                <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
+                                <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
+                                <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
+                                <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
+                                <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
+                                <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
+                            </ul>
+                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                {/* Sidebar content here */}
+                                <h3>Por Precio</h3>
+                                <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
+                                <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div>
-                    <button onClick={() => { setCategoria('') }}>Ver todo</button>
-                    <button onClick={() => { setCategoria('limpieza') }}>Limpieza</button>
-                    <button onClick={() => { setCategoria('comida') }}>Comida</button>
-                    <button onClick={() => { setCategoria('electro') }}>Tecnologia</button>
-                    <button onClick={() => { setCategoria('ropa') }}>Ropa</button>
-                    <button onClick={() => { setCategoria('calzado') }}>Calzado</button>
+
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
@@ -94,9 +149,6 @@ export default function Inventario() {
                         <thead>
                             <tr>
                                 <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox checkbox-primary	" />
-                                    </label>
                                 </th>
                                 <th className='text-center'>imagen</th>
                                 <th className='text-center'>Codigo</th>
@@ -107,88 +159,15 @@ export default function Inventario() {
                                 <th className='text-center'>Acciones</th>
                             </tr>
                         </thead>
-                        {categoria === '' ? <>{Products.map(Producto => (
-
-                            <tbody key={Producto.id}>
-                                {/* row 1 */}
-                                <tr className='hover:bg-hover-linea cursor-pointer'>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox checkbox-primary	" />
-                                        </label>
-                                    </th>
-                                    <th className='text-center'>
-                                        <span className="avatar ">
-                                            <span className="w-12 rounded-lg ring ring-contorno ">
-                                                <img src={Producto.image} />
-                                            </span>
-                                        </span>
-                                    </th>
-                                    <th className='text-center'>
-                                        {Producto.serialCode}
-                                    </th>
-
-                                    <td className='text-center'>
-                                        {Producto.name}
-                                    </td>
-                                    <td className='text-center'>
-                                        {Producto.category}
-                                    </td>
-                                    <td className='text-center'>
-                                        {Producto.stock}
-                                    </td>
-                                    <td className='text-center'>
-                                        {Producto.price}
-                                    </td>
-                                    <td className='text-center'>
-                                        <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} /></button>
-                                        <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                                        <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        ))}</> : <>
-                            {Product.map(Producto => (
-
-                                <tbody key={Producto.id}>
-                                    {/* row 1 */}
-                                    <tr className='hover:bg-hover-linea cursor-pointer'>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" className="checkbox checkbox-primary	" />
-                                            </label>
-                                        </th>
-                                        <th className='text-center'>
-                                            <span className="avatar ">
-                                                <span className="w-12 rounded-lg ring ring-contorno ">
-                                                    <img src={Producto.image} />
-                                                </span>
-                                            </span>
-                                        </th>
-                                        <th className='text-center'>
-                                            {Producto.serialCode}
-                                        </th>
-
-                                        <td className='text-center'>
-                                            {Producto.name}
-                                        </td>
-                                        <td className='text-center'>
-                                            {Producto.category}
-                                        </td>
-                                        <td className='text-center'>
-                                            {Producto.stock}
-                                        </td>
-                                        <td className='text-center'>
-                                            {Producto.price}
-                                        </td>
-                                        <td className='text-center'>
-                                            <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} /></button>
-                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            ))}</>}
+                        {search !== ''
+                            ? <>{ProductProp.map(Producto => (
+                                <CardItem data={Producto} />))}</>
+                            : categoria === '' ? <>{Products.map(Producto => (
+                                <CardItem data={Producto} />
+                            ))}</> : <>
+                                {Product.map(Producto => (
+                                    <CardItem data={Producto} />
+                                ))}</>}
                     </table>
                 </div>
             </div>

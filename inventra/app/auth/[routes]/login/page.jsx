@@ -45,7 +45,7 @@ export default function Login() {
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
                             emailLog === email && passLog === password ?
-                                localStorage.setItem('userLog', true) || router.push('/home/routes/dashboard')
+                                localStorage.setItem('userLog', 'true') || router.push('/home/routes/dashboard')
                                 :
                                 setIsValid(false)
                     }}>

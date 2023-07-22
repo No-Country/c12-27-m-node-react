@@ -39,8 +39,8 @@ const Sidebar = () => {
           </div>
           {/* Sidebar content here */}
           {links.map(({ label, route, icon: Icon }) => (
-            <li key={route} className="hover:bg-[#003EBB] rounded-lg transition-ease-in-out duration-400">
-              <Link href={route}
+            <li key={label} className="hover:bg-[#003EBB] rounded-lg transition-ease-in-out duration-400">
+              <Link href={label === 'Salir' ? '/auth/routes/login' : route}
                 onClick={label === 'Salir' ? () => { setUserStatus(false), alert('desea salir?') } : () => { }}
                 className="flex justify-start items-center gap-2 pl-1"
               >

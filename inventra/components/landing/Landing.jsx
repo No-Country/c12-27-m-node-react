@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 export default function Landing() {
   const { userStatus, setUserStatus } = useContext(UserContext);
-  userStatus === true ? redirect('/home/routes/dashboard') : {}
+  userStatus === 'true' ? redirect('/home/routes/dashboard') : {}
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
@@ -35,7 +35,7 @@ export default function Landing() {
         </div>
       </div>
       <div className={styles.btnContainer}>
-        <Link className={styles.btn} href={userStatus === true ? '/home/routes/dashboard' : '/auth/routes/login'}>COMENZAR AHORA</Link>
+        <Link className={styles.btn} href={userStatus === 'true' ? '/home/routes/dashboard' : '/auth/routes/login'}>COMENZAR AHORA</Link>
       </div>
     </div>
   )
