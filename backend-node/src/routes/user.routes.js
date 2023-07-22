@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { isAdminRole, validateJWT } = require('../middlewares');
+const checkRol = require('../middlewares/check_rol');
+const authMidleware = require('../middlewares/session');
 
 const {
   getAllUsers,
@@ -10,10 +11,10 @@ const {
   deleteUser,
 } = require('../controllers/user.controller');
 
-router.get('/', [validateJWT, isAdminRole], getAllUsers);
-router.get('/:id', [validateJWT, isAdminRole], getOneUser);
-router.post('/', [validateJWT, isAdminRole], createUser);
-router.put('/:id', [validateJWT, isAdminRole], updateUser);
-router.delete('/:id', [validateJWT, isAdminRole], deleteUser);
+router.get('/', authMidleware, checkRol(['ADMIN_ROLE']), getAllUsers);
+router.get('/:id', authMidleware, checkRol(['ADMIN_ROLE']), getOneUser);
+router.post('/', authMidleware, checkRol(['ADMIN_ROLE']), createUser);
+router.put('/:id', authMidleware, checkRol(['ADMIN_ROLE']), updateUser);
+router.delete('/:id', authMidleware, checkRol(['ADMIN_ROLE']), deleteUser);
 
 module.exports = router;

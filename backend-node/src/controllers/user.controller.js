@@ -1,12 +1,13 @@
 const UserService = require('../services/user.service');
 const service = new UserService();
+const { handlerHttp } = require('../handlers/error.handler');
 
 const getAllUsers = async (req, res) => {
   try {
     const users = await service.findAll();
     res.json(users);
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    handlerHttp(res, 'ERROR_GET_USERS', error);
   }
 };
 
@@ -16,7 +17,7 @@ const getOneUser = async (req, res) => {
     const user = await service.findOne(id);
     res.json(user);
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    handlerHttp(res, 'ERROR_GET_USER', error);
   }
 };
 
@@ -26,7 +27,7 @@ const createUser = async (req, res) => {
     const newUser = await service.create(data);
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    handlerHttp(res, 'ERROR_POST_USER', error);
   }
 };
 
@@ -47,7 +48,7 @@ const deleteUser = async (req, res) => {
     await service.delete(id);
     res.status(200).json({ message: `User with id ${id} removed` });
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    handlerHttp(res, 'ERROR_DELETE_USER', error);
   }
 };
 

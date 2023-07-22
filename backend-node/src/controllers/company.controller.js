@@ -28,10 +28,10 @@ const getCompanies = async (req, res) => {
   }
 };
 
-const updateCompany = async ({ params, body }, res) => {
+const updateCompany = async (req, res) => {
   try {
-    const { id } = params;
-    const resp = await UpdateCompany(id, body);
+    const { id } = req.params;
+    const resp = await UpdateCompany(id, req.body);
     res.send(resp);
   } catch (error) {
     handleHttp(res, 'ERROR_UPDATE_COMPANY');

@@ -35,4 +35,6 @@ UserSchema.methods.toJSON = function () {
   return user;
 };
 
-module.exports = model('User', UserSchema);
+const UserModel = model('User', UserSchema);
+
+module.exports = UserModel;

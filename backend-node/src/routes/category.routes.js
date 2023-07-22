@@ -8,38 +8,23 @@ const {
   updateCategory,
   deleteCategory,
 } = require('../controllers/category.controller');
-const { check } = require('express-validator');
+const checkRol = require('../middlewares/check_rol');
+const authMidleware = require('../middlewares/session');
 
-router.get('/', validateJWT, getCategories);
+router.get(
+  '/',
+  authMidleware,
+  checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
+  getCategories
+);
 router.get(
   '/:id',
-  [
-    validateJWT,
-    check('id', 'It is not a valid id format').isMongoId(),
-    validateFields,
-  ],
+  authMidleware,
+  checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
   getCategory
 );
-router.post(
-  '/',
-  [
-    validateJWT,
-    isAdminRole,
-    check('name', 'The name is required').not().isEmpty(),
-    validateFields,
-  ],
-  createCategory
-);
-router.put(
-  '/:id',
-  [
-    validateJWT,
-    isAdminRole,
-    check('name', 'The name is required').not().isEmpty(),
-    validateFields,
-  ],
-  updateCategory
-);
-router.delete('/:id', [validateJWT, isAdminRole], deleteCategory);
+router.post('/', authMidleware, checkRol(['ADMIN_ROLE']), createCategory);
+router.put('/:id', authMidleware, checkRol(['ADMIN_ROLE']), updateCategory);
+router.delete('/:id', authMidleware, checkRol(['ADMIN_ROLE']), deleteCategory);
 
 module.exports = router;

@@ -1,6 +1,6 @@
-const handleHttp = (res, error, errorRaw) => {
+const handlerHttp = (res, error, errorRaw) => {
   res.status(500);
   res.send({ error, errorRaw });
 };
 
-module.exports = { handleHttp };
+module.exports = { handlerHttp };
