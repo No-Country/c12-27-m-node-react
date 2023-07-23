@@ -16,26 +16,28 @@ router.get(
   '/',
   authMidleware,
   checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
-  validateJWT,
+  // validateJWT,
   getAllProducts
 );
+
 router.get(
   '/:id',
   [
     authMidleware,
     checkRol(['ADMIN_ROLE', 'SELLER_ROLE']),
-    validateJWT,
+    // validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
   ],
   getOneProduct
 );
+
 router.post(
   '/',
   [
     authMidleware,
     checkRol(['ADMIN_ROLE']),
-    validateJWT,
+    // validateJWT,
     check('name', 'You cannot create a product without a name').not().isEmpty(),
     check('category', 'You cannot create a product without a category')
       .not()
@@ -53,23 +55,25 @@ router.post(
   ],
   createProduct
 );
+
 router.put(
   '/:id',
   [
     authMidleware,
     checkRol(['ADMIN_ROLE']),
-    validateJWT,
+    // validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
   ],
   updateProduct
 );
+
 router.delete(
   '/:id',
   [
     authMidleware,
     checkRol(['ADMIN_ROLE']),
-    validateJWT,
+    // validateJWT,
     check('id', 'The product id is incorrect').isMongoId(),
     validateFields,
   ],

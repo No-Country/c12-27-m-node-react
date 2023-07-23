@@ -12,6 +12,7 @@ const authMidleware = async (req, res, next) => {
     const token = req.headers.authorization.split(' ').pop();
     const dataToken = await verifyToken(token);
 
+    // TODO: Custom message error
     if (!dataToken) {
       handlerHttp(res, 'NOT_PAYLOAD_DATA', 401);
       return;

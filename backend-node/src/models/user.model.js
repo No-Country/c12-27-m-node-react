@@ -20,6 +20,11 @@ const UserSchema = Schema({
     default: 'SELLER_ROLE',
     enum: ['ADMIN_ROLE', 'SELLER_ROLE'],
   },
+  company: {
+    type: Schema.Types.ObjectId,
+    ref: 'Company',
+    required: true,
+  },
   avatar: {
     type: String,
   },
@@ -30,7 +35,7 @@ const UserSchema = Schema({
 });
 
 UserSchema.methods.toJSON = function () {
-  const { __v, password, _id, ...user } = this.toObject();
+  const { __v, _id, ...user } = this.toObject();
   user.id = _id;
   return user;
 };

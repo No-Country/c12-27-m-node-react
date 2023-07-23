@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 class UserService {
   async findAll() {
     const users = await UserModel.find();
-    console.log('user in service', users);
     return users;
   }
 
@@ -20,10 +19,18 @@ class UserService {
       throw new Error(`The token corresponds to a user that does not exist`);
     return user;
   }
+
   async create(data) {
     let { name, email, password } = data;
     password = await bcrypt.hash(password, 10);
     const newUser = await UserModel.create({ name, email, password });
+    return newUser;
+  }
+
+  async createSeller(data) {
+    let password =
+      Math.random().toString(32).substring(2) + Date.now().toString(32);
+    const newUser = await UserModel.create({ password, ...data });
     return newUser;
   }
 

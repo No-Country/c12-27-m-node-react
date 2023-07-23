@@ -1,6 +1,10 @@
 const handlerHttp = (res, error, errorRaw) => {
   res.status(500);
-  res.send({ error, errorRaw });
+  res.json({ error, errorRaw });
 };
 
-module.exports = { handlerHttp };
+const handlerError = (res, codeError, messageError) => {
+  res.status(codeError).json({ message: messageError });
+};
+
+module.exports = { handlerHttp, handlerError };
