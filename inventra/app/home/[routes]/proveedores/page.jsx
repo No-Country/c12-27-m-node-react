@@ -108,12 +108,12 @@ export default function proveedores() {
                         </thead>
                         {search !== ''
                             ? <>{ProvProp.map(Proveedor => (
-                                <CardProveedor data={Proveedor} />))}</>
+                                <CardProveedor data={Proveedor} key={Proveedor.id} />))}</>
                             : categoria === '' ? <>{Proveedores.map(Proveedor => (
-                                <CardProveedor data={Proveedor} />
+                                <CardProveedor data={Proveedor} key={Proveedor.id} />
                             ))}</> : <>
                                 {Prov.map(Proveedor => (
-                                    <CardProveedor data={Proveedor} />
+                                    <CardProveedor data={Proveedor} key={Proveedor.id} />
                                 ))}</>}
                     </table>
                 </div>

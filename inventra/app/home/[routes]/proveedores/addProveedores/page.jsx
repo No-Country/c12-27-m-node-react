@@ -34,23 +34,23 @@ export default function addProveedores() {
 
       <div className="flex flex-col justify-center items-center w-full sm:py-6 md:py-8 lg:py-10 sm:px-8 md:px-14 lg:px-24">
         <form className="w-full max-w-lg mx-auto md:ml-10 my-10 p-5">
-          <div class="mb-6">
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm 
+          <div className="mb-6">
+            <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm 
               rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 
               dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
               dark:focus:border-blue-500" placeholder="ID" required />
           </div>
-          <div class="mb-6">
-            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 
+          <div className="mb-6">
+            <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 
               text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
               dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
               dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre del proveedor" required />
           </div>
-          <div class="mb-6 mt-20">
-            <h4 class="block mb-2 text-mb font-bold text-gray-900 dark:text-white">
+          <div className="mb-6 mt-20">
+            <h4 className="block mb-2 text-mb font-bold text-gray-900 dark:text-white">
               Informacion opcional
             </h4>
-            <input type="text" class="bg-gray-50 border border-gray-300 
+            <input type="text" className="bg-gray-50 border border-gray-300 
               text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
               block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
               dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contacto" />

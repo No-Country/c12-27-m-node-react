@@ -2,7 +2,7 @@ const { MdModeEditOutline, MdOutlineDeleteOutline } = require("react-icons/md")
 
 const CardProveedor = ({ data }) => {
     return (
-        <tbody key={data.id}>
+        <tbody>
             {/* row 1 */}
             <tr className='hover:bg-hover-linea cursor-pointer'>
                 <th>

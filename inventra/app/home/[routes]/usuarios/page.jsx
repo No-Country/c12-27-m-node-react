@@ -99,12 +99,12 @@ export default function usuarios() {
                         </thead>
                         {search !== ''
                             ? <>{UserProp.map(Usuario => (
-                                <CardUsarios data={Usuario} />))}</>
+                                <CardUsarios data={Usuario} key={Usuario.id} />))}</>
                             : role === '' ? <>{Users.map(Usuario => (
-                                <CardUsarios data={Usuario} />
+                                <CardUsarios data={Usuario} key={Usuario.id} />
                             ))}</> : <>
                                 {User.map(Usuario => (
-                                    <CardUsarios data={Usuario} />
+                                    <CardUsarios data={Usuario} key={Usuario.id} />
                                 ))}</>}
                     </table>
                 </div>

@@ -2,7 +2,7 @@ import { MdModeEditOutline, MdOutlineDeleteOutline } from "react-icons/md"
 
 const CardUsarios = ({ data }) => {
     return (
-        <tbody key={data.email}>
+        <tbody>
             {/* row 1 */}
             <tr className='hover:bg-hover-linea cursor-pointer'>
                 <th>

@@ -161,12 +161,12 @@ export default function Inventario() {
                         </thead>
                         {search !== ''
                             ? <>{ProductProp.map(Producto => (
-                                <CardItem data={Producto} />))}</>
+                                <CardItem data={Producto} key={Producto.id} />))}</>
                             : categoria === '' ? <>{Products.map(Producto => (
-                                <CardItem data={Producto} />
+                                <CardItem data={Producto} key={Producto.id} />
                             ))}</> : <>
                                 {Product.map(Producto => (
-                                    <CardItem data={Producto} />
+                                    <CardItem data={Producto} key={Producto.id} />
                                 ))}</>}
                     </table>
                 </div>

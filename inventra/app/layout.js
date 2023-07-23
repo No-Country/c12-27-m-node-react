@@ -42,7 +42,8 @@ export default function RootLayout({ children }) {
   }, [])
   //redirect si esta log
   useEffect(() => {
-    path === ruta ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') } : router.push('/auth/routes/login')
+    path === ruta || 'addItem' || 'addUsers' || 'addProveedores'
+      ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') } : router.push('/auth/routes/login')
   }, [userStatus])
   return (
     <UserContext.Provider value={{ userStatus, setUserStatus }}>
