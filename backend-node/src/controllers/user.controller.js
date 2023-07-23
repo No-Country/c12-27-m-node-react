@@ -1,6 +1,6 @@
 const UserService = require('../services/user.service');
 const service = new UserService();
-const { handlerHttp } = require('../handlers/error.handler');
+const { handlerHttp, handlerError } = require('../handlers/error.handler');
 
 const getAllUsers = async (req, res) => {
   try {
@@ -24,10 +24,11 @@ const getOneUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const data = req.body;
-    const newUser = await service.create(data);
+    const newUser = await service.createSeller(data);
     res.status(201).json(newUser);
   } catch (error) {
-    handlerHttp(res, 'ERROR_POST_USER', error);
+    handlerError(res, 400, error.message);
+    // handlerHttp(res, 'ERROR_POST_USER', error);
   }
 };
 

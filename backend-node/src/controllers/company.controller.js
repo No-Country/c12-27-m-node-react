@@ -1,4 +1,4 @@
-const { handleHttp } = require('../handlers/error.handler');
+const { handlerHttp, handlerError } = require('../handlers/error.handler');
 const {
   GetCompany,
   GetCompanies,
@@ -8,14 +8,24 @@ const {
 } = require('../services/company.services');
 const statusNotFound = require('../handlers/not_found.handler');
 
-const getCompany = async ({ params } = req, res) => {
+const createCompany = async (req, res) => {
   try {
-    const { id } = params;
-    const resp = await GetCompany(id);
-    const status = statusNotFound(resp, 'COMPANY_NOT_FOUND');
-    res.send(status);
+    const resSuperUser = await CreateCompany(req);
+    res.status(201).json(resSuperUser);
   } catch (error) {
-    handleHttp(res, 'ERROR_GET_COMPANY');
+    handlerError(res, 400, error.message);
+    // handlerHttp(res, 'ERROR_POST_COMPANY', error);
+  }
+};
+
+const getCompany = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const company = await GetCompany(id);
+    res.json(company);
+  } catch (error) {
+    handlerError(res, 400, error.message);
+    // handlerHttp(res, 'ERROR_GET_COMPANY');
   }
 };
 
@@ -24,36 +34,28 @@ const getCompanies = async (req, res) => {
     const resp = await GetCompanies();
     res.send(resp);
   } catch (error) {
-    handleHttp(res, 'ERROR_GET_COMPANIES');
+    handlerHttp(res, 'ERROR_GET_COMPANIES');
   }
 };
 
 const updateCompany = async (req, res) => {
   try {
     const { id } = req.params;
-    const resp = await UpdateCompany(id, req.body);
-    res.send(resp);
+    const companyUpdated = await UpdateCompany(id, req.body);
+    res.json(companyUpdated);
   } catch (error) {
-    handleHttp(res, 'ERROR_UPDATE_COMPANY');
+    // handlerHttp(res, 'ERROR_UPDATE_COMPANY');
+    handlerError(res, 400, error.message);
   }
 };
 
-const createCompany = async (req, res) => {
+const deleteCompany = async (req, res) => {
   try {
-    const resSuperUser = await CreateCompany(req);
-    res.send(resSuperUser);
+    const { id } = req.params;
+    await DeleteCompany(id);
+    res.status(200).json({ message: `Company with id ${id} has deleted` });
   } catch (error) {
-    handleHttp(res, 'ERROR_POST_COMPANY', error);
-  }
-};
-
-const deleteCompany = async ({ params } = req, res) => {
-  try {
-    const { id } = params;
-    const resp = await DeleteCompany(id);
-    res.send(`La empresa ${resp} ha sido borrado con exito`);
-  } catch (error) {
-    handleHttp(res, 'ERROR_DELETE_COMPANY');
+    handlerError(res, 400, error.message);
   }
 };
 
