@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io'
@@ -10,17 +10,20 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-import Users from '../../../../db/userDb'
-import CardUsarios from '@/components/CardUsuarios/CardUusarios'
-import { useState } from 'react'
+//import Users from '../../../../db/userDb'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '@/app/utils/context/userContext'
 
 
 export default function usuarios() {
-    const [search, setSearch] = useState('')
-    const [role, setRole] = useState('')
-    const User = Users.filter(Usuario => Usuario.role === role);
-    const UserProp = Users.filter(Usuario => Usuario.name === search ? Usuario.name === search
-        : Usuario.role === search || Usuario.email === search);
+    const { users } = useContext(UserContext);
+
+    useEffect(() => {
+        console.log(users);
+    }, [users]);
+
+
+
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">
@@ -45,7 +48,7 @@ export default function usuarios() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : {search !== '' ? UserProp.length : role === '' ? Users.length : User.length}</h2>
+                    <h2> Total : {users.length}</h2>
                 </div>
                 <div>
                     <div className="drawer drawer-end">
@@ -97,15 +100,47 @@ export default function usuarios() {
                                 <th className='text-center'></th>
                             </tr>
                         </thead>
-                        {search !== ''
-                            ? <>{UserProp.map(Usuario => (
-                                <CardUsarios data={Usuario} key={Usuario.id} />))}</>
-                            : role === '' ? <>{Users.map(Usuario => (
-                                <CardUsarios data={Usuario} key={Usuario.id} />
-                            ))}</> : <>
-                                {User.map(Usuario => (
-                                    <CardUsarios data={Usuario} key={Usuario.id} />
-                                ))}</>}
+                        {users.map(user => (
+                            <tbody key={user.id}>
+                                {/* row 1 */}
+                                <tr className='hover:bg-hover-linea cursor-pointer'>
+                                    <th>
+                                        <label>
+                                            <input type="checkbox" className="checkbox checkbox-primary	" />
+                                        </label>
+                                    </th>
+                                    <th className='text-center'>
+                                        <div className="avatar ">
+                                            <div className="w-12 rounded-lg ring ring-contorno ">
+                                                <img src={user.avatar} />
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td className='text-center'>
+                                        {user.name}
+                                    </td>
+                                    <td className='text-center'>
+                                        {user.email}
+                                    </td>
+                                    <td className='text-center'>
+                                        {user.role}
+                                    </td>
+                                    <td className='text-center'>
+
+                                    </td>
+                                    <td className='text-center'>
+
+                                    </td>
+                                    <td className='text-center'>
+                                        <div>
+                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
+                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {/* row 2 */}
+                            </tbody>
+                        ))}
                     </table>
                 </div>
             </div>

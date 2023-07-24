@@ -1,39 +1,39 @@
 "use client"
 
+import { UserContext } from "@/app/utils/context/userContext";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdNotifications } from "react-icons/io";
 import { MdArrowBackIosNew } from "react-icons/md";
 
 export default function addUsers() {
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: '',
-  });
-
-  const handleInputChange = (evt) => {
-    console.log(evt.target.value);
-
-    const { name, value } = evt.target;
-    // Actualiza el estado con los valores del formulario
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  }
+  const {
+    formData,
+    handleInputChange,
+    handleRoleChange,
+    handleAddUsers,
+    users,
+    setUsers
+  } = useContext(UserContext);
 
 
-  const handleAddUsers = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    // Muestra el usuario creado en consola
-    console.log(formData);
-    // También puedes enviar los datos a un servidor o hacer otras acciones aquí
+    // Agrega el usuario al estado del contexto
+    // (No es necesario llamar setUsers aquí ya que handleAddUsers está definido en RootLayout)
+
+    // También actualiza la lista de usuarios en el contexto con el nuevo usuario
+    setUsers((prevUsers) => [...prevUsers, formData]);
 
 
   };
+
+
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
+
 
 
 
@@ -66,7 +66,7 @@ export default function addUsers() {
       </header>
 
       <div className="flex flex-col justify-center items-center w-full sm:py-6 md:py-8 lg:py-10 sm:px-8 md:px-14 lg:px-24">
-        <form className="w-full max-w-lg mx-auto md:ml-10 my-10 p-5" onSubmit={handleAddUsers}>
+        <form className="w-full max-w-lg mx-auto md:ml-10 my-10 p-5" onSubmit={handleSubmit}>
 
           <div className="mb-6">
             <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -106,14 +106,20 @@ export default function addUsers() {
               Role
             </h4>
 
-            <div class="flex justify-between items-center gap-10 mb-4 p-2">
-              <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adminitrador</label>
-              <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <div className="flex justify-between items-center gap-10 mb-4 p-2">
+              <label htmlFor="adminRole" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adminitrador</label>
+              <input id="adminRole" type="radio" value="administrador" name="role" 
+                checked={ formData.role === 'administrador' }
+                onChange={ handleRoleChange }
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
             </div>
 
-            <div class="flex justify-between items-center gap-10 mb-4 p-2">
-              <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Visualizador</label>
-              <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <div className="flex justify-between items-center gap-10 mb-4 p-2">
+              <label htmlFor="visualRole" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Visualizador</label>
+              <input checked={ formData.role === 'visualizador' } id="visualRole" type="radio" value="visualizador" name="role" 
+                onChange={ handleRoleChange }
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 
+                dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
             </div>
 
             <div className="flex justify-start items-start gap-5 mb-4 p-2 bg-blue-300 rounded-lg">
@@ -122,7 +128,7 @@ export default function addUsers() {
               </p>
             </div>
           </div>
-        </form>
+
           <div className="flex justify-center items-center gap-5 w-full p-5">
             <button type="submit" className="text-white bg-[#2969E3] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
               font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center p-2 rounded-full">
@@ -133,6 +139,7 @@ export default function addUsers() {
               Cancelar
             </button>
           </div>
+        </form>
       </div>
 
     </div>
