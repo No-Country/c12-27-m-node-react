@@ -11,6 +11,7 @@ import { UserContext } from "@/app/utils/context/userContext";
 
 
 
+
 export default function Login() {
     const { userStatus, setUserStatus } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
@@ -20,6 +21,7 @@ export default function Login() {
     const email = 'joa@joa'
     const password = '123'
     const [isValid, setIsValid] = useState(true)
+    const { theme } = useContext(UserContext);
     return (
         <div className={style.container}>
             <Image
@@ -34,7 +36,9 @@ export default function Login() {
                 <Image
                     width={300}
                     height={200}
-                    src='/logo-inventra-blanco.png'
+                    src={theme === 'light'
+                        ? '/logo-inventra-azul.png'
+                        : '/logo-inventra-blanco.png'}
                     alt="avatar" />
                 <div className="flex flex-col items-start">
                     <h1 className={style.titleThin}>HOLA,</h1>
