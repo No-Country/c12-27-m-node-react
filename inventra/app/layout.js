@@ -53,6 +53,12 @@ export default function RootLayout({ children }) {
   };
 
 
+  const handleAddUsers = (evt) => {
+    evt.preventDefault();
+    // Muestra el usuario creado en consola
+    console.log(formData);
+    
+  };
 
 
   const handleEditUser = (userId, updatedUser) => {
@@ -106,6 +112,7 @@ export default function RootLayout({ children }) {
         setFormData,
         handleInputChange,
         handleRoleChange,
+        handleAddUsers,
         handleEditUser,
         handleDeleteUser,
         users,

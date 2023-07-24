@@ -7,12 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      themes: ["light", "dark"],
       screens: {
         // Define el breakpoint sm como 375px
         'sm': '375px',
-      },
-      fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
