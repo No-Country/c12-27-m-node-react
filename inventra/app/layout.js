@@ -14,7 +14,7 @@ import router from './home/[routes]/page'
 
 export const metadata = {
   title: 'Inventra',
-  description: 'Inventario control app',
+  description: 'Inventario Control app',
 }
 
 
