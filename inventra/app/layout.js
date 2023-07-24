@@ -19,10 +19,64 @@ export const metadata = {
 export default function RootLayout({ children }) {
   //status si el ususario esta log
   const [userStatus, setUserStatus] = useState()
+  const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   //useparams para la navegacion entre path dinamicos
   const params = useParams()
+
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "visualizador",
+  });
+
+
+  const handleInputChange = (evt) => {
+    //console.log(evt.target.value);
+
+    const { name, value } = evt.target;
+    // Actualiza el estado con los valores del formulario
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+
+  const handleRoleChange = (evt) => {
+    setFormData({
+      ...formData,
+      role: evt.target.value,
+    });
+  };
+
+
+  const handleAddUsers = (evt) => {
+    evt.preventDefault();
+    // Muestra el usuario creado en consola
+    console.log(formData);
+    // También puedes enviar los datos a un servidor o hacer otras acciones aquí
+    
+
+
+  };
+
+
+
   return (
-    <UserContext.Provider value={{ userStatus, setUserStatus }}>
+    <UserContext.Provider 
+      value={{ 
+        userStatus, 
+        setUserStatus,
+        formData,
+        setFormData,
+        handleInputChange,
+        handleRoleChange,
+        handleAddUsers,
+        users,
+        setUsers,
+        }}>
       <html lang="en" className="h-full">
         <body className={'h-full min-h-screen font-sans'}>
           <div className="flex h-full min-h-screen justify-center">

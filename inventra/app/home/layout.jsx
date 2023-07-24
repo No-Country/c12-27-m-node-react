@@ -1,5 +1,5 @@
 
-import Sidebar from "@/components/sidebar/Sidebar";
+import Sidebar from "@/components/sidebar/Sidebar2";
 
 export default function Routes({ children }) {
     return (

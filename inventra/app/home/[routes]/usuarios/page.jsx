@@ -1,3 +1,5 @@
+"use client"
+
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io'
 import { FaFilter } from 'react-icons/fa'
@@ -8,12 +10,17 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-import Users from '../../../../db/userDb'
+//import Users from '../../../../db/userDb'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '@/app/utils/context/userContext'
 
 
 export default function usuarios() {
+    const { users } = useContext(UserContext);
 
-
+    useEffect(() => {
+        console.log(users);
+    }, [users]);
 
 
 
@@ -39,7 +46,7 @@ export default function usuarios() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : {Users.length}</h2>
+                    <h2> Total : {users.length}</h2>
                 </div>
                 <div>
                     <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span></button>
@@ -69,7 +76,7 @@ export default function usuarios() {
                                 <th className='text-center'></th>
                             </tr>
                         </thead>
-                        {Users.map(user => (
+                        {users.map(user => (
                             <tbody key={user.id}>
                                 {/* row 1 */}
                                 <tr className='hover:bg-hover-linea cursor-pointer'>
