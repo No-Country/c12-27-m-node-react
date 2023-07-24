@@ -40,10 +40,11 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   const { id } = req.params;
-  const { ...data } = req.body;
+  const data = req.body;
+  const name = data.name.toUpperCase();
 
   try {
-    const categoryUpdate = await service.update(id, data);
+    const categoryUpdate = await service.update(id, { name, ...data });
     res.json(categoryUpdate);
   } catch (error) {
     res.status(401).json({ message: error.message });
