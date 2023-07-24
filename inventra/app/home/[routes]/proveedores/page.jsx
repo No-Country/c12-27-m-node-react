@@ -1,3 +1,4 @@
+'use client'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io'
 import { FaFilter } from 'react-icons/fa'
@@ -9,14 +10,24 @@ import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
 import Products from '@/db/prouctsDB'
+import { useState } from 'react'
+import CardProveedor from '@/components/CardProveedores/CardProveedores'
 
 export default function proveedores() {
+    const [search, setSearch] = useState('')
+    const [categoria, setCategoria] = useState('')
+    const Proveedores = Products.map(Proveedor => Proveedor.proveedor)
+    const Prov = Proveedores.filter(Proveedor => Proveedor.category === categoria);
+    const ProvProp = Proveedores.filter(Proveedor => Proveedor.name === search ? Proveedor.name === search
+        : Proveedor.category === search || Proveedor.id === search || Proveedor.email === search);
     return (
         <div>
             <header className="flex justify-around h-20 border-b border-gray-200">
                 <div className="join w-3/4 p-4 justify-start">
-                    <input className="input w-full input-bordered join-item" placeholder="Buscar" />
-                    <button className="btn join-item bg-[#2969E3] "> <AiOutlineSearch className="mr-3" size={25} color='white' />   </button>
+                    <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
+                    <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
+                        <AiOutlineSearch className="mr-3" size={25} color='white' />
+                    </button>
                 </div>
                 <div className="flex items-center gap-5">
                     <IoMdNotifications className="mr-3" size={28} />
@@ -33,10 +44,42 @@ export default function proveedores() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : {Products.length}</h2>
+                    <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Proveedores.length : Prov.length}</h2>
                 </div>
                 <div>
-                    <button className='flex'> <FaFilter size={20} /> <span className='pl-2'> FILTRAR</span>   </button>
+                    <div className="drawer drawer-end">
+                        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content ">
+                            {/* Page content here */}
+                            <label htmlFor="my-drawer-3" className="drawer-button  flex">
+                                <span className="online  mr-3 cursor-pointer pl-2 flex"><FaFilter size={20} />FILTRAR</span>
+                            </label>
+                        </div>
+                        <div className="drawer-side z-10">
+                            <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                {/* Sidebar content here */}
+                                <h2>Filtros</h2>
+                                <li></li>
+                                <li></li>
+                                <h3>Categorias</h3>
+                                <li></li>
+                                <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
+                                <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
+                                <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
+                                <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
+                                <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
+                                <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
+                                <li></li>
+                                <li></li>
+                                {/* Sidebar content here */}
+                                <h3>Por Precio</h3>
+                                <li></li>
+                                <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
+                                <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
@@ -63,43 +106,15 @@ export default function proveedores() {
                                 <th className='text-center'></th>
                             </tr>
                         </thead>
-                        {Products.map(item => (
-                            <tbody key={item.proveedor.id}>
-                                {/* row 1 */}
-                                <tr className='hover:bg-hover-linea cursor-pointer'>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox checkbox-primary	" />
-                                        </label>
-                                    </th>
-                                    <th className='text-center'>
-                                        <span className="avatar ">
-                                            {item.proveedor.id}
-                                        </span>
-                                    </th>
-                                    <td className='text-center'>
-                                        {item.proveedor.name}
-                                    </td>
-                                    <td className='text-center'>
-                                        {item.category}
-                                    </td>
-                                    <td className='text-center'>
-                                        {item.proveedor.email}
-                                    </td>
-
-                                    <td className='text-center'>
-
-                                    </td>
-                                    <td className='text-center'>
-                                        <div>
-                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {/* row 2 */}
-                            </tbody>
-                        ))}
+                        {search !== ''
+                            ? <>{ProvProp.map(Proveedor => (
+                                <CardProveedor data={Proveedor} key={Proveedor.id} />))}</>
+                            : categoria === '' ? <>{Proveedores.map(Proveedor => (
+                                <CardProveedor data={Proveedor} key={Proveedor.id} />
+                            ))}</> : <>
+                                {Prov.map(Proveedor => (
+                                    <CardProveedor data={Proveedor} key={Proveedor.id} />
+                                ))}</>}
                     </table>
                 </div>
             </div>

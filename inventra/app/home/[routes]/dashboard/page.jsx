@@ -1,17 +1,16 @@
+'use client'
 import { IoMdNotifications } from 'react-icons/io'
 import { PiUsersFill } from 'react-icons/pi'
-
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 import Products from '@/db/prouctsDB'
-import Users from '@/db/userDb'
-import { BarChart } from '@/components/barchart/BarChart'
-import { AreaChart } from '@/components/areachart/AreaChart'
+import AreaChart from '@/components/areachart/AreaChart'
+import BarChart from '@/components/barchart/BarChart'
+
 
 export default function Dashboard() {
   return (
     <div className='flex justify-center items-center flex-col w-full'>
-
       <header className="flex justify-end w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit shadow-md border-gray-200">
         <div className="flex items-center gap-5">
           <IoMdNotifications className="md:mr-3 text-white sm:text-xl md:text-3xl" />
@@ -68,7 +67,7 @@ export default function Dashboard() {
 
         <div className='w-full sm:h-52 md:h-64 lg:h-80 bg-white border border-gray-200 rounded-md flex justify-center items-center 
           sm:mt-40 md:mt-40 lg:mt-0'>
-            <AreaChart />
+          <AreaChart />
         </div>
 
         <div className="flex justify-between items-center sm:flex-col md:flex-row sm:gap-2 lg:gap-8 w-full lg:h-40 my-10">
@@ -79,13 +78,13 @@ export default function Dashboard() {
               <BsGraphDownArrow className='text-lg lg:text-3xl text-[#ED1414]' />
             </div>
             <p className="text-black md:text-sm lg:text-lg">
-              Leche Gloria 50 ml - 
+              Leche Gloria 50 ml -
               <span className='text-black md:text-sm lg:text-lg'>
                 10
               </span>
             </p>
             <p className='text-black md:text-sm lg:text-lg'>
-              Jabón líquido Dove - 
+              Jabón líquido Dove -
               <span className='text-black md:text-xs lg:text-lg'>
                 8
               </span>
@@ -97,13 +96,13 @@ export default function Dashboard() {
               <BsGraphUpArrow className='text-lg lg:text-3xl text-[#4CBD2F]' />
             </div>
             <p className="text-black md:text-sm lg:text-lg">
-              Leche Gloria 50 ml - 
+              Leche Gloria 50 ml -
               <span className='text-black md:text-sm lg:text-lg'>
                 10
               </span>
             </p>
             <p className='text-black md:text-sm lg:text-lg'>
-              Jabón líquido Dove - 
+              Jabón líquido Dove -
               <span className='text-black md:text-xs lg:text-lg'>
                 8
               </span>
@@ -115,13 +114,13 @@ export default function Dashboard() {
               <BsGraphUpArrow className='md:text-lg lg:text-3xl text-[#ED1414]' />
             </div>
             <p className="text-black md:text-sm lg:text-lg">
-              Leche Gloria 50 ml - 
+              Leche Gloria 50 ml -
               <span className='text-black md:text-sm lg:text-lg'>
                 10
               </span>
             </p>
             <p className='text-black md:text-sm lg:text-lg'>
-              Jabón líquido Dove - 
+              Jabón líquido Dove -
               <span className='text-black text-blackmd:text-xs lg:text-lg'>
                 8
               </span>
@@ -130,7 +129,6 @@ export default function Dashboard() {
 
         </div>
       </div>
-      
     </div>
   )
 };

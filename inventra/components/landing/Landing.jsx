@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from './landing.module.css'
+import { useContext } from "react";
+import { UserContext } from "@/app/utils/context/userContext";
+import { redirect } from "next/navigation";
 
 export default function Landing() {
-  const isLog = false
+  const { userStatus, setUserStatus } = useContext(UserContext);
+  userStatus === 'true' ? redirect('/home/routes/dashboard') : {}
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
@@ -20,19 +24,18 @@ export default function Landing() {
             </p>
           </div>
         </div>
-        <Image
-          src="/../public/imgLanding.png"
-          width={800}
-          height={600}
-          alt="Picture of the author"
-          className={styles.img}
-        />
+        <div className={styles.imgContainer}>
+          <Image
+            src="/../public/imgLanding.png"
+            width={900}
+            height={600}
+            alt="Picture of the author"
+            className={styles.img}
+          />
+        </div>
       </div>
       <div className={styles.btnContainer}>
-        <div className={styles.btnBox}>{
-          isLog ? <Link className={styles.btn} href='/home/routes/dashboard'>COMENZAR AHORA</Link>
-            : <Link className={styles.btn} href='/auth/routes/login'>COMENZAR AHORA</Link>
-        }</div>
+        <Link className={styles.btn} href={userStatus === 'true' ? '/home/routes/dashboard' : '/auth/routes/login'}>COMENZAR AHORA</Link>
       </div>
     </div>
   )

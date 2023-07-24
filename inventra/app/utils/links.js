@@ -50,7 +50,22 @@ export const links = [
   // },
   {
     label: 'Salir',
-    route: '/auth/routes/login',
     icon: MdLogout
   }
+  // {
+  //   label: 'addItem',
+  //   route: '/home/routes/inventario/additem',
+  //   icon: MdHelpOutline
+  // },
+  // {
+  //   label: 'addProveedores',
+  //   route: '/home/routes/proveedores/addProveedores',
+  //   icon: MdHelpOutline
+  // },
+  // {
+  //   label: 'addUsers',
+  //   route: '/home/routes/usuarios/addUsers',
+  //   icon: MdHelpOutline
+  // },
+
 ]
