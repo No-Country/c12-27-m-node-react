@@ -53,14 +53,21 @@ export default function RootLayout({ children }) {
   };
 
 
-  const handleAddUsers = (evt) => {
-    evt.preventDefault();
-    // Muestra el usuario creado en consola
-    console.log(formData);
-    // También puedes enviar los datos a un servidor o hacer otras acciones aquí
-    
 
 
+  const handleEditUser = (userId, updatedUser) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.id === userId) {
+          return { ...user, ...updatedUser };
+        }
+        return user;
+      });
+    });
+  };
+
+  const handleDeleteUser = (userId) => {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   };
 
 
@@ -99,7 +106,8 @@ export default function RootLayout({ children }) {
         setFormData,
         handleInputChange,
         handleRoleChange,
-        handleAddUsers,
+        handleEditUser,
+        handleDeleteUser,
         users,
         setUsers,
         }}>
