@@ -16,7 +16,7 @@ import { UserContext } from '@/app/utils/context/userContext'
 
 
 export default function usuarios() {
-    const { users } = useContext(UserContext);
+    const { users, handleEditUser, handleDeleteUser } = useContext(UserContext);
 
     useEffect(() => {
         console.log(users);
@@ -133,8 +133,16 @@ export default function usuarios() {
                                     </td>
                                     <td className='text-center'>
                                         <div>
-                                            <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                                            <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
+                                            <button className="btn btn-circle bg-editar mx-1 " 
+                                                onClick={() => handleEditUser(user.id, updatedUserData)}
+                                                >
+                                                <MdModeEditOutline color='blue' size={'20'} />
+                                            </button>
+                                            <button className="btn btn-circle bg-eliminar  mx-1 "
+                                                onClick={() => handleDeleteUser(user.id)}
+                                                >
+                                                <MdOutlineDeleteOutline color='red' size={'20'} />
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>

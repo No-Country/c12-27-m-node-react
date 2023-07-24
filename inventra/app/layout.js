@@ -50,11 +50,6 @@ export default function RootLayout({ children }) {
     });
   };
 
-  const handleAddUsers = (evt) => {
-    evt.preventDefault();
-    // Muestra el usuario creado en consola
-    console.log(formData);
-    // También puedes enviar los datos a un servidor o hacer otras acciones aquí
   };
 
   //useefect para guardar en el localstorage y para no perder el valor userLog
@@ -90,7 +85,8 @@ export default function RootLayout({ children }) {
         setFormData,
         handleInputChange,
         handleRoleChange,
-        handleAddUsers,
+        handleEditUser,
+        handleDeleteUser,
         users,
         setUsers,
         theme,
