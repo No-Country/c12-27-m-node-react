@@ -6,7 +6,7 @@ export default function Routes({ children }) {
     return (
         <>
             <div className="flex w-full h-full min-h-screen">
-                <div className="m-auto">
+                <div>
                     <Sidebar />
                 </div>
                 <div className="sm:w-full md:w-9/12 lg:w-10/12">

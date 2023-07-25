@@ -3,13 +3,14 @@
 import { UserContext } from "@/app/utils/context/userContext";
 import { links } from "@/app/utils/links";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import {
   RiMenu3Fill,
 } from "react-icons/ri";
 
 const Sidebar = () => {
-  const { userStatus, setUserStatus } = useContext(UserContext);
+  const { key, setKey } = useContext(UserContext);
   return (
     <div className="drawer md:drawer-open lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -39,10 +40,11 @@ const Sidebar = () => {
           </div>
           {/* Sidebar content here */}
           {links.map(({ label, route, icon: Icon }) => (
-            <li key={label} className="hover:bg-[#003EBB] rounded-lg transition-ease-in-out duration-400">
-              <Link href={label === 'Salir' ? '/auth/routes/login' : route}
-                onClick={label === 'Salir' ? () => { setUserStatus(false), alert('desea salir?') } : () => { }}
-                className="flex justify-start items-center gap-2 pl-1"
+            <li key={label}>
+              <Link
+                onClick={label === 'Salir' ? () => { setKey('') } : () => { }}
+                href={label === 'Salir' ? '/auth/routes/login' : route}
+                className="hover:bg-[#003EBB] rounded-lg transition-ease-in-out duration-400 flex justify-start items-center gap-2 pl-1"
               >
                 <span className="flex justify-start items-center gap-3 pl-0 text-white py-2 px-4 sm:text-base md:text-lg cursor-pointer">
                   <Icon className="lg:mr-3 md:text-xl lg:text-3xl" />

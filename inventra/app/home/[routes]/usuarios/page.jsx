@@ -17,13 +17,9 @@ import { UserContext } from '@/app/utils/context/userContext'
 
 export default function usuarios() {
     const { users } = useContext(UserContext);
-
     useEffect(() => {
         console.log(users);
     }, [users]);
-
-
-
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">

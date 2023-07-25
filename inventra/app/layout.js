@@ -17,6 +17,9 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const [userData, setUserData] = useState()
+  //estado del key del usuario para auth
+  const [key, setKey] = useState('')
   const router = useRouter()
   //useparams para la navegacion entre path dinamicos
   const params = useParams();
@@ -57,20 +60,30 @@ export default function RootLayout({ children }) {
     // También puedes enviar los datos a un servidor o hacer otras acciones aquí
   };
 
-  //useefect para guardar en el localstorage y para no perder el valor userLog
+  // //useefect para guardar en el localstorage y para no perder el valor userLog
+  // useEffect(() => {
+  //   //funcion para recuperar el valor del estado del usuario logged
+  //   setUserStatus((localStorage.getItem('userLog')) ?? 'false')
+  // }, [])
+  // useEffect(() => {
+  //   localStorage.setItem('userLog', userStatus)
+  // }, [userStatus])
+  // //redirect si esta log
+  // useEffect(() => {
+  //   path === ruta || 'addItem' || 'addUsers' || 'addProveedores'
+  //     ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') }
+  //       : () => { router.push('/auth/routes/login'), setUserStatus('false') }
+  // }, [userStatus])
+
   useEffect(() => {
     //funcion para recuperar el valor del estado del usuario logged
-    setUserStatus((localStorage.getItem('userLog')) ?? 'false')
+    setKey((localStorage.getItem('key')) ?? '')
+
   }, [])
+
   useEffect(() => {
-    localStorage.setItem('userLog', userStatus)
-  }, [userStatus])
-  //redirect si esta log
-  useEffect(() => {
-    path === ruta || 'addItem' || 'addUsers' || 'addProveedores'
-      ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') }
-        : router.push('/auth/routes/login')
-  }, [userStatus])
+    localStorage.setItem('key', key)
+  }, [key])
 
   //useefect para guardar en el localstorage y para no perder el valor de theme
   useEffect(() => {
@@ -84,8 +97,8 @@ export default function RootLayout({ children }) {
   return (
     <UserContext.Provider
       value={{
-        userStatus,
-        setUserStatus,
+        setUserData,
+        userData,
         formData,
         setFormData,
         handleInputChange,
@@ -94,7 +107,9 @@ export default function RootLayout({ children }) {
         users,
         setUsers,
         theme,
-        setTheme
+        setTheme,
+        key,
+        setKey
       }}>
       <html lang="en" className="h-full" data-theme={theme}>
         <body className={'h-full min-h-screen font-sans'}>

@@ -9,13 +9,32 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-import Products from '../../../../db/prouctsDB.js'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CardItem from '@/components/cardItem/CardItem.jsx'
+import axios from 'axios'
+import { UserContext } from '@/app/utils/context/userContext'
 
 
 
 export default function Inventario() {
+    const [Products, setProducts] = useState([])
+    const { key, setKey } = useContext(UserContext);
+    key ?
+        axios.get('https://inventra.onrender.com/product', {
+            headers: {
+                Authorization: `${key}`
+
+            }
+        }
+        )
+            .then(function (response) {
+                setProducts(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        : {}
+
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
     const Product = Products.filter(Producto => Producto.category === categoria);
@@ -161,12 +180,12 @@ export default function Inventario() {
                         </thead>
                         {search !== ''
                             ? <>{ProductProp.map(Producto => (
-                                <CardItem data={Producto} key={Producto.id} />))}</>
+                                <CardItem data={Producto} key={Producto._id} />))}</>
                             : categoria === '' ? <>{Products.map(Producto => (
-                                <CardItem data={Producto} key={Producto.id} />
+                                <CardItem data={Producto} key={Producto._id} />
                             ))}</> : <>
                                 {Product.map(Producto => (
-                                    <CardItem data={Producto} key={Producto.id} />
+                                    <CardItem data={Producto} key={Producto._id} />
                                 ))}</>}
                     </table>
                 </div>

@@ -8,18 +8,54 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "@/app/utils/context/userContext";
+import axios from "axios";
+
 
 
 
 
 export default function Login() {
-    const { userStatus, setUserStatus } = useContext(UserContext);
+    const { key, setKey } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
+    console.log('datos', emailLog, passLog)
+
+    emailLog && passLog ?
+        axios.post('https://inventra.onrender.com/auth/login', {
+            "email": emailLog,
+            "password": passLog
+            // "email": "bytesur@inventra.com",
+            // "password": "bytesur123"
+        }
+        )
+            //funcion para recuperar el valor del estado del usuario logged
+            .then(function (response) {
+                setKey(response.data.token)
+                console.log('key', key)
+            })
+            .catch(function (error) {
+            }) : {};
+
+
+    // axios.get('https://inventra.onrender.com/product', {
+    //     headers: {
+    //         Authorization: `${tOken}`
+
+    //     }
+    // }
+    // )
+    //     .then(function (response) {
+    //         console.log(response.data)
+
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     }) 
+
+    const { userStatus, setUserStatus } = useContext(UserContext);
+
     const router = useRouter()
     // const user = false
-    const email = 'joa@joa'
-    const password = '123'
     const [isValid, setIsValid] = useState(true)
     const { theme } = useContext(UserContext);
     return (
@@ -48,8 +84,9 @@ export default function Login() {
                     <h5>Iniciar sesion</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-                            emailLog === email && passLog === password ?
-                                localStorage.setItem('userLog', 'true') || router.push('/home/routes/dashboard')
+                            key ?
+                                // localStorage.setItem('userLog', 'true') || 
+                                router.push('/home/routes/dashboard')
                                 :
                                 setIsValid(false)
                     }}>
