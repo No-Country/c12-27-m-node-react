@@ -12,7 +12,7 @@ import {
 const Sidebar = () => {
   const { key, setKey } = useContext(UserContext);
   return (
-    <div className="drawer md:drawer-open lg:drawer-open">
+    <div className="drawer md:drawer-open lg:drawer-open ml-0">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
@@ -24,9 +24,9 @@ const Sidebar = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 sm:w-[69%] md:w-52 lg:w-80 h-full bg-[#2969E3] text-base-content">
+        <ul className="menu p-4 h-full bg-[#2969E3] text-base-content fixed">
           <img
-            className="sm:mb-5 md:my-8 sm:w-32 md:w-48 lg:w-64"
+            className="sm:mb-5 md:my-8 sm:w-32 md:w-44 lg:w-56 xl:w-64"
             src="/logo-inventra-blanco.png"
             alt="avatar"
           />

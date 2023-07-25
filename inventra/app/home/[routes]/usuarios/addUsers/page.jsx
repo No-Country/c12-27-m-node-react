@@ -12,7 +12,7 @@ export default function addUsers() {
     formData,
     handleInputChange,
     handleRoleChange,
-    handleAddUsers,
+    handleEditUser,
     users,
     setUsers
   } = useContext(UserContext);
@@ -20,11 +20,14 @@ export default function addUsers() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // Agrega el usuario al estado del contexto
-    // (No es necesario llamar setUsers aquí ya que handleAddUsers está definido en RootLayout)
+    
+    const existrUser = users.find(user => user.id === formData.id);
 
-    // También actualiza la lista de usuarios en el contexto con el nuevo usuario
-    setUsers((prevUsers) => [...prevUsers, formData]);
+    if(existrUser){
+      handleEditUser(existrUser.id, formData);
+    } else {
+      setUsers((prevUsers) => [...prevUsers, formData]);
+    }
 
 
   };

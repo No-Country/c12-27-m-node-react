@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { redirect, useParams, usePathname, useRouter } from 'next/navigation'
 import { UserContext } from './utils/context/userContext'
 import { links } from './utils/links'
+import router from './home/[routes]/page'
 
 
 
@@ -13,8 +14,10 @@ import { links } from './utils/links'
 
 export const metadata = {
   title: 'Inventra',
-  description: 'Inventario control app',
+  description: 'Inventario Control app',
 }
+
+
 
 export default function RootLayout({ children }) {
   const [userData, setUserData] = useState()
@@ -31,14 +34,19 @@ export default function RootLayout({ children }) {
   //status si el ususario esta log
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   //useparams para la navegacion entre path dinamicos
+
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     role: "visualizador",
   });
+
+
   const handleInputChange = (evt) => {
     //console.log(evt.target.value);
+
     const { name, value } = evt.target;
     // Actualiza el estado con los valores del formulario
     setFormData({
@@ -46,6 +54,8 @@ export default function RootLayout({ children }) {
       [name]: value,
     });
   };
+
+
   const handleRoleChange = (evt) => {
     setFormData({
       ...formData,
@@ -53,11 +63,28 @@ export default function RootLayout({ children }) {
     });
   };
 
+
   const handleAddUsers = (evt) => {
     evt.preventDefault();
     // Muestra el usuario creado en consola
     console.log(formData);
-    // También puedes enviar los datos a un servidor o hacer otras acciones aquí
+
+  };
+
+
+  const handleEditUser = (userId, updatedUser) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.id === userId) {
+          return { ...user, ...updatedUser };
+        }
+        return user;
+      });
+    });
+  };
+
+  const handleDeleteUser = (userId) => {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   };
 
   // //useefect para guardar en el localstorage y para no perder el valor userLog
@@ -104,6 +131,8 @@ export default function RootLayout({ children }) {
         handleInputChange,
         handleRoleChange,
         handleAddUsers,
+        handleEditUser,
+        handleDeleteUser,
         users,
         setUsers,
         theme,
