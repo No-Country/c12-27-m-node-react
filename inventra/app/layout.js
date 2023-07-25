@@ -20,6 +20,17 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+  const [userData, setUserData] = useState()
+  //estado del key del usuario para auth
+  const [key, setKey] = useState('')
+  const router = useRouter()
+  //useparams para la navegacion entre path dinamicos
+  const params = useParams();
+  const path = usePathname();
+  const ruta = links.map(({ route }) => (route)).filter(rute => rute === path)
+  //estado si el ususario esta logged
+  const [userStatus, setUserStatus] = useState(path === ruta[0] ? 'true' : 'false');
+  const [theme, setTheme] = useState('light')
   //status si el ususario esta log
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   //useparams para la navegacion entre path dinamicos
@@ -57,7 +68,7 @@ export default function RootLayout({ children }) {
     evt.preventDefault();
     // Muestra el usuario creado en consola
     console.log(formData);
-    
+
   };
 
 
@@ -76,38 +87,45 @@ export default function RootLayout({ children }) {
     setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   };
 
+  // //useefect para guardar en el localstorage y para no perder el valor userLog
+  // useEffect(() => {
+  //   //funcion para recuperar el valor del estado del usuario logged
+  //   setUserStatus((localStorage.getItem('userLog')) ?? 'false')
+  // }, [])
+  // useEffect(() => {
+  //   localStorage.setItem('userLog', userStatus)
+  // }, [userStatus])
+  // //redirect si esta log
+  // useEffect(() => {
+  //   path === ruta || 'addItem' || 'addUsers' || 'addProveedores'
+  //     ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') }
+  //       : () => { router.push('/auth/routes/login'), setUserStatus('false') }
+  // }, [userStatus])
 
-
-  const router = useRouter()
-  //useparams para la navegacion entre path dinamicos
-  const params = useParams();
-  const path = usePathname();
-  const ruta = links.map(({ route }) => (route)).filter(rute => rute === path)
-  //estado si el ususario esta logged
-  const [userStatus, setUserStatus] = useState(path === ruta[0] ? 'true' : 'false');
-  //useefect para guardar en el localstorage y para no perder el valor
   useEffect(() => {
     //funcion para recuperar el valor del estado del usuario logged
-    setUserStatus((localStorage.getItem('userLog')) ?? 'false')
+    setKey((localStorage.getItem('key')) ?? '')
+
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('key', key)
+  }, [key])
+
+  //useefect para guardar en el localstorage y para no perder el valor de theme
+  useEffect(() => {
+    //funcion para recuperar el valor del estado del usuario logged
+    setTheme((localStorage.getItem('theme')) ?? 'light')
 
   }, [])
   useEffect(() => {
-    localStorage.setItem('userLog', userStatus)
-  }, [userStatus])
-
-  useEffect(() => {
-
-  }, [])
-  //redirect si esta log
-  useEffect(() => {
-    path === ruta || 'addItem' || 'addUsers' || 'addProveedores'
-      ? {} : userStatus === 'true' ? () => { router.push('/home/routes/dashboard'), setUserStatus('true') } : router.push('/auth/routes/login')
-  }, [userStatus])
+    localStorage.setItem('theme', theme)
+  }, [theme])
   return (
-    <UserContext.Provider 
-      value={{ 
-        userStatus, 
-        setUserStatus,
+    <UserContext.Provider
+      value={{
+        setUserData,
+        userData,
         formData,
         setFormData,
         handleInputChange,
@@ -117,8 +135,12 @@ export default function RootLayout({ children }) {
         handleDeleteUser,
         users,
         setUsers,
-        }}>
-      <html lang="en" className="h-full">
+        theme,
+        setTheme,
+        key,
+        setKey
+      }}>
+      <html lang="en" className="h-full" data-theme={theme}>
         <body className={'h-full min-h-screen font-sans'}>
           <div className="flex h-full min-h-screen justify-center">
             {params.routes ? (<div className="w-full">{children}</div>)
