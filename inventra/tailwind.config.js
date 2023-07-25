@@ -12,7 +12,7 @@ module.exports = {
         // Define el breakpoint sm como 320px
         'sm': '320px',
         'lg': '1100px',
-        'xl': '1200px',
+        'xl': '1350px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

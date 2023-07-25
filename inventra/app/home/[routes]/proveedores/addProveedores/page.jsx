@@ -7,14 +7,14 @@ import { MdArrowBackIosNew } from "react-icons/md";
 export default function addProveedores() {
   return (
     <div className='flex justify-center items-center flex-col w-full'>
-      <header className="flex sm:justify-end md:justify-between w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit shadow-md border-gray-200">
+      <header className="flex sm:justify-end md:justify-between sm:w-screen md:w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit">
 
         <div className="sm:hidden md:flex items-center gap-5">
-          <Link href={'/home/routes/usuarios'} >
+          <Link href={'/home/routes/proveedores'} >
             <MdArrowBackIosNew className="md:mr-3 text-white sm:text-xl md:text-3xl" />
           </Link>
           <h5>
-            Registro de usuarios
+            Registro de proveedores
           </h5>
         </div>
 

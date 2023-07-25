@@ -6,28 +6,18 @@ import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 import Products from '@/db/prouctsDB'
 import AreaChart from '@/components/areachart/AreaChart'
 import BarChart from '@/components/barchart/BarChart'
+import Header2 from '@/components/header/Header2'
 
 
 export default function Dashboard() {
   return (
     <div className='flex justify-center items-center flex-col w-full'>
       
-      <header className="flex justify-end sm:w-screen md:w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit shadow-md border-gray-200">
-        <div className="flex items-center gap-5">
-          <IoMdNotifications className="md:mr-3 text-white sm:text-xl md:text-3xl" />
-          <img src='/epyon2.jpg' alt="avatar" className="rounded-full ] sm:h-[20px] sm:w-[20px] md:w-[32px] md:h-[32px] lg:w-[50px] lg:h-[50px] sm:hidden md:block" />
-          <div className='sm:hidden md:block'>
-            <p className="text-gray-500 md:text-base lg:text-lg">
-              Nombre de usuario
-            </p>
-            <p className="text-gray-400 md:text-sm lg:text-base">
-              Role
-            </p>
-          </div>
-        </div>
+      <header className="flex justify-end sm:w-screen md:w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit">
+        <Header2 />
       </header>
 
-      <div className="flex flex-col justify-center items-center w-full gap-14 sm:py-6 md:py-8 lg:py-10 sm:px-8 md:px-16 xl:px-24">
+      <div className="flex flex-col justify-center items-center w-full gap-14 sm:py-6 md:py-10 lg:py-16 sm:px-8 md:px-16 xl:px-24 xl:mr-[1.5%]">
 
         <div className="flex sm:flex-col md:flex-col lg:flex-row justify-between sm:gap-10 lg:gap-6 xl:gap-10 w-full lg:h-32 xl:h-40 ">
 

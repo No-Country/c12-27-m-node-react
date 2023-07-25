@@ -33,7 +33,7 @@ export default function usuarios() {
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
                     </button>
                 </div>
-                <div className="flex     items-center gap-5">
+                <div className="flex  items-center gap-5">
                     <IoMdNotifications className="mr-3" size={28} />
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>

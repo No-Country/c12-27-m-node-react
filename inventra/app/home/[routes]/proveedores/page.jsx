@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Products from '@/db/prouctsDB'
 import { useState } from 'react'
 import CardProveedor from '@/components/CardProveedores/CardProveedores'
+import HeaderProv from '@/components/header/HeaderProv'
 
 export default function proveedores() {
     const [search, setSearch] = useState('')
@@ -22,27 +23,10 @@ export default function proveedores() {
         : Proveedor.category === search || Proveedor.id === search || Proveedor.email === search);
     return (
         <div>
-            <header className="flex justify-around h-20 border-b border-gray-200">
-                <div className="join w-3/4 p-4 justify-start">
-                    <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
-                    <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
-                        <AiOutlineSearch className="mr-3" size={25} color='white' />
-                    </button>
-                </div>
-                <div className="flex items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
-                    <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
-                    <div>
-                        <p className="text-gray-500">
-                            Nombre de usuario
-                        </p>
-                        <p className="text-gray-400">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </header>
-            <div className='flex justify-around mt-4 items-center flex-wrap'>
+            <div>
+                <HeaderProv setSearch={setSearch} />
+            </div>
+            <div className='flex justify-around mt-4 items-center flex-wrap '>
                 <div>
                     <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Proveedores.length : Prov.length}</h2>
                 </div>
