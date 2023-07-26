@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const CompanySchema = new Schema({
   NIF: {
-    type: Number,
+    type: String,
     required: true,
     unique: true,
   },
@@ -10,10 +10,6 @@ const CompanySchema = new Schema({
     type: String,
     required: true,
     unique: true,
-  },
-  address: {
-    type: String,
-    required: true,
   },
   manager: {
     type: String,
