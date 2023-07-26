@@ -3,15 +3,16 @@ import { IoMdNotifications } from 'react-icons/io'
 import { PiUsersFill } from 'react-icons/pi'
 import { FaClipboardCheck } from 'react-icons/fa'
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
-import Products from '@/db/prouctsDB'
 import AreaChart from '@/components/areachart/AreaChart'
 import BarChart from '@/components/barchart/BarChart'
+import { useState } from 'react'
 
 
 export default function Dashboard() {
+  const [Products, setProducts] = useState([])
   return (
     <div className='flex justify-center items-center flex-col w-full'>
-      
+
       <header className="flex justify-end sm:w-screen md:w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit shadow-md border-gray-200">
         <div className="flex items-center gap-5">
           <IoMdNotifications className="md:mr-3 text-white sm:text-xl md:text-3xl" />
@@ -60,19 +61,8 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-
-          <div className="sm:w-full md:w-full lg:w-1/2 h-full border border-gray-200 rounded-md flex justify-center items-center bg-white">
-            <BarChart />
-          </div>
         </div>
-
-        <div className='w-full sm:h-52 md:h-64 lg:h-80 bg-white border border-gray-200 rounded-md flex justify-center items-center 
-          '>
-          <AreaChart />
-        </div>
-
         <div className="flex justify-between items-center sm:flex-col md:flex-row sm:gap-2 lg:gap-8 w-full lg:h-40">
-
           <div className="flex flex-col justify-center items-center gap-2 sm:w-full md:w-1/3 h-32 bg-white border border-gray-200 rounded-md">
             <div className="flex justify-center gap-2">
               <h4 className="text-black font-sans font-bold md:text-base lg:text-2xl">Stock bajo</h4>

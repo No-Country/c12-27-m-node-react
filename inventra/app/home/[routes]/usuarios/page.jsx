@@ -16,12 +16,8 @@ import { UserContext } from '@/app/utils/context/userContext'
 
 
 export default function usuarios() {
-<<<<<<< HEAD
-    const { users } = useContext(UserContext);
-=======
     const { users, handleEditUser, handleDeleteUser } = useContext(UserContext);
 
->>>>>>> 66b4df3ea24c29c8d759c71d213bfb4837d36ed2
     useEffect(() => {
         console.log(users);
     }, [users]);
@@ -35,7 +31,6 @@ export default function usuarios() {
                     </button>
                 </div>
                 <div className="flex     items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
@@ -134,14 +129,14 @@ export default function usuarios() {
                                     </td>
                                     <td className='text-center'>
                                         <div>
-                                            <button className="btn btn-circle bg-editar mx-1 " 
+                                            <button className="btn btn-circle bg-editar mx-1 "
                                                 onClick={() => handleEditUser(user.id, updatedUserData)}
-                                                >
+                                            >
                                                 <MdModeEditOutline color='blue' size={'20'} />
                                             </button>
                                             <button className="btn btn-circle bg-eliminar  mx-1 "
                                                 onClick={() => handleDeleteUser(user.id)}
-                                                >
+                                            >
                                                 <MdOutlineDeleteOutline color='red' size={'20'} />
                                             </button>
                                         </div>

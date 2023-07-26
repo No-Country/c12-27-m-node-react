@@ -1,15 +1,15 @@
 import Sidebar from "@/components/sidebar/Sidebar2";
-
+import style from './layout.module.css'
 
 
 export default function Routes({ children }) {
     return (
         <>
-            <div className="flex w-full min-h-screen">
-                <div className="sm:w-[60%] md:w-3/12 xl:w-2/12">
+            <div className={style.childrenBox}>
+                <div className="sm:w-[60%] md:w-3/12 ">
                     <Sidebar />
                 </div>
-                <div className="sm:w-full md:w-9/12 lg:w-10/12">
+                <div >
                     {children}
                 </div>
             </div>

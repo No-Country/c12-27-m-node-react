@@ -8,16 +8,17 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { UserContext } from "@/app/utils/context/userContext";
+import axios from "axios";
 
 export default function createAcount() {
-    const { userStatus, setUserStatus } = useContext(UserContext);
+    const [companyName, setCompanyName] = useState('')
     const [nameLog, setNameLog] = useState('')
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
+    const [nif, setNif] = useState(Math.random(1, 1000000000))
+    const [staus, setStatus] = useState('')
+    console.log('datos', emailLog, passLog, companyName, nameLog, nif)
     const router = useRouter()
-    // const user = false
-    const email = 'joa@joa'
-    const password = '123'
     const [isValid, setIsValid] = useState(true)
     const { theme } = useContext(UserContext);
     return (
@@ -43,14 +44,45 @@ export default function createAcount() {
                     <h2 className={style.titleBold}>Bienvenido a inventra!</h2>
                 </div>
                 <div className={style.formBox}>
-                    <h5>Crear cuenta</h5>
+                    <h5>Crear cuenta como empresa</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-                            emailLog === email && passLog === password ?
-                                localStorage.setItem('userLog', true) || router.push('/home/routes/dashboard')
-                                :
-                                setIsValid(false)
+                            emailLog && passLog && companyName && nameLog && nif ?
+                                axios.post('https://inventra.onrender.com/company', {
+                                    "NIF": nif,
+                                    "companyname": companyName,
+                                    "manager": nameLog,
+                                    "email": emailLog,
+                                    "password": passLog
+                                }
+                                )
+                                    //funcion para recuperar el valor del estado del usuario logged
+                                    .then(function (response) {
+                                        setStatus(response.status)
+                                    })
+                                    .catch(function (error) {
+                                    }) : {};
+                        staus === 200 || 201 ?
+                            router.push('/auth/routes/login')
+                            :
+                            setIsValid(false)
                     }}>
+                        {/* //input nombre */}
+                        <div className={style.inputBox}>
+                            <label className={style.label}>
+                                <BsFillPersonFill size={20} className={style.icon} />
+                                <input name='companyName'
+                                    onChange={(e) => {
+                                        setCompanyName(e.target.value)
+                                    }}
+                                    className={isValid === true ? style.inputs : style.inputsInvalid}
+                                    type="Text"
+                                    placeholder="Nombre de la Compañia"
+                                    required />
+                            </label>
+                            {isValid === false ? <small className={style.smallsInvalid}>incorrecto</small>
+                                : <small className={style.smallsValid}>.</small>}
+                        </div>
                         {/* //input nombre */}
                         <div className={style.inputBox}>
                             <label className={style.label}>

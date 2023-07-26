@@ -1,19 +1,14 @@
 'use client'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoMdNotifications } from 'react-icons/io'
-import { FaFilter } from 'react-icons/fa'
 import { BiSolidDownload } from 'react-icons/bi'
 import { MdAdd } from 'react-icons/md'
-import { BiSolidLabel } from 'react-icons/bi'
-import { FaArrowRight } from 'react-icons/fa'
-import { MdModeEditOutline } from 'react-icons/md'
-import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-import Products from '@/db/prouctsDB'
 import { useState } from 'react'
 import CardProveedor from '@/components/CardProveedores/CardProveedores'
 
 export default function proveedores() {
+    const [Products, setProducts] = useState([])
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
     const Proveedores = Products.map(Proveedor => Proveedor.proveedor)
@@ -30,7 +25,6 @@ export default function proveedores() {
                     </button>
                 </div>
                 <div className="flex items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
@@ -45,41 +39,6 @@ export default function proveedores() {
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
                     <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Proveedores.length : Prov.length}</h2>
-                </div>
-                <div>
-                    <div className="drawer drawer-end">
-                        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-                        <div className="drawer-content ">
-                            {/* Page content here */}
-                            <label htmlFor="my-drawer-3" className="drawer-button  flex">
-                                <span className="online  mr-3 cursor-pointer pl-2 flex"><FaFilter size={20} />FILTRAR</span>
-                            </label>
-                        </div>
-                        <div className="drawer-side z-10">
-                            <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                                {/* Sidebar content here */}
-                                <h2>Filtros</h2>
-                                <li></li>
-                                <li></li>
-                                <h3>Categorias</h3>
-                                <li></li>
-                                <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
-                                <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
-                                <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
-                                <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
-                                <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
-                                <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
-                                <li></li>
-                                <li></li>
-                                {/* Sidebar content here */}
-                                <h3>Por Precio</h3>
-                                <li></li>
-                                <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
-                                <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
