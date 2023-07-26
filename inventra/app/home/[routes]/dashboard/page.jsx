@@ -11,13 +11,13 @@ import Header2 from '@/components/header/Header2'
 
 export default function Dashboard() {
   return (
-    <div className='flex justify-center items-center flex-col w-full'>
+    <div className='flex justify-center items-center flex-col gap-10 w-full'>
       
-      <header className="flex justify-end sm:w-screen md:w-full sm:h-10 md:h-16 lg:h-20 px-10 sm:bg-[#2969E3] md:bg-inherit">
+      <div className='w-full flex justify-end items-center'>
         <Header2 />
-      </header>
+      </div>
 
-      <div className="flex flex-col justify-center items-center w-full gap-14 sm:py-6 md:py-10 lg:py-16 sm:px-8 md:px-16 xl:px-24 xl:mr-[1.5%]">
+      <div className="flex flex-col justify-center items-center w-[80%] gap-14">
 
         <div className="flex sm:flex-col md:flex-col lg:flex-row justify-between sm:gap-10 lg:gap-6 xl:gap-10 w-full lg:h-32 xl:h-40 ">
 

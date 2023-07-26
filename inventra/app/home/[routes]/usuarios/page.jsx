@@ -10,21 +10,30 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-//import Users from '../../../../db/userDb'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '@/app/utils/context/userContext'
+import axios from 'axios'
 
 
 export default function usuarios() {
-<<<<<<< HEAD
-    const { users } = useContext(UserContext);
-=======
-    const { users, handleEditUser, handleDeleteUser } = useContext(UserContext);
+    const { users, setUsers, key, handleEditUser, handleDeleteUser } = useContext(UserContext);
 
->>>>>>> 66b4df3ea24c29c8d759c71d213bfb4837d36ed2
-    useEffect(() => {
-        console.log(users);
-    }, [users]);
+
+    key ?
+        axios.get('https://inventra.onrender.com/user', {
+            headers: {
+                Authorization: `${key}`
+
+            }
+        }
+        )
+            .then(res => {
+                setUsers(res.data)
+            })
+            .catch(err => {
+                console.log('error al traer los usuarios', err)
+            })
+        : {}
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">

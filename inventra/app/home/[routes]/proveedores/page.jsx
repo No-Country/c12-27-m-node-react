@@ -26,7 +26,7 @@ export default function proveedores() {
             <div>
                 <HeaderProv setSearch={setSearch} />
             </div>
-            <div className='flex justify-around mt-4 items-center flex-wrap '>
+            <div className='flex justify-around w-[80%] mt-4 items-center flex-wrap '>
                 <div>
                     <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Proveedores.length : Prov.length}</h2>
                 </div>
@@ -73,33 +73,33 @@ export default function proveedores() {
                         <MdAdd className=' text-2xl ' color='white' /> AGREGAR PROVEEDORES
                     </Link>
                 </div>
-            </div>
-            <div className='flex justify-around mt-4 items-center flex-wrap '>
-                <div className="px-10   overflow-x-auto w-full">
-                    <table className="table w-full border rounded-lg">
-                        {/* head */}
-                        <thead>
-                            <tr>
-                                <th>
-                                </th>
-                                <th className='text-center'>codigo</th>
-                                <th className='text-center'>Nombre del usuario</th>
-                                <th className='text-center'>Categoria</th>
-                                <th className='text-center'>Contacto</th>
-                                <th className='text-center'></th>
-                                <th className='text-center'></th>
-                            </tr>
-                        </thead>
-                        {search !== ''
-                            ? <>{ProvProp.map(Proveedor => (
-                                <CardProveedor data={Proveedor} key={Proveedor.id} />))}</>
-                            : categoria === '' ? <>{Proveedores.map(Proveedor => (
-                                <CardProveedor data={Proveedor} key={Proveedor.id} />
-                            ))}</> : <>
-                                {Prov.map(Proveedor => (
+                <div className='flex justify-around mt-4 items-center flex-wrap '>
+                    <div className="px-10   overflow-x-auto w-full">
+                        <table className="table w-full border rounded-lg">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>
+                                    </th>
+                                    <th className='text-center'>codigo</th>
+                                    <th className='text-center'>Nombre del usuario</th>
+                                    <th className='text-center'>Categoria</th>
+                                    <th className='text-center'>Contacto</th>
+                                    <th className='text-center'></th>
+                                    <th className='text-center'></th>
+                                </tr>
+                            </thead>
+                            {search !== ''
+                                ? <>{ProvProp.map(Proveedor => (
+                                    <CardProveedor data={Proveedor} key={Proveedor.id} />))}</>
+                                : categoria === '' ? <>{Proveedores.map(Proveedor => (
                                     <CardProveedor data={Proveedor} key={Proveedor.id} />
-                                ))}</>}
-                    </table>
+                                ))}</> : <>
+                                    {Prov.map(Proveedor => (
+                                        <CardProveedor data={Proveedor} key={Proveedor.id} />
+                                    ))}</>}
+                        </table>
+                    </div>
                 </div>
             </div>
         </div >
