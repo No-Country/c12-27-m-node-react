@@ -4,15 +4,16 @@ const CompanySchema = new Schema({
   NIF: {
     type: Number,
     required: true,
+    unique: true,
   },
   companyname: {
     type: String,
     required: true,
+    unique: true,
   },
   address: {
     type: String,
     required: true,
-    unique: true,
   },
   manager: {
     type: String,
@@ -27,6 +28,10 @@ const CompanySchema = new Schema({
     type: String,
   },
 });
+CompanySchema.methods.toJSON = function () {
+  const { __v, ...company } = this.toObject();
+  return company;
+};
 
 const CompanyModel = model('Company', CompanySchema);
 
