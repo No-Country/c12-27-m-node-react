@@ -7,7 +7,6 @@ const validatorCreateCompany = [
     .exists()
     .notEmpty()
     .withMessage('companyname is require'),
-  check('address').exists().notEmpty().withMessage('address is require'),
   check('manager').exists().notEmpty().withMessage('manager is require'),
   check('email').exists().notEmpty().isEmail().withMessage('email is require'),
   check('password').exists().notEmpty().withMessage('password is require'),
