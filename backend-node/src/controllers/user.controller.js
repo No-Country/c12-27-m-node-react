@@ -4,7 +4,7 @@ const { handlerHttp, handlerError } = require('../handlers/error.handler');
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await service.findAll();
+    const users = await service.findAll(req.user.company);
     res.json(users);
   } catch (error) {
     handlerHttp(res, 'ERROR_GET_USERS', error);
@@ -25,10 +25,11 @@ const createUser = async (req, res) => {
   try {
     const data = req.body;
     const newUser = await service.createSeller(data);
+    console.log(newUser);
     res.status(201).json(newUser);
   } catch (error) {
+    console.log(error);
     handlerError(res, 400, error.message);
-    // handlerHttp(res, 'ERROR_POST_USER', error);
   }
 };
 

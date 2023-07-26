@@ -2,8 +2,8 @@ const UserModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
 class UserService {
-  async findAll() {
-    const users = await UserModel.find();
+  async findAll(query) {
+    const users = await UserModel.find({ company: query });
     return users;
   }
 
@@ -28,10 +28,11 @@ class UserService {
   }
 
   async createSeller(data) {
-    let password =
+    let passwordTmp =
       Math.random().toString(32).substring(2) + Date.now().toString(32);
+    let password = await bcrypt.hash(passwordTmp, 10);
     const newUser = await UserModel.create({ password, ...data });
-    return newUser;
+    return { passwordTmp, newUser };
   }
 
   async update(id, data) {

@@ -14,7 +14,6 @@ const createCompany = async (req, res) => {
     res.status(201).json(resSuperUser);
   } catch (error) {
     handlerError(res, 400, error.message);
-    // handlerHttp(res, 'ERROR_POST_COMPANY', error);
   }
 };
 

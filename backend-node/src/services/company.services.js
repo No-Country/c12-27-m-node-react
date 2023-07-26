@@ -17,6 +17,10 @@ const CreateCompany = async (req) => {
   const { body } = req;
   let { password, email, ...company } = body;
 
+  // Validate if email company exists
+  const validateCompany = await CompanyModel.findOne({ email });
+  if (validateCompany) throw new Error(`Company already exists`);
+
   // Encrypt password
   password = await bcrypt.hash(password, 10);
 
@@ -25,13 +29,13 @@ const CreateCompany = async (req) => {
 
   // Create user manager
   let role = 'ADMIN_ROLE';
-  let { manager, companyname } = body;
+  let { manager } = body;
   await UserModel.create({
     name: manager,
     email,
     password,
     role,
-    company: companyname,
+    company: newCompany._id,
   });
 
   return newCompany;
