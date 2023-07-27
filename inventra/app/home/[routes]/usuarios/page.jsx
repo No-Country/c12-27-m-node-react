@@ -19,21 +19,27 @@ export default function usuarios() {
     const { users, setUsers, key, handleEditUser, handleDeleteUser } = useContext(UserContext);
 
 
-    key ?
-        axios.get('https://inventra.onrender.com/user', {
-            headers: {
-                Authorization: `${key}`
+    
+    useEffect(() => {
+            key ?
+                axios.get('https://inventra.onrender.com/user', {
+                    headers: {
+                        Authorization: `${key}`
+        
+                    }
+                }
+                )
+                    .then(res => {
+                        setUsers(res.data)
+                    })
+                    .catch(err => {
+                        console.log('error al traer los usuarios', err)
+                    })
+                : {}
 
-            }
-        }
-        )
-            .then(res => {
-                setUsers(res.data)
-            })
-            .catch(err => {
-                console.log('error al traer los usuarios', err)
-            })
-        : {}
+        }, [key, setUsers])
+
+
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">
@@ -43,8 +49,7 @@ export default function usuarios() {
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
                     </button>
                 </div>
-                <div className="flex  items-center gap-5">
-                    <IoMdNotifications className="mr-3" size={28} />
+                <div className="flex     items-center gap-5">
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
@@ -143,14 +148,14 @@ export default function usuarios() {
                                     </td>
                                     <td className='text-center'>
                                         <div>
-                                            <button className="btn btn-circle bg-editar mx-1 " 
+                                            <button className="btn btn-circle bg-editar mx-1 "
                                                 onClick={() => handleEditUser(user.id, updatedUserData)}
-                                                >
+                                            >
                                                 <MdModeEditOutline color='blue' size={'20'} />
                                             </button>
                                             <button className="btn btn-circle bg-eliminar  mx-1 "
                                                 onClick={() => handleDeleteUser(user.id)}
-                                                >
+                                            >
                                                 <MdOutlineDeleteOutline color='red' size={'20'} />
                                             </button>
                                         </div>

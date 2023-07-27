@@ -11,9 +11,9 @@ import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import CardItem from '@/components/cardItem/CardItem.jsx'
-import axios from 'axios'
 import { UserContext } from '@/app/utils/context/userContext'
-
+import style from './inventario.module.css'
+const axios = require('axios');
 
 
 export default function Inventario() {
@@ -41,82 +41,26 @@ export default function Inventario() {
     const ProductProp = Products.filter(Producto => Producto.name === search ? Producto.name === search
         : Producto.category === search || Producto.serialCode === search);
     return (
-        <div className="">
-            <header className="flex justify-around h-20 border-b border-gray-200">
-                <div className="join w-3/4 p-4 justify-start">
+        <div className={style.inventarioBox}>
+            <header className={style.header}>
+                <div className={`${style.search} join justify-start`}>
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
                     </button>
                 </div>
-                <div className="flex     items-center gap-5">
-                    <div>
-                        <div className="drawer drawer-end">
-                            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                            <div className="drawer-content ">
-                                {/* Page content here */}
-                                <span className="online  mr-3 cursor-pointer pl-2 flex"><FaFilter size={20} />FILTRAR</span>
-                            </div>
-                            <div className="drawer drawer-end">
-                                <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-                                <div className="drawer-content ">
-                                    {/* Page content here */}
-                                    <label htmlFor="my-drawer-3" className="drawer-button  flex">
-                                        <span className='pl-2'><FaFilter className="online  mr-3 cursor-pointer" size={20} />FILTRAR</span>
-                                    </label>
-                                </div>
-                                <div className="drawer-side z-10">
-                                    <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-                                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                                        {/* Sidebar content here */}
-                                        <h2>Filtros</h2>
-                                        <li></li>
-                                        <li></li>
-                                        <h3>Categorias</h3>
-                                        <li></li>
-                                        <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
-                                        <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
-                                        <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
-                                        <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
-                                        <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
-                                        <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
-                                        <li></li>
-                                        <li></li>
-                                        {/* Sidebar content here */}
-                                        <h3>Por Precio</h3>
-                                        <li></li>
-                                        <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
-                                        <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
-                    <div>
-                        <p className="text-gray-500">
-                            Nombre de usuario
-                        </p>
-                        <p className="text-gray-400">
-                            Role
-                        </p>
-                    </div>
+                <div className={style.dataUser}>
+                    <p className="text-gray-500">
+                        Nombre de usuario
+                    </p>
+                    <p className="text-gray-400">
+                        Role
+                    </p>
                 </div>
             </header>
-            <div className='flex justify-around mt-4 items-center flex-wrap'>
+            <div className={style.accionbar}>
                 <div>
                     <h2> Total : {search !== '' ? ProductProp.length : categoria === '' ? Products.length : Product.length}</h2>
-                </div>
-                <div className='flex items-baseline gap-1 '>
-                    <h2>Mostrar</h2>
-                    <select className="select select-bordered" defaultValue={'¿cuantos desea ver?'}>
-                        <option>¿cuantos desea ver?</option>
-                        <option>5</option>
-                        <option>7</option>
-                        <option>9</option>
-                        <option>11</option>
-                        <option>15</option>
-                    </select>
                 </div>
                 <div>
                     <div className="drawer drawer-end">
@@ -124,7 +68,7 @@ export default function Inventario() {
                         <div className="drawer-content ">
                             {/* Page content here */}
                             <label htmlFor="my-drawer-3" className="drawer-button  flex">
-                                <FaFilter className="online  mr-3 cursor-pointer" size={20} /> <span className='pl-2'> FILTRAR</span>
+                                <FaFilter className="online  mr-3 cursor-pointer" size={20} /> <span className={style.textFiltrar}> FILTRAR</span>
                             </label>
                         </div>
                         <div className="drawer-side z-10">
@@ -152,7 +96,7 @@ export default function Inventario() {
                 <div>
 
                 </div>
-                <div>
+                <div className={style.exportar}>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
                 </div>
                 <div>
@@ -161,14 +105,12 @@ export default function Inventario() {
                     </Link>
                 </div>
             </div>
-            <div className='flex justify-around mt-4 items-center flex-wrap '>
-                <div className="px-10   overflow-x-auto w-full">
-                    <table className="table w-full border rounded-lg">
+            <div className='f'>
+                <div className={style.table}>
+                    <table className="">
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>
-                                </th>
                                 <th className='text-center'>imagen</th>
                                 <th className='text-center'>Codigo</th>
                                 <th className='text-center'>Nombre del producto</th>

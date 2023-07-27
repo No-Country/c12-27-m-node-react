@@ -34,6 +34,9 @@ export default function RootLayout({ children }) {
   //status si el ususario esta log
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   //useparams para la navegacion entre path dinamicos
+  
+  const [companyName, setCompanyName] = useState('')
+
 
 
   const [formData, setFormData] = useState({
@@ -118,9 +121,28 @@ export default function RootLayout({ children }) {
     setTheme((localStorage.getItem('theme')) ?? 'light')
 
   }, [])
+
+
   useEffect(() => {
     localStorage.setItem('theme', theme)
   }, [theme])
+
+
+  
+  useEffect(() => {
+    //funcion para recuperar el valor del estado del usuario logged
+    setCompanyName((localStorage.getItem('companyName')))
+    
+  }, [companyName])
+  
+
+
+  //useefect para guardar en el localstorage y para no perder el valor de companyName
+  useEffect(() => {
+    localStorage.setItem('companyName', companyName)
+  }, [companyName])
+
+
   return (
     <UserContext.Provider
       value={{
@@ -138,7 +160,9 @@ export default function RootLayout({ children }) {
         theme,
         setTheme,
         key,
-        setKey
+        setKey,
+        companyName,
+        setCompanyName
       }}>
       <html lang="en" className="h-full" data-theme={theme}>
         <body className={'h-full min-h-screen font-sans'}>

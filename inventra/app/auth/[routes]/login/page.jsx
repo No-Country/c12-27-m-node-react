@@ -14,44 +14,11 @@ import axios from "axios";
 
 
 
+
 export default function Login() {
     const { key, setKey } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
-    console.log('datos', emailLog, passLog)
-
-    emailLog && passLog ?
-        axios.post('https://inventra.onrender.com/auth/login', {
-            "email": emailLog,
-            "password": passLog
-            // "email": "bytesur@inventra.com",
-            // "password": "bytesur123"
-        }
-        )
-            //funcion para recuperar el valor del estado del usuario logged
-            .then(function (response) {
-                setKey(response.data.token)
-                console.log('key', key)
-            })
-            .catch(function (error) {
-            }) : {};
-
-
-    // axios.get('https://inventra.onrender.com/product', {
-    //     headers: {
-    //         Authorization: `${tOken}`
-
-    //     }
-    // }
-    // )
-    //     .then(function (response) {
-    //         console.log(response.data)
-
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     }) 
-
     const { userStatus, setUserStatus } = useContext(UserContext);
 
     const router = useRouter()
@@ -84,11 +51,25 @@ export default function Login() {
                     <h5>Iniciar sesion</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-                            key ?
-                                // localStorage.setItem('userLog', 'true') || 
-                                router.push('/home/routes/dashboard')
-                                :
-                                setIsValid(false)
+
+                            emailLog && passLog ?
+                                axios.post('https://inventra.onrender.com/auth/login', {
+                                    "email": emailLog,
+                                    "password": passLog
+                                }
+                                )
+                                    //funcion para recuperar el valor del estado del usuario logged
+                                    .then(function (response) {
+                                        setKey(response.data.token)
+                                        console.log('key para la authorization', key)
+                                    })
+                                    .catch(function (error) {
+                                    }) : {};
+                        key ?
+                            // localStorage.setItem('userLog', 'true') || 
+                            router.push('/home/routes/dashboard')
+                            :
+                            setIsValid(false)
                     }}>
                         <div className={style.inputBox}>
                             <label className={style.label}>
