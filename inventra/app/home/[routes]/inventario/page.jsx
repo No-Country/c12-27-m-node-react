@@ -15,7 +15,6 @@ import { UserContext } from '@/app/utils/context/userContext'
 import style from './inventario.module.css'
 const axios = require('axios');
 
-
 export default function Inventario() {
     const [Products, setProducts] = useState([])
     const { key, setKey } = useContext(UserContext);

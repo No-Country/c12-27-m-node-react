@@ -26,6 +26,21 @@ export default function Login() {
     // const user = false
     const [isValid, setIsValid] = useState(true)
     const { theme } = useContext(UserContext);
+
+    emailLog && passLog ?
+        axios.post('https://inventra.onrender.com/auth/login', {
+            "email": emailLog,
+            "password": passLog
+        }
+        )
+            //funcion para recuperar el valor del estado del usuario logged
+            .then(function (response) {
+                setKey(response.data.token)
+                setIdC(response.data.user.company)
+            })
+            .catch(function (error) {
+            }) : {};
+
     return (
         <div className={style.container}>
             <Image
@@ -52,27 +67,11 @@ export default function Login() {
                     <h5>Iniciar sesion</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-
-                            emailLog && passLog ?
-                                axios.post('https://inventra.onrender.com/auth/login', {
-                                    "email": emailLog,
-                                    "password": passLog
-                                }
-                                )
-                                    //funcion para recuperar el valor del estado del usuario logged
-                                    .then(function (response) {
-                                        setKey(response.data.token)
-                                        setIdC(response.data.user.company)
-                                        console.log(idC)
-                                        console.log('key para la authorization', key)
-                                    })
-                                    .catch(function (error) {
-                                    }) : {};
-                        key ?
-                            // localStorage.setItem('userLog', 'true') || 
-                            router.push('/home/routes/dashboard')
-                            :
-                            setIsValid(false)
+                            key ?
+                                // localStorage.setItem('userLog', 'true') || 
+                                router.push('/home/routes/dashboard')
+                                :
+                                setIsValid(false)
                     }}>
                         <div className={style.inputBox}>
                             <label className={style.label}>
