@@ -3,12 +3,16 @@ const ProductModel = require('../models/product.model');
 class ProductService {
   async findAll() {
     const query = { status: true };
-    const products = await ProductModel.find(query).select('-__v -status');
+    const products = await ProductModel.find(query)
+      .populate('category', 'name')
+      .select('-__v');
     return products;
   }
 
   async findOne(id) {
-    const product = await ProductModel.findById(id).select('-__v');
+    const product = await ProductModel.findById(id)
+      .populate('category', 'name')
+      .select('-__v');
     if (!product) throw new Error(`Product not found`);
     return product;
   }
