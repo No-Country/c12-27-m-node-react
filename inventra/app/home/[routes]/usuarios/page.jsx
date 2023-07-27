@@ -10,13 +10,20 @@ import { FaArrowRight } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import Link from 'next/link'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '@/app/utils/context/userContext'
 import axios from 'axios'
 
 
 export default function usuarios() {
     const { users, setUsers, key, handleEditUser, handleDeleteUser } = useContext(UserContext);
+    const [Products, setProducts] = useState([])
+    
+    const [search, setSearch] = useState('')
+    const [categoria, setCategoria] = useState('')
+    const Product = Products.filter(Producto => Producto.category === categoria);
+    const ProductProp = Products.filter(Producto => Producto.name === search ? Producto.name === search
+        : Producto.category === search || Producto.serialCode === search);
 
 
     
@@ -43,7 +50,7 @@ export default function usuarios() {
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">
-                <div className="join w-3/4 p-4 justify-start">
+            <div className={`${style.search} join justify-start`}>
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
@@ -115,55 +122,16 @@ export default function usuarios() {
                                 <th className='text-center'></th>
                             </tr>
                         </thead>
-                        {users.map(user => (
-                            <tbody key={user.id}>
-                                {/* row 1 */}
-                                <tr className='hover:bg-hover-linea cursor-pointer'>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" className="checkbox checkbox-primary	" />
-                                        </label>
-                                    </th>
-                                    <th className='text-center'>
-                                        <div className="avatar ">
-                                            <div className="w-12 rounded-lg ring ring-contorno ">
-                                                <img src={user.avatar} />
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td className='text-center'>
-                                        {user.name}
-                                    </td>
-                                    <td className='text-center'>
-                                        {user.email}
-                                    </td>
-                                    <td className='text-center'>
-                                        {user.role}
-                                    </td>
-                                    <td className='text-center'>
-
-                                    </td>
-                                    <td className='text-center'>
-
-                                    </td>
-                                    <td className='text-center'>
-                                        <div>
-                                            <button className="btn btn-circle bg-editar mx-1 "
-                                                onClick={() => handleEditUser(user.id, updatedUserData)}
-                                            >
-                                                <MdModeEditOutline color='blue' size={'20'} />
-                                            </button>
-                                            <button className="btn btn-circle bg-eliminar  mx-1 "
-                                                onClick={() => handleDeleteUser(user.id)}
-                                            >
-                                                <MdOutlineDeleteOutline color='red' size={'20'} />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {/* row 2 */}
-                            </tbody>
-                        ))}
+                        { search !== ''
+                            ? <>{ProductProp.map(Producto => (
+                                <CardItem data={Producto} key={Producto._id} />))}</>
+                            : categoria === '' ? <>{Products.map(Producto => (
+                                <CardItem data={Producto} key={Producto._id} />
+                            ))}</> : <>
+                                {Product.map(Producto => (
+                                    <CardItem data={Producto} key={Producto._id} />
+                                ))}</>
+                        }
                     </table>
                 </div>
             </div>

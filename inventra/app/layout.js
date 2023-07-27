@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
   const [userData, setUserData] = useState()
   //estado del key del usuario para auth
   const [key, setKey] = useState('')
+  const [idC, setIdC] = useState('')
   const router = useRouter()
   //useparams para la navegacion entre path dinamicos
   const params = useParams();
@@ -107,6 +108,16 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     //funcion para recuperar el valor del estado del usuario logged
+    setIdC((localStorage.getItem('idc')) ?? '')
+
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('idc', idC)
+  }, [idC])
+
+  useEffect(() => {
+    //funcion para recuperar el valor del estado del usuario logged
     setKey((localStorage.getItem('key')) ?? '')
 
   }, [])
@@ -161,8 +172,8 @@ export default function RootLayout({ children }) {
         setTheme,
         key,
         setKey,
-        companyName,
-        setCompanyName
+        idC,
+        setIdC
       }}>
       <html lang="en" className="h-full" data-theme={theme}>
         <body className={'h-full min-h-screen font-sans'}>

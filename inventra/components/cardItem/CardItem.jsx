@@ -1,7 +1,12 @@
+'use client'
+import { UserContext } from "@/app/utils/context/userContext";
+import axios from "axios";
+import { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineDeleteOutline } from "react-icons/md";
 
 const CardItem = ({ data }) => {
+    const { key, setKey } = useContext(UserContext);
     return (
         <tbody>
             {/* row 1 */}
@@ -37,7 +42,24 @@ const CardItem = ({ data }) => {
                 <td className='text-center'>
                     <button className="btn btn-circle  bg-salida mx-1 ">  <FaArrowRight color='green' size={'20'} /></button>
                     <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                    <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
+                    <button className="btn btn-circle bg-eliminar  mx-1 " onClick={() => {
+                        key ?
+                            axios.delete(`https://inventra.onrender.com/product/${data._id}`, {
+                                headers: {
+                                    Authorization: `${key}`
+
+                                }
+                            }
+                            )
+                                .then(function (response) {
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                })
+                            : {}
+
+                    }
+                    }>  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
                 </td>
             </tr>
         </tbody>

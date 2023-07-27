@@ -19,13 +19,14 @@ export default function addUsers() {
     users,
     setUsers,
     key,
-    companyName,
+    idC, 
+    setIdC
   } = useContext(UserContext);
 
 
   const newFormData = {
     ...formData,
-    companyName,
+    company: idC
   }
 
 

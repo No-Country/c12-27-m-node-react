@@ -17,6 +17,7 @@ import axios from "axios";
 
 export default function Login() {
     const { key, setKey } = useContext(UserContext);
+    const { idC, setIdC } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
     const { userStatus, setUserStatus } = useContext(UserContext);
@@ -61,6 +62,8 @@ export default function Login() {
                                     //funcion para recuperar el valor del estado del usuario logged
                                     .then(function (response) {
                                         setKey(response.data.token)
+                                        setIdC(response.data.user.company)
+                                        console.log(idC)
                                         console.log('key para la authorization', key)
                                     })
                                     .catch(function (error) {
