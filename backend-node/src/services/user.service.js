@@ -27,12 +27,15 @@ class UserService {
     return newUser;
   }
 
-  async createSeller(data) {
-    let passwordTmp =
-      Math.random().toString(32).substring(2) + Date.now().toString(32);
-    let password = await bcrypt.hash(passwordTmp, 10);
-    const newUser = await UserModel.create({ password, ...data });
-    return { passwordTmp, newUser };
+  async createSeller({ name, email, password, company }) {
+    const passwordHashed = await bcrypt.hash(password, 10);
+    const newUser = await UserModel.create({
+      name,
+      email,
+      password: passwordHashed,
+      company,
+    });
+    return newUser;
   }
 
   async update(id, data) {

@@ -25,10 +25,8 @@ const createUser = async (req, res) => {
   try {
     const data = req.body;
     const newUser = await service.createSeller(data);
-    console.log(newUser);
     res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
     handlerError(res, 400, error.message);
   }
 };
