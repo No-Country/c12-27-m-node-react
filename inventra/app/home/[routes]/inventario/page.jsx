@@ -16,8 +16,21 @@ import style from './inventario.module.css'
 const axios = require('axios');
 
 export default function Inventario() {
+    const [categories, setCategories] = useState([])
     const [Products, setProducts] = useState([])
     const { key, setKey } = useContext(UserContext);
+    key ? axios.get('https://inventra.onrender.com/category', {
+        headers: {
+            Authorization: `${key}`
+
+        }
+    }
+    )
+        .then(function (response) {
+            setCategories(response.data)
+        })
+        .catch(function (error) {
+        }) : {}
     key ?
         axios.get('https://inventra.onrender.com/product', {
             headers: {
@@ -30,18 +43,17 @@ export default function Inventario() {
                 setProducts(response.data)
             })
             .catch(function (error) {
-                console.log(error);
             })
         : {}
 
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
-    const Product = Products.filter(Producto => Producto.category === categoria);
+    const Product = Products.filter(Producto => Producto.category.name === categoria);
     const ProductProp = Products.filter(Producto => Producto.name === search ? Producto.name === search
-        : Producto.category === search || Producto.serialCode === search);
+        : Producto.category.name === search || Producto.serialCode === search);
     return (
-        <div className={style.inventarioBox}>
-            <header className={style.header}>
+        <div>
+            <header className={`${style.header} flex justify-around h-20 border-b border-gray-200`}>
                 <div className={`${style.search} join justify-start`}>
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
@@ -57,7 +69,7 @@ export default function Inventario() {
                     </p>
                 </div>
             </header>
-            <div className={style.accionbar}>
+            <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
                     <h2> Total : {search !== '' ? ProductProp.length : categoria === '' ? Products.length : Product.length}</h2>
                 </div>
@@ -74,20 +86,22 @@ export default function Inventario() {
                             <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <h2>Filtros</h2>
-                                <h3>Categorias</h3>
-                                <li><button onClick={() => { setCategoria('') }}>Ver todo</button></li>
-                                <li><button onClick={() => { setCategoria('limpieza') }}>Limpieza</button></li>
-                                <li><button onClick={() => { setCategoria('comida') }}>Comida</button></li>
-                                <li><button onClick={() => { setCategoria('electro') }}>Tecnologia</button></li>
-                                <li><button onClick={() => { setCategoria('ropa') }}>Ropa</button></li>
-                                <li><button onClick={() => { setCategoria('calzado') }}>Calzado</button></li>
-                            </ul>
-                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                                {/* Sidebar content here */}
-                                <h3>Por Precio</h3>
-                                <li><button onClick={() => { setCategoria('') }}>Ascendente</button></li>
-                                <li><button onClick={() => { setCategoria('limpieza') }}>Descendente</button></li>
+                                <h2 className='text-center'>Filtros</h2>
+                                <li></li>
+                                <li></li>
+                                <h3 className='text-center'>Categorias</h3>
+                                <li></li>
+                                <li></li>
+                                <li className='text-center cursor-pointer' onClick={() => { setCategoria('') }}>Todo</li>
+                                <li></li>
+                                {
+                                    categories.map(res => (
+                                        <div key={res._id}>
+                                            <li className='text-center cursor-pointer' onClick={() => { setCategoria(res.name) }}>{res.name}</li>
+                                            <li></li>
+                                        </div>
+                                    ))
+                                }
                             </ul>
                         </div>
                     </div>
@@ -104,9 +118,9 @@ export default function Inventario() {
                     </Link>
                 </div>
             </div>
-            <div className='f'>
-                <div className={style.table}>
-                    <table className="">
+            <div className='flex justify-around mt-4 items-center flex-wrap '>
+                <div className="">
+                    <table className={`${style.box} table border`}>
                         {/* head */}
                         <thead>
                             <tr>
@@ -119,15 +133,29 @@ export default function Inventario() {
                                 <th className='text-center'>Acciones</th>
                             </tr>
                         </thead>
-                        {search !== ''
-                            ? <>{ProductProp.map(Producto => (
-                                <CardItem data={Producto} key={Producto._id} />))}</>
-                            : categoria === '' ? <>{Products.map(Producto => (
-                                <CardItem data={Producto} key={Producto._id} />
-                            ))}</> : <>
-                                {Product.map(Producto => (
-                                    <CardItem data={Producto} key={Producto._id} />
-                                ))}</>}
+                        {
+                            Products.length ?
+                                <>
+                                    {search
+                                        ? <>{ProductProp.map(Producto => (
+                                            <CardItem data={Producto} key={Producto._id} />))}</>
+                                        : categoria === '' ? <>{Products.map(Producto => (
+                                            <CardItem data={Producto} key={Producto._id} />
+                                        ))}</> : <>
+                                            {Product.map(Producto => (
+                                                <CardItem data={Producto} key={Producto._id} />
+                                            ))}</>}
+                                </>
+                                : <tbody >
+                                    <tr><th></th></tr>
+                                    <tr><th></th></tr>
+                                    <tr><th></th></tr>
+                                    <tr>
+                                        <td></td><td></td><td></td>
+                                        <td className="loading loading-spinner loading-lg text-center"></td>
+                                    </tr>
+                                </tbody>
+                        }
                     </table>
                 </div>
             </div>

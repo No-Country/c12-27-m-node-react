@@ -17,7 +17,6 @@ export default function createAcount() {
     const [passLog, setPassLog] = useState('')
     const [nif, setNif] = useState(Math.random(1, 1000000000))
     const [staus, setStatus] = useState('')
-    console.log('datos', emailLog, passLog, companyName, nameLog, nif)
     const router = useRouter()
     const [isValid, setIsValid] = useState(true)
     const { theme } = useContext(UserContext);

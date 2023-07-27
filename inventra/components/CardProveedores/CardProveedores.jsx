@@ -12,14 +12,14 @@ const CardProveedor = ({ data }) => {
                 </th>
                 <th className='text-center'>
                     <span className="avatar ">
-                        {data.id}
+                        {data._id}
                     </span>
                 </th>
                 <td className='text-center'>
                     {data.name}
                 </td>
                 <td className='text-center'>
-                    {data.category}
+                    {data.dni}
                 </td>
                 <td className='text-center'>
                     {data.email}

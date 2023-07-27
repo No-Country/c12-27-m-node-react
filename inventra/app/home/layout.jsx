@@ -5,11 +5,11 @@ import style from './layout.module.css'
 export default function Routes({ children }) {
     return (
         <>
-            <div className={style.childrenBox}>
-                <div className="sm:w-[60%] md:w-3/12 ">
+            <div className="flex w-full min-h-screen">
+                <div className="sm:w-[60%] md:w-4/12 xl:w-1/1">
                     <Sidebar />
                 </div>
-                <div >
+                <div className="w-full flex justify-center">
                     {children}
                 </div>
             </div>
