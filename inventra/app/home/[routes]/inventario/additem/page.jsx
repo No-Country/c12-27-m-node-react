@@ -159,21 +159,21 @@ export default function addItem() {
                             }}
                             className="input input-bordered  w-full max-w-xs mt-6" />
                         <div>
-                            <select onChange={(e) => { setCategory(e.target.value) }}>
-                                <option selected value={'categorias'}>Categorias</option>
+                            <select defaultValue={'categorias'} onChange={(e) => { setCategory(e.target.value) }}>
+                                <option value={'categorias'}>Categorias</option>
                                 {
                                     categories.map(res => (
-                                        <option value={res._id} key={res._id}>{res.name}</option>
+                                        <option value={res._id} key={res.name}>{res.name}</option>
                                     ))
                                 }
                             </select>
                         </div>
                         <div>
-                            <select  onChange={(e) => { setProveedor(e.target.value) }}>
-                                <option selected value={'proveedores'}>Proveedores</option>
+                            <select defaultValue={'proveedores'} onChange={(e) => { setProveedor(e.target.value) }}>
+                                <option  value={'proveedores'}>Proveedores</option>
                                 {
                                     proveedores.map(res => (
-                                        <option key={res._id} value={res._id}>{res.name}</option>
+                                        <option key={res.name} value={res._id}>{res.name}</option>
                                     ))
                                 }
                             </select>

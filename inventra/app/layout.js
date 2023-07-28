@@ -38,14 +38,14 @@ export default function RootLayout({ children }) {
   //useparams para la navegacion entre path dinamicos
   
   const [companyName, setCompanyName] = useState('')
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || {
-      name: "",
-      email: "",
-      password: "",
-      role: "visualizador",
+  const [user, setUser] = useState('')
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-  )
+  }, []);
 
 
 
