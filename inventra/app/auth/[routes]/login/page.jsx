@@ -48,7 +48,7 @@ export default function Login() {
     return (
         <div className={style.container}>
             <Image
-                src="/../public/loginImg.webp"
+                src="https://i.ibb.co/Rcq4Fqz/loginImg.webp"
                 width={757}
                 height={0}
                 alt="Picture of the author"
@@ -71,13 +71,10 @@ export default function Login() {
                     <h5>Iniciar sesion</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-                            setTimeout(() => {
-                                status === 200 ?
-                                    // localStorage.setItem('userLog', 'true') || 
-                                    router.push('/home/routes/dashboard')
-                                    :
-                                    setIsValid(false)
-                            }, "4000");
+                            status === 200 ?
+                                // localStorage.setItem('userLog', 'true') || 
+                                router.push('/home/routes/dashboard')
+                                : {}
                     }}>
                         <div className={style.inputBox}>
                             <label className={style.label}>
