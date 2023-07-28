@@ -11,7 +11,6 @@ import { UserContext } from "@/app/utils/context/userContext";
 import axios from "axios";
 
 export default function createAcount() {
-    const [companyName, setCompanyName] = useState('')
     const [nameLog, setNameLog] = useState('')
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
@@ -19,7 +18,7 @@ export default function createAcount() {
     const [staus, setStatus] = useState('')
     const router = useRouter()
     const [isValid, setIsValid] = useState(true)
-    const { theme } = useContext(UserContext);
+    const { theme, companyName, setCompanyName } = useContext(UserContext);
     return (
         <div className={style.container}>
             <Image

@@ -18,7 +18,7 @@ const axios = require('axios');
 export default function Inventario() {
     const [categories, setCategories] = useState([])
     const [Products, setProducts] = useState([])
-    const { key, setKey } = useContext(UserContext);
+    const { key, setKey, user } = useContext(UserContext);
     key ? axios.get('https://inventra.onrender.com/category', {
         headers: {
             Authorization: `${key}`
@@ -53,19 +53,20 @@ export default function Inventario() {
         : Producto.category.name === search || Producto.serialCode === search);
     return (
         <div>
-            <header className={`${style.header} flex justify-around h-20 border-b border-gray-200`}>
+            <header className={`${style.header} flex justify-around h-20`}>
                 <div className={`${style.search} join justify-start`}>
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
                     </button>
                 </div>
+                <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                 <div className={style.dataUser}>
                     <p className="text-gray-500">
-                        Nombre de usuario
+                        {user.name}
                     </p>
                     <p className="text-gray-400">
-                        Role
+                        {user.role}
                     </p>
                 </div>
             </header>

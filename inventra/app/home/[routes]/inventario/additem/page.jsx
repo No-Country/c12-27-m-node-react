@@ -9,7 +9,7 @@ import { UserContext } from '@/app/utils/context/userContext';
 
 
 export default function addItem() {
-    const { key, setKey } = useContext(UserContext);
+    const { key, setKey, user } = useContext(UserContext);
     const [itemName, setItemName] = useState("")
     const [price, setPrice] = useState(Number)
     const [serialCode, setSerialCode] = useState("")
@@ -61,9 +61,9 @@ export default function addItem() {
         setToggle(!toggle);
     };
     return (
-        <div>
-            <header className="flex justify-end h-20 border-b border-gray-200 px-5">
-                <div className="flex     items-center gap-5">
+        <div className='flex justify-start items-center flex-col w-full'>
+            <header className="flex justify-end h-20">
+                <div className="flex  items-center gap-5">
 
                     <div>
                         <div className="drawer drawer-end">
@@ -87,10 +87,10 @@ export default function addItem() {
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
-                            Nombre de usuario
+                            {user.name}
                         </p>
                         <p className="text-gray-400">
-                            Role
+                            {user.role}
                         </p>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ export default function addItem() {
                                 }) : {};
                 }}>
                 <div className="flex flex-col w-full lg:flex-row">
-                    <div className="grid flex-grow  flex-col flex place-items-center">
+                    <div className="flex-grow  flex-col flex place-items-center">
 
                         <div className="avatar flex-col place-items-center ">
                             <div className="w-40 rounded-2xl">
@@ -163,14 +163,14 @@ export default function addItem() {
                                 <option selected value={'categorias'}>Categorias</option>
                                 {
                                     categories.map(res => (
-                                        <option value={res._id}>{res.name}</option>
+                                        <option value={res._id} key={res._id}>{res.name}</option>
                                     ))
                                 }
                             </select>
                         </div>
                         <div>
-                            <select onChange={(e) => { setProveedor(e.target.value) }}>
-                                <option selected value={'categorias'}>Proveedores</option>
+                            <select  onChange={(e) => { setProveedor(e.target.value) }}>
+                                <option selected value={'proveedores'}>Proveedores</option>
                                 {
                                     proveedores.map(res => (
                                         <option key={res._id} value={res._id}>{res.name}</option>

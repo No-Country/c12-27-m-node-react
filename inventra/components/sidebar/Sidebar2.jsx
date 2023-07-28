@@ -17,8 +17,7 @@ const Sidebar = () => {
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
         <label htmlFor="my-drawer-2" className=" drawer-button ml-3 md:hidden lg:hidden
-            fixed left-2 top-1 bg-[#2969E3] p-2 rounded-full
-          ">
+            fixed left-2 top-1 bg-[#2969E3] p-2 rounded-full cursor-pointer">
           <RiMenu3Fill className="text-xl text-white" />
         </label>
       </div>

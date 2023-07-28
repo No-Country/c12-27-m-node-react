@@ -12,7 +12,7 @@ const CardProveedor = ({ data }) => {
                 </th>
                 <th className='text-center'>
                     <span className="avatar ">
-                        {data._id}
+                        {data.id}
                     </span>
                 </th>
                 <td className='text-center'>
