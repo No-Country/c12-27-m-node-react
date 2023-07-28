@@ -34,8 +34,6 @@ export default function Login() {
         axios.post('https://inventra.onrender.com/auth/login', {
             "email": emailLog,
             "password": passLog,
-            "name": name,
-            "role": role,
         }
         )
             //funcion para recuperar el valor del estado del usuario logged
