@@ -6,6 +6,7 @@ import { redirect, useParams, usePathname, useRouter } from 'next/navigation'
 import { UserContext } from './utils/context/userContext'
 import { links } from './utils/links'
 import router from './home/[routes]/page'
+import axios from 'axios'
 
 
 
@@ -37,6 +38,14 @@ export default function RootLayout({ children }) {
   //useparams para la navegacion entre path dinamicos
   
   const [companyName, setCompanyName] = useState('')
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || {
+      name: "",
+      email: "",
+      password: "",
+      role: "visualizador",
+    }
+  )
 
 
 
@@ -76,19 +85,21 @@ export default function RootLayout({ children }) {
   };
 
 
-  const handleEditUser = (userId, updatedUser) => {
-    setUsers((prevUsers) => {
-      return prevUsers.map((user) => {
-        if (user.id === userId) {
-          return { ...user, ...updatedUser };
-        }
-        return user;
-      });
-    });
-  };
 
-  const handleDeleteUser = (userId) => {
-    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+
+  const handleDeleteUser = async (userId) => {
+      await  axios.delete(`https://inventra.onrender.com/user/${userId}`, {
+      headers: {
+        Authorization: `${key}`,
+      },
+    })
+    .then((res) => {
+      // Si la solicitud al servidor fue exitosa, actualizamos el estado local
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+    })
+    .catch((err) => {
+      console.log('Error al eliminar el usuario', err);
+    });
   };
 
   // //useefect para guardar en el localstorage y para no perder el valor userLog
@@ -154,6 +165,16 @@ export default function RootLayout({ children }) {
   }, [companyName])
 
 
+  //useefect para guardar en el localstorage y para no perder el valor de user
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [user])
+
+
+
+
+
+
   return (
     <UserContext.Provider
       value={{
@@ -164,7 +185,6 @@ export default function RootLayout({ children }) {
         handleInputChange,
         handleRoleChange,
         handleAddUsers,
-        handleEditUser,
         handleDeleteUser,
         users,
         setUsers,
@@ -173,7 +193,9 @@ export default function RootLayout({ children }) {
         key,
         setKey,
         idC,
-        setIdC
+        setIdC,
+        user,
+        setUser,
       }}>
       <html lang="en" className="h-full" data-theme={theme}>
         <body className={'h-full min-h-screen font-sans'}>

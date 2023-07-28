@@ -16,11 +16,13 @@ import axios from "axios";
 
 
 export default function Login() {
-    const { key, setKey } = useContext(UserContext);
+    const { key, setKey, user, setUser } = useContext(UserContext);
     const { idC, setIdC } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
     const { userStatus, setUserStatus } = useContext(UserContext);
+
+    const {name, role} = user
 
     const router = useRouter()
     // const user = false
@@ -30,17 +32,19 @@ export default function Login() {
     emailLog && passLog ?
         axios.post('https://inventra.onrender.com/auth/login', {
             "email": emailLog,
-            "password": passLog
+            "password": passLog,
+            "name": name,
+            "role": role,
         }
         )
             //funcion para recuperar el valor del estado del usuario logged
             .then(function (response) {
                 setKey(response.data.token)
                 setIdC(response.data.user.company)
+                setUser(response.data.user)
             })
             .catch(function (error) {
             }) : {};
-
     return (
         <div className={style.container}>
             <Image

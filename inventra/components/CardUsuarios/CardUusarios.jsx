@@ -1,6 +1,12 @@
+import { UserContext } from "@/app/utils/context/userContext";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import { MdModeEditOutline, MdOutlineDeleteOutline } from "react-icons/md"
 
 const CardUsarios = ({ data }) => {
+    const { handleDeleteUser } = useContext(UserContext);
+
+
     return (
         <tbody>
             {/* row 1 */}
@@ -34,8 +40,9 @@ const CardUsarios = ({ data }) => {
                 </td>
                 <td className='text-center'>
                     <div>
-                        <button className="btn btn-circle bg-editar mx-1 ">   <MdModeEditOutline color='blue' size={'20'} /></button>
-                        <button className="btn btn-circle bg-eliminar  mx-1 ">  <MdOutlineDeleteOutline color='red' size={'20'} /></button>
+                        <button className="btn btn-circle bg-eliminar  mx-1 " onClick={() => { handleDeleteUser(data.id) }}>
+                            <MdOutlineDeleteOutline color='red' size={'20'} />
+                        </button>
                     </div>
                 </td>
             </tr>

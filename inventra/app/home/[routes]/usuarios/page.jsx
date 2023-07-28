@@ -13,16 +13,17 @@ import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '@/app/utils/context/userContext'
 import axios from 'axios'
+import CardUsarios from '@/components/CardUsuarios/CardUusarios'
 
 
 export default function usuarios() {
-    const { users, setUsers, key, handleEditUser, handleDeleteUser } = useContext(UserContext);
-    const [Products, setProducts] = useState([])
-    
+    const { users, setUsers, key, user } = useContext(UserContext);
+    console.log(user)
+
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
-    const Product = Products.filter(Producto => Producto.category === categoria);
-    const ProductProp = Products.filter(Producto => Producto.name === search ? Producto.name === search
+    const Product = users.filter(Producto => Producto.category === categoria);
+    const ProductProp = users.filter(Producto => Producto.name === search ? Producto.name === search
         : Producto.category === search || Producto.serialCode === search);
 
 
@@ -46,11 +47,11 @@ export default function usuarios() {
 
         }, [key, setUsers])
 
-
+        console.log(users)
     return (
         <>
             <header className="flex justify-around h-20 border-b border-gray-200">
-            <div className={`${style.search} join justify-start`}>
+                <div className="join w-3/4 p-4 justify-start">
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
                         <AiOutlineSearch className="mr-3" size={25} color='white' />
@@ -60,10 +61,10 @@ export default function usuarios() {
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
-                            Nombre de usuario
+                            {user.name}
                         </p>
                         <p className="text-gray-400">
-                            Role
+                            {user.role}
                         </p>
                     </div>
                 </div>
@@ -124,12 +125,12 @@ export default function usuarios() {
                         </thead>
                         { search !== ''
                             ? <>{ProductProp.map(Producto => (
-                                <CardItem data={Producto} key={Producto._id} />))}</>
-                            : categoria === '' ? <>{Products.map(Producto => (
-                                <CardItem data={Producto} key={Producto._id} />
+                                <CardUsarios data={Producto} key={Producto.id} />))}</>
+                            : categoria === '' ? <>{users.map(Producto => (
+                                <CardUsarios data={Producto} key={Producto.id} />
                             ))}</> : <>
                                 {Product.map(Producto => (
-                                    <CardItem data={Producto} key={Producto._id} />
+                                    <CardUsarios data={Producto} key={Producto.id} />
                                 ))}</>
                         }
                     </table>

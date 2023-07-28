@@ -4,11 +4,13 @@ import { IoMdNotifications } from 'react-icons/io'
 import { BiSolidDownload } from 'react-icons/bi'
 import { MdAdd } from 'react-icons/md'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import CardProveedor from '@/components/CardProveedores/CardProveedores'
 import HeaderProv from '@/components/header/HeaderProv'
+import { UserContext } from '@/app/utils/context/userContext'
 
 export default function proveedores() {
+    const { user } = useContext(UserContext);
     const [Products, setProducts] = useState([])
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
@@ -18,7 +20,7 @@ export default function proveedores() {
         : Proveedor.category === search || Proveedor.id === search || Proveedor.email === search);
     return (
         <div>
-            <header className="flex justify-around h-20 border-b border-gray-200">
+            <header className="flex justify-around h-20">
                 <div className="join w-3/4 p-4 justify-start">
                     <input className="input  w-full    input-bordered join-item" placeholder="Buscar" onChange={(e) => { setSearch(e.target.value) }} />
                     <button className="btn join-item   bg-primary " onClick={() => { setSearch(search) }}>
@@ -29,10 +31,10 @@ export default function proveedores() {
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
-                            Nombre de usuario
+                            {user.name}
                         </p>
                         <p className="text-gray-400">
-                            Role
+                            {user.role}
                         </p>
                     </div>
                 </div>

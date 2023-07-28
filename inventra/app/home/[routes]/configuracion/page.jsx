@@ -1,11 +1,16 @@
+"use client"
+
 import { IoMdNotifications } from 'react-icons/io'
 import { GrNext } from 'react-icons/gr'
 import BtnTheme from '@/components/btnTheme/BtnTheme'
+import { useContext } from 'react';
+import { UserContext } from '@/app/utils/context/userContext';
 
 export default function configuracion() {
+    const { user } = useContext(UserContext);
     return (
         <div>
-            <header className="flex justify-end h-20 border-b border-gray-200 px-5">
+            <header className="flex justify-end h-20">
                 <div className="flex     items-center gap-5">
                     <div>
                         <div className="drawer drawer-end">
@@ -27,10 +32,10 @@ export default function configuracion() {
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
-                            Nombre de usuario
+                            {user.name}
                         </p>
                         <p className="text-gray-400">
-                            Role
+                            {user.role}
                         </p>
                     </div>
                 </div>
@@ -41,21 +46,6 @@ export default function configuracion() {
                     <div className='flex flex-wrap flex-col gap-5'>
                         <button className='btn flex  '> <span className=''>Editar perfil</span> <GrNext /> </button>
                         <button className='btn flex'>Cambiar contraseña <GrNext /> </button>
-                    </div>
-                    <div className='mt-4'>
-                        <h2>Moneda</h2>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option disabled selected>Seleccione la moneda</option>
-                            <option>COP</option>
-                            <option>USD</option>
-                            <option>EUR</option>
-                        </select>
-                        <div className="form-control mt-2">
-                            <label className="label cursor-pointer">
-                                <span className="label-text">Mostrar decimales</span>
-                                <input type="checkbox" className="toggle" />
-                            </label>
-                        </div>
                     </div>
                     <div className='mt-10'>
                         <h2>Pantalla</h2>

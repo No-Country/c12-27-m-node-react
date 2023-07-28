@@ -98,7 +98,7 @@ export default function addUsers() {
               placeholder="Nombre del usuario"
               onChange={ handleInputChange }
               name="name" // Asignamos el nombre del campo en el objeto del estado
-              value={ formData.name } // Establecemos el valor del campo desde el estado
+              value={ newFormData.name } // Establecemos el valor del campo desde el estado
               required />
           </div>
 
@@ -109,7 +109,7 @@ export default function addUsers() {
               placeholder="Correo electrónico"
               onChange={ handleInputChange }
               name="email" // Asignamos el nombre del campo en el objeto del estado
-              value={ formData.email } // Establecemos el valor del campo desde el estado
+              value={ newFormData.email } // Establecemos el valor del campo desde el estado
               required />
           </div>
 
@@ -120,7 +120,7 @@ export default function addUsers() {
               placeholder="Contraseña"
               onChange={ handleInputChange }
               name="password" // Asignamos el nombre del campo en el objeto del estado
-              value={ formData.password } // Establecemos el valor del campo desde el estado
+              value={ newFormData.password } // Establecemos el valor del campo desde el estado
             required />
           </div>
 
@@ -132,14 +132,14 @@ export default function addUsers() {
             <div className="flex justify-between items-center gap-10 mb-4 p-2">
               <label htmlFor="adminRole" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adminitrador</label>
               <input id="adminRole" type="radio" value="ADMIN_ROLE" name="role" 
-                checked={ formData.role === 'ADMIN_ROLE' }
+                checked={ newFormData.role === 'ADMIN_ROLE' }
                 onChange={ handleRoleChange }
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
             </div>
 
             <div className="flex justify-between items-center gap-10 mb-4 p-2">
               <label htmlFor="visualRole" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Visualizador</label>
-              <input checked={ formData.role === 'SELLER_ROLE' } id="visualRole" type="radio" value="SELLER_ROLE" name="role" 
+              <input checked={ newFormData.role === 'SELLER_ROLE' } id="visualRole" type="radio" value="SELLER_ROLE" name="role" 
                 onChange={ handleRoleChange }
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 
                 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
