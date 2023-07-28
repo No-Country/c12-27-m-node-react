@@ -6,18 +6,35 @@ import { MdAdd } from 'react-icons/md'
 import Link from 'next/link'
 import { useContext, useState } from 'react'
 import CardProveedor from '@/components/CardProveedores/CardProveedores'
-import HeaderProv from '@/components/header/HeaderProv'
 import { UserContext } from '@/app/utils/context/userContext'
+import axios from 'axios'
 
-export default function proveedores() {
-    const { user } = useContext(UserContext);
+
+    
+    export default function proveedores() {
+
+    const { key, setKey, user } = useContext(UserContext);
     const [Products, setProducts] = useState([])
     const [search, setSearch] = useState('')
     const [categoria, setCategoria] = useState('')
-    const Proveedores = Products.map(Proveedor => Proveedor.proveedor)
-    const Prov = Proveedores.filter(Proveedor => Proveedor.category === categoria);
-    const ProvProp = Proveedores.filter(Proveedor => Proveedor.name === search ? Proveedor.name === search
-        : Proveedor.category === search || Proveedor.id === search || Proveedor.email === search);
+    key ?
+        axios.get('https://inventra.onrender.com/supplier', {
+            headers: {
+                Authorization: `${key}`
+
+            }
+        }
+        )
+            .then(function (response) {
+                setProducts(response.data)
+
+            })
+            .catch(function (error) {
+            })
+        : {}
+    const ProvProp = Products.filter(Proveedor => Proveedor.name === search ? Proveedor.name === search
+        : Proveedor.id === search || Proveedor.email === search);
+
     return (
         <div>
             <header className="flex justify-around h-20">
@@ -41,7 +58,7 @@ export default function proveedores() {
             </header>
             <div className='flex justify-around mt-4 items-center flex-wrap'>
                 <div>
-                    <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Proveedores.length : Prov.length}</h2>
+                    <h2> Total : {search !== '' ? ProvProp.length : categoria === '' ? Products.length : Prov.length}</h2>
                 </div>
                 <div>
                     <button className='flex'> <BiSolidDownload size={20} /> <span className='pl-2'> EXPORTAR</span>   </button>
@@ -51,33 +68,28 @@ export default function proveedores() {
                         <MdAdd className=' text-2xl ' color='white' /> AGREGAR PROVEEDORES
                     </Link>
                 </div>
-                <div className='flex justify-around mt-4 items-center flex-wrap '>
-                    <div className="px-10   overflow-x-auto w-full">
-                        <table className="table w-full border rounded-lg">
-                            {/* head */}
-                            <thead>
-                                <tr>
-                                    <th>
-                                    </th>
-                                    <th className='text-center'>codigo</th>
-                                    <th className='text-center'>Nombre del usuario</th>
-                                    <th className='text-center'>Categoria</th>
-                                    <th className='text-center'>Contacto</th>
-                                    <th className='text-center'></th>
-                                    <th className='text-center'></th>
-                                </tr>
-                            </thead>
-                            {search !== ''
-                                ? <>{ProvProp.map(Proveedor => (
-                                    <CardProveedor data={Proveedor} key={Proveedor.id} />))}</>
-                                : categoria === '' ? <>{Proveedores.map(Proveedor => (
-                                    <CardProveedor data={Proveedor} key={Proveedor.id} />
-                                ))}</> : <>
-                                    {Prov.map(Proveedor => (
-                                        <CardProveedor data={Proveedor} key={Proveedor.id} />
-                                    ))}</>}
-                        </table>
-                    </div>
+            </div>
+            <div className='flex justify-around mt-4 items-center flex-wrap '>
+                <div className="px-10   overflow-x-auto w-full">
+                    <table className="table w-full border rounded-lg">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>
+                                </th>
+                                <th className='text-center'>codigo</th>
+                                <th className='text-center'>Nombre del proveedor</th>
+                                <th className='text-center'>Categoria</th>
+                                <th className='text-center'>Contacto</th>
+                                <th className='text-center'></th>
+                                <th className='text-center'></th>
+                            </tr>
+                        </thead>
+                        {Products.map((Proveedor, index) => (
+                            <CardProveedor data={Proveedor} key={index} />
+                        ))
+                        }
+                    </table>
                 </div>
             </div>
         </div >

@@ -20,6 +20,7 @@ export default function Login() {
     const { idC, setIdC } = useContext(UserContext);
     const [emailLog, setEmailLog] = useState('')
     const [passLog, setPassLog] = useState('')
+    const [status, setStatus] = useState('')
     const { userStatus, setUserStatus } = useContext(UserContext);
 
     const {name, role} = user
@@ -39,6 +40,7 @@ export default function Login() {
         )
             //funcion para recuperar el valor del estado del usuario logged
             .then(function (response) {
+                setStatus(response.status)
                 setKey(response.data.token)
                 setIdC(response.data.user.company)
                 setUser(response.data.user)
@@ -71,11 +73,13 @@ export default function Login() {
                     <h5>Iniciar sesion</h5>
                     <form className={style.form} onSubmit={(e) => {
                         e.preventDefault(),
-                            key ?
-                                // localStorage.setItem('userLog', 'true') || 
-                                router.push('/home/routes/dashboard')
-                                :
-                                setIsValid(false)
+                            setTimeout(() => {
+                                status === 200 ?
+                                    // localStorage.setItem('userLog', 'true') || 
+                                    router.push('/home/routes/dashboard')
+                                    :
+                                    setIsValid(false)
+                            }, "4000");
                     }}>
                         <div className={style.inputBox}>
                             <label className={style.label}>

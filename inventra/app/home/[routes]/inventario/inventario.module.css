@@ -72,5 +72,9 @@ width: 100%;
     justify-content: space-around;
     align-items: center;
 }
+.box{
+    max-width: 877px;
+    width: 100%;
+}
 
 }

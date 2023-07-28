@@ -19,7 +19,7 @@ const CardProveedor = ({ data }) => {
                     {data.name}
                 </td>
                 <td className='text-center'>
-                    {data.category}
+                    {data.dni}
                 </td>
                 <td className='text-center'>
                     {data.email}

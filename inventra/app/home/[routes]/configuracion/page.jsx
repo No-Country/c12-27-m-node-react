@@ -9,7 +9,7 @@ import { UserContext } from '@/app/utils/context/userContext';
 export default function configuracion() {
     const { user } = useContext(UserContext);
     return (
-        <div>
+        <div className='flex justify-start items-center gap-5 flex-col w-full'>
             <header className="flex justify-end h-20">
                 <div className="flex     items-center gap-5">
                     <div>

@@ -58,7 +58,6 @@ export default function RootLayout({ children }) {
 
 
   const handleInputChange = (evt) => {
-    //console.log(evt.target.value);
 
     const { name, value } = evt.target;
     // Actualiza el estado con los valores del formulario
@@ -80,7 +79,6 @@ export default function RootLayout({ children }) {
   const handleAddUsers = (evt) => {
     evt.preventDefault();
     // Muestra el usuario creado en consola
-    console.log(formData);
 
   };
 

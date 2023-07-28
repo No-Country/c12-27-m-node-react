@@ -7,7 +7,6 @@ import { IoMdNotifications } from 'react-icons/io';
 const Header2 = () => {
 
   const { user } = useContext(UserContext);
-  console.log(user);
   
 
   return (

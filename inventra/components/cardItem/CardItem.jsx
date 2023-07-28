@@ -11,11 +11,6 @@ const CardItem = ({ data }) => {
         <tbody>
             {/* row 1 */}
             <tr className='hover:bg-hover-linea cursor-pointer'>
-                <th>
-                    <label>
-                        <input type="checkbox" className="checkbox checkbox-primary	" />
-                    </label>
-                </th>
                 <th className='text-center'>
                     <span className="avatar ">
                         <span className="w-12 rounded-lg ring ring-contorno ">
@@ -31,7 +26,7 @@ const CardItem = ({ data }) => {
                     {data.name}
                 </td>
                 <td className='text-center'>
-                    {data.category}
+                    {data.category.name}
                 </td>
                 <td className='text-center'>
                     {data.stock}
@@ -54,7 +49,6 @@ const CardItem = ({ data }) => {
                                 .then(function (response) {
                                 })
                                 .catch(function (error) {
-                                    console.log(error);
                                 })
                             : {}
 

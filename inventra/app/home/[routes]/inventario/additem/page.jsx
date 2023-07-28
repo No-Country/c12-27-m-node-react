@@ -9,7 +9,7 @@ import { UserContext } from '@/app/utils/context/userContext';
 
 
 export default function addItem() {
-    const { key, setKey } = useContext(UserContext);
+    const { key, setKey, user } = useContext(UserContext);
     const [itemName, setItemName] = useState("")
     const [price, setPrice] = useState(Number)
     const [serialCode, setSerialCode] = useState("")
@@ -31,7 +31,6 @@ export default function addItem() {
                 setCategories(response.data)
             })
             .catch(function (error) {
-                console.log(error);
             }) : {};
     key ?
         axios.get('https://inventra.onrender.com/supplier', {
@@ -45,7 +44,6 @@ export default function addItem() {
                 setProveedores(response.data)
             })
             .catch(function (error) {
-                console.log(error);
             }) : {}
 
     {/* para la foto del avatat */ }
@@ -62,11 +60,10 @@ export default function addItem() {
     const handleToggleChange = () => {
         setToggle(!toggle);
     };
-    // console.log(category, itemName, price, stock, image, proveedor, serialCode)
     return (
-        <div>
-            <header className="flex justify-end h-20 border-b border-gray-200 px-5">
-                <div className="flex     items-center gap-5">
+        <div className='flex justify-start items-center flex-col w-full'>
+            <header className="flex justify-end h-20">
+                <div className="flex  items-center gap-5">
 
                     <div>
                         <div className="drawer drawer-end">
@@ -90,10 +87,10 @@ export default function addItem() {
                     <img src='/epyon2.jpg' alt="avatar" className="rounded-full w-[50px] h-[50px]" />
                     <div>
                         <p className="text-gray-500">
-                            Nombre de usuario
+                            {user.name}
                         </p>
                         <p className="text-gray-400">
-                            Role
+                            {user.role}
                         </p>
                     </div>
                 </div>
@@ -121,14 +118,12 @@ export default function addItem() {
                                 //funcion para recuperar el valor del estado del usuario logged
                                 .then(function (response) {
                                     setStatus(response.status)
-                                    console.log(response)
                                 })
                                 .catch(function (error) {
-                                    console.log(error)
                                 }) : {};
                 }}>
                 <div className="flex flex-col w-full lg:flex-row">
-                    <div className="grid flex-grow  flex-col flex place-items-center">
+                    <div className="flex-grow  flex-col flex place-items-center">
 
                         <div className="avatar flex-col place-items-center ">
                             <div className="w-40 rounded-2xl">
@@ -163,19 +158,26 @@ export default function addItem() {
                                 setStock(parseInt(e.target.value))
                             }}
                             className="input input-bordered  w-full max-w-xs mt-6" />
-                        <h2 className='text-xl mt-2 text-left'> Informacion adicional</h2>
-                        <h2>categorias</h2>
-                        {
-                            categories.map(res => (
-                                <button onClick={() => { setCategory(res._id) }}>{res.name}</button>
-                            ))
-                        }
-                        <h2>proveedores</h2>
-                        {
-                            proveedores.map(res => (
-                                <button onClick={() => { setProveedor(res._id) }}>{res.name}</button>
-                            ))
-                        }
+                        <div>
+                            <select onChange={(e) => { setCategory(e.target.value) }}>
+                                <option selected value={'categorias'}>Categorias</option>
+                                {
+                                    categories.map(res => (
+                                        <option value={res._id} key={res._id}>{res.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <select  onChange={(e) => { setProveedor(e.target.value) }}>
+                                <option selected value={'proveedores'}>Proveedores</option>
+                                {
+                                    proveedores.map(res => (
+                                        <option key={res._id} value={res._id}>{res.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
                     </div>
                     <div className="divider lg:divider-horizontal"></div>
                     <div className="grid flex-grow h-32 px-5 ">
