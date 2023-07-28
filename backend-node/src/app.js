@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(express.static('storage'));
 app.use(
   cors({
-    origin: ['*'], // all domains are allowed
+    origin: ['https://scintillating-lily-2b13c0.netlify.app/', '*'], // all domains are allowed
   })
 );
 app.use((req, res, next) => {
