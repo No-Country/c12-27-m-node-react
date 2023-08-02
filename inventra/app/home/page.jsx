@@ -1,6 +1,5 @@
-
-export default function home() {
+export default function Routes({ children }) {
     return (
-        <h1>soy el home</h1>
+        { children }
     )
 }

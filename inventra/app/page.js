@@ -1,10 +1,8 @@
 
-import Image from 'next/image'
-
-export default function Home({ children }) {
+export default function Home() {
   return (
     <>
-      {children}
+
     </>
 
 

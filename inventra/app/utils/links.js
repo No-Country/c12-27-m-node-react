@@ -1,6 +1,6 @@
 import { RiDashboardFill } from 'react-icons/ri'
-import { PiCubeFill, PiClockCounterClockwise, PiUsersFill } from 'react-icons/pi'
-import { MdOutlineInventory, MdSettings, MdHelpOutline, MdLogout } from 'react-icons/md'
+import { PiCubeFill, PiUsersFill } from 'react-icons/pi'
+import { MdOutlineInventory, MdSettings, MdLogout } from 'react-icons/md'
 
 
 
@@ -10,42 +10,32 @@ import { MdOutlineInventory, MdSettings, MdHelpOutline, MdLogout } from 'react-i
 export const links = [
   {
     label: 'Dashboard',
-    route: '/dashboard',
+    route: '/home/routes/dashboard',
     icon: RiDashboardFill
   },
   {
     label: 'Inventario',
-    route: '/inventario',
+    route: '/home/routes/inventario',
     icon: PiCubeFill
   },
   {
     label: 'Proveedores',
-    route: '/proveedores',
+    route: '/home/routes/proveedores',
     icon: MdOutlineInventory
   },
   {
-    label: 'Historial',
-    route: '/historial',
-    icon: PiClockCounterClockwise
-  },
-  {
     label: 'Usuarios',
-    route: '/usuarios',
+    route: '/home/routes/usuarios',
     icon: PiUsersFill
   },
   {
     label: 'Configuracion',
-    route: '/configuracion',
+    route: '/home/routes/configuracion',
     icon: MdSettings
   },
   {
-    label: 'Ayuda',
-    route: '/ayuda',
-    icon: MdHelpOutline
-  },
-  {
     label: 'Salir',
-    route: '/login',
     icon: MdLogout
   }
+
 ]

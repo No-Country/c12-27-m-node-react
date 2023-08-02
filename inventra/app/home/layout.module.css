@@ -1,0 +1,10 @@
+
+
+@media screen and (min-width: 700px) and (max-width: 100vw) {
+    .childrenBox{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+    }
+}

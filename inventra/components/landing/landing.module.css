@@ -1,0 +1,121 @@
+
+/*vista mobile*/
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    .container{
+        padding: 25px;
+        max-width: 700px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .imgContainer{
+        display: flex;
+        align-items: center;
+    }
+    .textContainer{
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .text{
+        font-size: 18px;
+    }
+    .btn{
+        background-color: #2969e3;
+        width: 100%;
+        height: 40px;
+        color: #ffff;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    .btnContainer{
+        max-width: 250px;   
+        width: 100%;
+    }
+    .title{
+        max-width: 289px;
+        width: 100%;
+        font-size: 23px;
+        font-weight: bold;
+        align-self: center;
+    }
+}
+
+
+
+/*vista desktop*/
+
+@media screen and (min-width: 800px) and (max-width: 100vw) {
+    .container{
+        gap: 30px;
+        padding: 25px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .boxContainer{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+    .imgContainer{
+        display: flex;
+        align-items: center;
+    }
+    .textBox{
+        display: flex;
+        align-items: center;
+
+    }
+    .textContainer{
+        max-width: 500px;
+        width: 100%;
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .text{
+        font-size: 18px;
+    }
+.btnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    }
+    .btnBox{
+        max-width: 500px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .btn{
+        background-color: #2969e3;
+        width: 300px;
+        height: 40px;
+        color: #ffff;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    .title{
+        font-size: 35px;
+        font-weight: bold;
+        align-self: center;
+    }
+}
