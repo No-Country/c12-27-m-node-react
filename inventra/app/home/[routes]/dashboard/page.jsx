@@ -103,7 +103,7 @@ export default function Dashboard() {
             <p className='text-black md:text-sm lg:text-lg'>
               Jabón líquido Dove -
               <span className='text-black text-blackmd:text-xs lg:text-lg'>
-                8
+                10
               </span>
             </p>
           </div>
