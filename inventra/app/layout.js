@@ -13,10 +13,7 @@ import axios from 'axios'
 
 //const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Inventra',
-  description: 'Inventario Control app',
-}
+
 
 
 
